@@ -1,6 +1,6 @@
 ﻿namespace CUM.ProgramInstaller
 {
-    partial class Installer
+    internal partial class Installer
     {
         /// <summary>
         /// Обязательная переменная конструктора.

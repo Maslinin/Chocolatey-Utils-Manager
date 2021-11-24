@@ -7,7 +7,7 @@ using CUM.ProgramInstaller.Models;
 
 namespace CUM.ProgramInstaller
 {
-    public partial class Installer : Form
+    internal partial class Installer : Form
     {
         private readonly List<CheckedListBox> ProgramsListBoxCollection;
         private readonly List<ProgramList> Programs;
@@ -98,17 +98,15 @@ namespace CUM.ProgramInstaller
         {
             var choco = new Chocolatey.ChocoInstaller();
 
-            //foreach(var listBox in ProgramsListBoxCollection)
-            //{
-            //    if(listBox.CheckedItems.OfType<CheckBox>().FirstOrDefault() == null)
-            //    {
-            //        MessageBox.Show("No package selected for installation",
-            //            "No packages selected",
-            //            MessageBoxButtons.OK,
-            //            MessageBoxIcon.Error);
-            //        return;
-            //    }    
-            //}
+            if(ProgramsListBoxCollection.Select(l => l.CheckedItems.Count != 0).ToList().Where(p => p != false).Count() == 0)
+            {
+                MessageBox.Show("No package selected for installation",
+                    "No packages selected",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+                return;
+            }
+
             try
             {
                 if (InstallButton.Checked)
@@ -139,7 +137,7 @@ namespace CUM.ProgramInstaller
             catch(Exception ex)
             {
                 MessageBox.Show(ex.ToString(),
-                    ex.TargetSite.Name,
+                    ex.GetType().Name,
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Error);
             }
