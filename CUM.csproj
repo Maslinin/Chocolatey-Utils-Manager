@@ -81,19 +81,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Chocolatey\ChocoInstaller.cs" />
-    <Compile Include="Program.cs" />
-    <Compile Include="Chocolatey\ChocoBase.cs" />
-    <Compile Include="ProgramInstaller\Installer.cs">
+    <Compile Include="src\Chocolatey\ChocoInstaller.cs" />
+    <Compile Include="src\Program.cs" />
+    <Compile Include="src\Chocolatey\ChocoBase.cs" />
+    <Compile Include="src\ProgramInstaller\Installer.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ProgramInstaller\Installer.Designer.cs">
+    <Compile Include="src\ProgramInstaller\Installer.Designer.cs">
       <DependentUpon>Installer.cs</DependentUpon>
     </Compile>
-    <Compile Include="ProgramInstaller\Models\ProgramInfo.cs" />
-    <Compile Include="ProgramInstaller\Models\ProgramList.cs" />
+    <Compile Include="src\ProgramInstaller\Models\ProgramInfo.cs" />
+    <Compile Include="src\ProgramInstaller\Models\ProgramList.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="ProgramInstaller\Installer.resx">
+    <EmbeddedResource Include="src\ProgramInstaller\Installer.resx">
       <DependentUpon>Installer.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -102,7 +102,7 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <None Include="packages.config" />
-    <None Include="ProgramInstaller\ProgramList.json">
+    <None Include="src\ProgramInstaller\ProgramList.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="Properties\app.manifest" />
