@@ -81,9 +81,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="src\Chocolatey\ChocoBaseInstaller.cs" />
+    <Compile Include="src\Chocolatey\ChocoInstaller.cs" />
     <Compile Include="src\Program.cs" />
-    <Compile Include="src\Chocolatey\ChocoBase.cs" />
+    <Compile Include="src\Chocolatey\ChocoBaseInstaller.cs" />
     <Compile Include="src\ProgramInstaller\Installer.cs">
       <SubType>Form</SubType>
     </Compile>

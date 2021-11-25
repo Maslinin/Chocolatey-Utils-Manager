@@ -1,56 +1,91 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Diagnostics;
 
 namespace CUM.Chocolatey
 {
-    sealed class ChocoInstaller
+    internal class ChocoBaseInstaller
     {
-        internal ChocoBaseInstaller ChocoChild { get; private set; }
+        internal string ChocolatePath { get; set; } = @"C:\Program Files\Internet Explorer\iexplore.exe";
+        internal string PSPath { get; set; } = $@"{Environment.SystemDirectory}\WindowsPowerShell\v1.0\powershell.exe";
 
-        public ChocoInstaller() => ChocoChild = new ChocoBaseInstaller();
+        internal ChocoBaseInstaller() { }
 
-        /// <summary>
-        /// Installs Chocolatey if it is not installed
-        /// </summary>
-        /// <param name="auth"></param>
-        internal async void ChocoInstallAsync()
+        internal void ChocoInstall()
         {
-            if (!ChocoChild.ChocoExists())
-            {
-                await Task.Run(() => ChocoChild.ChocoInstall());
-            }
+            string install = "Set-ExecutionPolicy Bypass -Scope Process -Force -Verb RunAs; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))";
+            var chocoInstall = new Process();
+
+            chocoInstall.StartInfo.RedirectStandardInput = true;
+            chocoInstall.StartInfo.RedirectStandardOutput = true;
+            chocoInstall.StartInfo.UseShellExecute = false;
+            chocoInstall.StartInfo.CreateNoWindow = true;
+            chocoInstall.StartInfo.Verb = "runAs";
+            chocoInstall.StartInfo.FileName = PSPath;
+            chocoInstall.Start();
+
+            chocoInstall.StandardInput.WriteLine(install);
+            chocoInstall.StandardInput.Flush();
+            chocoInstall.StandardInput.Close();
+            chocoInstall.WaitForExit();
         }
-        /// <summary>
-        /// Installs the specified Chocolatey package
-        /// </summary>
-        /// <param name="packageLinkName"></param>
-        internal async void InstallPackageAsync(string packageLinkName)
+
+        internal void InstallPackage(string packageLinkName)
         {
-            if (ChocoChild.ChocoExists())
-            {
-                await Task.Run(() => ChocoChild.InstallPackage(packageLinkName));
-            }
+            var chocoInstall = new Process();
+
+            chocoInstall.StartInfo.RedirectStandardInput = true;
+            chocoInstall.StartInfo.RedirectStandardOutput = true;
+            chocoInstall.StartInfo.UseShellExecute = false;
+            chocoInstall.StartInfo.CreateNoWindow = true;
+            chocoInstall.StartInfo.Verb = "runAs";
+            chocoInstall.StartInfo.FileName = PSPath;
+            chocoInstall.Start();
+
+            chocoInstall.StandardInput.WriteLine($"choco install {packageLinkName} -y");
+            chocoInstall.StandardInput.Flush();
+            chocoInstall.StandardInput.Close();
+            chocoInstall.WaitForExit();
         }
-        /// <summary>
-        /// Updates the specified Chocolatey package
-        /// </summary>
-        /// <param name="packageLinkName"></param>
-        internal async void UpdatePackageAsync(string packageLinkName)
+
+        internal void UpdatePackage(string packageLinkName)
         {
-            if (ChocoChild.ChocoExists())
-            {
-                await Task.Run(() => ChocoChild.UpdatePackage(packageLinkName));
-            }
+            var chocoInstall = new Process();
+
+            chocoInstall.StartInfo.RedirectStandardInput = true;
+            chocoInstall.StartInfo.RedirectStandardOutput = true;
+            chocoInstall.StartInfo.UseShellExecute = false;
+            chocoInstall.StartInfo.CreateNoWindow = true;
+            chocoInstall.StartInfo.Verb = "runAs";
+            chocoInstall.StartInfo.FileName = PSPath;
+            chocoInstall.Start();
+
+            chocoInstall.StandardInput.WriteLine($"choco update {packageLinkName} -y");
+            chocoInstall.StandardInput.Flush();
+            chocoInstall.StandardInput.Close();
+            chocoInstall.WaitForExit();
         }
-        /// <summary>
-        /// Deletes the specified Chocolatey package
-        /// </summary>
-        /// <param name="packageLinkName"></param>
-        internal async void DeletePackageAsync(string packageLinkName)
+
+        internal void DeletePackage(string packageLinkName)
         {
-            if (ChocoChild.ChocoExists())
-            {
-                await Task.Run(() => ChocoChild.DeletePackage(packageLinkName));
-            }
+            var chocoInstall = new Process();
+
+            chocoInstall.StartInfo.RedirectStandardInput = true;
+            chocoInstall.StartInfo.RedirectStandardOutput = true;
+            chocoInstall.StartInfo.UseShellExecute = false;
+            chocoInstall.StartInfo.CreateNoWindow = true;
+            chocoInstall.StartInfo.Verb = "runAs";
+            chocoInstall.StartInfo.FileName = PSPath;
+            chocoInstall.Start();
+
+            chocoInstall.StandardInput.WriteLine($"choco uninstall {packageLinkName} -y");
+            chocoInstall.StandardInput.Flush();
+            chocoInstall.StandardInput.Close();
+            chocoInstall.WaitForExit();
+        }
+
+        internal bool ChocoExists()
+        {
+            return Environment.GetEnvironmentVariable("ChocolateyInstall") != null ? true : false;
         }
     }
 }
