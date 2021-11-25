@@ -1,19 +1,14 @@
 ﻿using System;
-using System.Windows.Forms;
-using System.Security;
 using System.Diagnostics;
 
 namespace CUM.Chocolatey
 {
-    internal class ChocoBase
+    internal class ChocoBaseInstaller
     {
         internal string ChocolatePath { get; set; } = @"C:\Program Files\Internet Explorer\iexplore.exe";
         internal string PSPath { get; set; } = $@"{Environment.SystemDirectory}\WindowsPowerShell\v1.0\powershell.exe";
 
-        public ChocoBase()
-        {
-            
-        }
+        internal ChocoBaseInstaller() { }
 
         internal void ChocoInstall()
         {
@@ -32,11 +27,6 @@ namespace CUM.Chocolatey
             chocoInstall.StandardInput.Flush();
             chocoInstall.StandardInput.Close();
             chocoInstall.WaitForExit();
-
-            MessageBox.Show(chocoInstall.StandardOutput.ReadToEnd(),
-                "Successful installation",
-                MessageBoxButtons.OK,
-                MessageBoxIcon.Information);
         }
 
         internal void InstallPackage(string packageLinkName)
@@ -49,18 +39,12 @@ namespace CUM.Chocolatey
             chocoInstall.StartInfo.CreateNoWindow = true;
             chocoInstall.StartInfo.Verb = "runAs";
             chocoInstall.StartInfo.FileName = PSPath;
-            //chocoInstall.StartInfo.LoadUserProfile = true;
             chocoInstall.Start();
 
             chocoInstall.StandardInput.WriteLine($"choco install {packageLinkName} -y");
             chocoInstall.StandardInput.Flush();
             chocoInstall.StandardInput.Close();
             chocoInstall.WaitForExit();
-
-            MessageBox.Show(chocoInstall.StandardOutput.ReadToEnd(),
-                "Successful installation",
-                MessageBoxButtons.OK,
-                MessageBoxIcon.Information);
         }
 
         internal void UpdatePackage(string packageLinkName)
@@ -79,11 +63,6 @@ namespace CUM.Chocolatey
             chocoInstall.StandardInput.Flush();
             chocoInstall.StandardInput.Close();
             chocoInstall.WaitForExit();
-
-            MessageBox.Show(chocoInstall.StandardOutput.ReadToEnd(),
-                "Successful update",
-                MessageBoxButtons.OK,
-                MessageBoxIcon.Information);
         }
 
         internal void DeletePackage(string packageLinkName)
@@ -102,11 +81,6 @@ namespace CUM.Chocolatey
             chocoInstall.StandardInput.Flush();
             chocoInstall.StandardInput.Close();
             chocoInstall.WaitForExit();
-
-            MessageBox.Show(chocoInstall.StandardOutput.ReadToEnd(),
-                "Successful uninstall",
-                MessageBoxButtons.OK,
-                MessageBoxIcon.Information);
         }
 
         internal bool ChocoExists()

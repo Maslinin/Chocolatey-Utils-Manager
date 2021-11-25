@@ -4,15 +4,15 @@ namespace CUM.Chocolatey
 {
     sealed class ChocoInstaller
     {
-        internal ChocoBase ChocoChild { get; private set; }
+        internal ChocoBaseInstaller ChocoChild { get; private set; }
 
-        public ChocoInstaller() => ChocoChild = new ChocoBase();
+        public ChocoInstaller() => ChocoChild = new ChocoBaseInstaller();
 
         /// <summary>
-        /// Устанавливает Chocolatey, если он не установлен
+        /// Installs Chocolatey if it is not installed
         /// </summary>
         /// <param name="auth"></param>
-        internal async void ChocoInstall()
+        internal async void ChocoInstallAsync()
         {
             if (!ChocoChild.ChocoExists())
             {
@@ -20,10 +20,10 @@ namespace CUM.Chocolatey
             }
         }
         /// <summary>
-        /// Устанавливает указзанный пакет Chocolatey
+        /// Installs the specified Chocolatey package
         /// </summary>
         /// <param name="packageLinkName"></param>
-        internal async void InstallPackage(string packageLinkName)
+        internal async void InstallPackageAsync(string packageLinkName)
         {
             if (ChocoChild.ChocoExists())
             {
@@ -31,10 +31,10 @@ namespace CUM.Chocolatey
             }
         }
         /// <summary>
-        /// Обновляет указанный пакет Chocolatey
+        /// Updates the specified Chocolatey package
         /// </summary>
         /// <param name="packageLinkName"></param>
-        internal async void UpdatePackage(string packageLinkName)
+        internal async void UpdatePackageAsync(string packageLinkName)
         {
             if (ChocoChild.ChocoExists())
             {
@@ -42,10 +42,10 @@ namespace CUM.Chocolatey
             }
         }
         /// <summary>
-        /// Удаляет указанный пакет Chocolatey
+        /// Deletes the specified Chocolatey package
         /// </summary>
         /// <param name="packageLinkName"></param>
-        internal async void UpdateDelete(string packageLinkName)
+        internal async void DeletePackageAsync(string packageLinkName)
         {
             if (ChocoChild.ChocoExists())
             {
