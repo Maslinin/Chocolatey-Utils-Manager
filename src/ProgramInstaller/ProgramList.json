@@ -88,6 +88,10 @@
       {
         "ProgramName": "Clink",
         "ChocolateyInstallName": "clink"
+      },
+      {
+        "ProgramName": "LazyGit",
+        "ChocolateyInstallName": "lazygit"
       }
     ]
   },

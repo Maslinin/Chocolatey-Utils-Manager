@@ -75,7 +75,7 @@ namespace CUM.ProgramInstaller
                 GraphicAppsLabel,
                 OtherLabel
             };
-            for (int i = 0; i < (ProgramsListBoxCollection.Count > Programs.Count ? Programs.Count : ProgramsListBoxCollection.Count); ++i)
+            for (int i = 0; i < (ProgramsListBoxCollection.Count >= Programs.Count ? Programs.Count : ProgramsListBoxCollection.Count); ++i)
             {
                 ProgramsListBoxLabels[i].Text = Programs[i].Category + ":";
             }
