@@ -388,6 +388,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Chocolatey Utils Manager";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.InstallerClosed);
+            this.Shown += new System.EventHandler(this.Installer_Shown);
             this.InstallerSplitContainer.Panel1.ResumeLayout(false);
             this.InstallerSplitContainer.Panel1.PerformLayout();
             this.InstallerSplitContainer.Panel2.ResumeLayout(false);

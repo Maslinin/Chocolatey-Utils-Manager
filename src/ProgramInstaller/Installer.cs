@@ -11,11 +11,12 @@ namespace CUM.ProgramInstaller
     {
         private readonly List<CheckedListBox> ProgramsListBoxCollection;
         private readonly List<ProgramList> Programs;
+        private readonly Chocolatey.ChocoInstaller Choco;
 
         public Installer()
         {
             InitializeComponent();
-
+            Choco = new Chocolatey.ChocoInstaller();
             //ProgramsListBoxCollection.Count must be ProgramsListBoxLabels.Count
             ProgramsListBoxCollection = new List<CheckedListBox>
             {
@@ -82,6 +83,13 @@ namespace CUM.ProgramInstaller
             PackagesInfoLabel.Text = "No package(s) selected";
         }
 
+        private void Installer_Shown(object sender, EventArgs e)
+        {
+            PackagesInfoLabel.Text = "Chocolate isn't found on your computer. Installing it...";
+            Choco.ChocoInstallAsync();
+            PackagesInfoLabel.Text = "No package(s) selected";
+        }
+
         private void SelectAllCheckBox_CheckedChanged(object sender, EventArgs e)
         {
             if (SelectAllCheckBox.Checked)
@@ -100,7 +108,6 @@ namespace CUM.ProgramInstaller
 
         private void StartButton_Click(object sender, EventArgs e)
         {
-            var choco = new Chocolatey.ChocoInstaller();
 
             if(ProgramsListBoxCollection.Select(l => l.CheckedItems.Count != 0).ToList().Where(p => p != false).Count() == 0)
             {
@@ -118,7 +125,7 @@ namespace CUM.ProgramInstaller
                     foreach (var listBox in ProgramsListBoxCollection)
                         foreach (ProgramInfo program in listBox.CheckedItems)
                         {
-                            choco.InstallPackageAsync(program.ChocolateyInstallName);
+                            Choco.InstallPackageAsync(program.ChocolateyInstallName);
                         }
                 }
                 else if (UpdateButton.Checked)
@@ -126,7 +133,7 @@ namespace CUM.ProgramInstaller
                     foreach (var listBox in ProgramsListBoxCollection)
                         foreach (ProgramInfo program in listBox.CheckedItems)
                         {
-                            choco.UpdatePackageAsync(program.ChocolateyInstallName);
+                            Choco.UpdatePackageAsync(program.ChocolateyInstallName);
                         }
                 }
                 else
@@ -134,7 +141,7 @@ namespace CUM.ProgramInstaller
                     foreach (var listBox in ProgramsListBoxCollection)
                         foreach (ProgramInfo program in listBox.CheckedItems)
                         {
-                            choco.UpdatePackageAsync(program.ChocolateyInstallName);
+                            Choco.UpdatePackageAsync(program.ChocolateyInstallName);
                         }
                 }
             }
