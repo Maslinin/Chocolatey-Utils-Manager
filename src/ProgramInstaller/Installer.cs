@@ -78,6 +78,8 @@ namespace CUM.ProgramInstaller
             {
                 ProgramsListBoxLabels[i].Text = Programs[i].Category + ":";
             }
+
+            PackagesInfoLabel.Text = "No package(s) selected";
         }
 
         private void SelectAllCheckBox_CheckedChanged(object sender, EventArgs e)

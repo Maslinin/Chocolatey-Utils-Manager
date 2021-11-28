@@ -56,6 +56,7 @@
             this.InstallButton = new System.Windows.Forms.RadioButton();
             this.UpdateButton = new System.Windows.Forms.RadioButton();
             this.SelectAllCheckBox = new System.Windows.Forms.CheckBox();
+            this.PackagesInfoLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.InstallerSplitContainer)).BeginInit();
             this.InstallerSplitContainer.Panel1.SuspendLayout();
             this.InstallerSplitContainer.Panel2.SuspendLayout();
@@ -80,7 +81,7 @@
             // 
             this.InstallerSplitContainer.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.InstallerSplitContainer.IsSplitterFixed = true;
-            this.InstallerSplitContainer.Location = new System.Drawing.Point(2, 2);
+            this.InstallerSplitContainer.Location = new System.Drawing.Point(12, 12);
             this.InstallerSplitContainer.Name = "InstallerSplitContainer";
             // 
             // InstallerSplitContainer.Panel1
@@ -364,16 +365,26 @@
             this.SelectAllCheckBox.UseVisualStyleBackColor = true;
             this.SelectAllCheckBox.CheckedChanged += new System.EventHandler(this.SelectAllCheckBox_CheckedChanged);
             // 
+            // PackagesInfoLabel
+            // 
+            this.PackagesInfoLabel.AutoSize = true;
+            this.PackagesInfoLabel.Font = new System.Drawing.Font("Trebuchet MS", 12.25F);
+            this.PackagesInfoLabel.Location = new System.Drawing.Point(8, 434);
+            this.PackagesInfoLabel.Name = "PackagesInfoLabel";
+            this.PackagesInfoLabel.Size = new System.Drawing.Size(186, 23);
+            this.PackagesInfoLabel.TabIndex = 2;
+            this.PackagesInfoLabel.Text = "No package(s) selected";
+            // 
             // Installer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(915, 427);
+            this.ClientSize = new System.Drawing.Size(931, 459);
+            this.Controls.Add(this.PackagesInfoLabel);
             this.Controls.Add(this.InstallerSplitContainer);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Installer";
-            this.ShowIcon = true;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Chocolatey Utils Manager";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.InstallerClosed);
@@ -391,6 +402,7 @@
             this.ModeSelectionGroupBox.ResumeLayout(false);
             this.ModeSelectionGroupBox.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -423,6 +435,7 @@
         private System.Windows.Forms.Button StartButton;
         private System.Windows.Forms.CheckBox SelectAllCheckBox;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Label PackagesInfoLabel;
     }
 }
 
