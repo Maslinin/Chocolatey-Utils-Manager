@@ -114,7 +114,7 @@ namespace CUM.ProgramInstaller
                     foreach (var listBox in ProgramsListBoxCollection)
                         foreach (ProgramInfo program in listBox.CheckedItems)
                         {
-                            choco.InstallPackage(program.ChocolateyInstallName);
+                            choco.InstallPackageAsync(program.ChocolateyInstallName);
                         }
                 }
                 else if (UpdateButton.Checked)
@@ -122,7 +122,7 @@ namespace CUM.ProgramInstaller
                     foreach (var listBox in ProgramsListBoxCollection)
                         foreach (ProgramInfo program in listBox.CheckedItems)
                         {
-                            choco.UpdatePackage(program.ChocolateyInstallName);
+                            choco.UpdatePackageAsync(program.ChocolateyInstallName);
                         }
                 }
                 else
@@ -130,7 +130,7 @@ namespace CUM.ProgramInstaller
                     foreach (var listBox in ProgramsListBoxCollection)
                         foreach (ProgramInfo program in listBox.CheckedItems)
                         {
-                            choco.UpdatePackage(program.ChocolateyInstallName);
+                            choco.UpdatePackageAsync(program.ChocolateyInstallName);
                         }
                 }
             }

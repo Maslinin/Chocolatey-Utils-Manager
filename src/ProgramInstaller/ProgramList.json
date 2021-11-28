@@ -59,6 +59,10 @@
       {
         "ProgramName": ".NET Core SDK",
         "ChocolateyInstallName": "dotnetcore-sdk"
+      },
+      {
+        "ProgramName": "ILSpy",
+        "ChocolateyInstallName": "ilspy"
       }
     ]
   },
@@ -80,6 +84,10 @@
       {
         "ProgramName": "Notepad++",
         "ChocolateyInstallName": "notepadplusplus"
+      },
+      {
+        "ProgramName": "Clink",
+        "ChocolateyInstallName": "clink"
       }
     ]
   },
