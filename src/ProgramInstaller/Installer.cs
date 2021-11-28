@@ -108,8 +108,8 @@ namespace CUM.ProgramInstaller
 
         private void StartButton_Click(object sender, EventArgs e)
         {
-
-            if(ProgramsListBoxCollection.Select(l => l.CheckedItems.Count != 0).ToList().Where(p => p != false).Count() == 0)
+            //If no packages are selected:
+            if (ProgramsListBoxCollection.Select(l => l.CheckedItems.Count != 0).ToList().Where(p => p != false).Count() == 0)
             {
                 MessageBox.Show("No package selected for installation",
                     "No packages selected",
@@ -120,27 +120,35 @@ namespace CUM.ProgramInstaller
 
             try
             {
+                int packagesCount = ProgramsListBoxCollection.Select(l => l.CheckedItems.Count != 0).ToList().Where(p => p != false).Count();
+                
                 if (InstallButton.Checked)
                 {
+                    int i = -1;
                     foreach (var listBox in ProgramsListBoxCollection)
                         foreach (ProgramInfo program in listBox.CheckedItems)
                         {
+                            PackagesInfoLabel.Text = $"{++i} out of {packagesCount} packages installed";
                             Choco.InstallPackageAsync(program.ChocolateyInstallName);
                         }
                 }
                 else if (UpdateButton.Checked)
                 {
+                    int i = -1;
                     foreach (var listBox in ProgramsListBoxCollection)
                         foreach (ProgramInfo program in listBox.CheckedItems)
                         {
+                            PackagesInfoLabel.Text = $"{++i} out of {packagesCount} packages updated";
                             Choco.UpdatePackageAsync(program.ChocolateyInstallName);
                         }
                 }
                 else
                 {
+                    int i = -1;
                     foreach (var listBox in ProgramsListBoxCollection)
                         foreach (ProgramInfo program in listBox.CheckedItems)
                         {
+                            PackagesInfoLabel.Text = $"{++i} out of {packagesCount} packages deleted";
                             Choco.UpdatePackageAsync(program.ChocolateyInstallName);
                         }
                 }

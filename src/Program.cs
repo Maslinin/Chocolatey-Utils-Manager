@@ -1,5 +1,4 @@
-﻿using System;
-using System.Windows.Forms;
+﻿using System.Windows.Forms;
 
 namespace CUM
 {
@@ -8,7 +7,7 @@ namespace CUM
         /// <summary>
         /// Главная точка входа для приложения.
         /// </summary>
-        [STAThread]
+        [System.STAThread]
         private static void Main()
         {
             Application.EnableVisualStyles();
