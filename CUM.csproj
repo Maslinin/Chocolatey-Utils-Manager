@@ -6,8 +6,8 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{929F66CA-411C-47B6-A53A-66C12AD12AD2}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>OCUH</RootNamespace>
-    <AssemblyName>OCUH</AssemblyName>
+    <RootNamespace>CUM</RootNamespace>
+    <AssemblyName>CUM</AssemblyName>
     <TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -102,9 +102,10 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <None Include="packages.config" />
-    <None Include="src\ProgramInstaller\ProgramList.json">
+    <ContentWithTargetPath Include="src\ProgramInstaller\ProgramList.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
+	  <TargetPath>ProgramList.json</TargetPath>
+    </ContentWithTargetPath>
     <None Include="Properties\app.manifest" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

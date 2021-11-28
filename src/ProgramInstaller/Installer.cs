@@ -30,7 +30,7 @@ namespace CUM.ProgramInstaller
             };
 
             Programs = Newtonsoft.Json.JsonConvert.DeserializeObject<List<ProgramList>>(
-                File.ReadAllText(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "ProgramInstaller", "ProgramList.json")));
+                File.ReadAllText(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "ProgramList.json")));
 
             CheckedListBox temp;
             foreach (var list in Programs)
