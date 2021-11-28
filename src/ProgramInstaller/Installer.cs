@@ -16,6 +16,7 @@ namespace CUM.ProgramInstaller
         {
             InitializeComponent();
 
+            //ProgramsListBoxCollection.Count must be ProgramsListBoxLabels.Count
             ProgramsListBoxCollection = new List<CheckedListBox>
             {
                 BrowsersListBox,
@@ -60,6 +61,7 @@ namespace CUM.ProgramInstaller
                     temp.Items.Add(program, CheckState.Checked);
             }
 
+            //ProgramsListBoxLabels.Count must be ProgramsListBoxCollection.Count
             var ProgramsListBoxLabels = new List<Label>
             {
                 BrowsersLabel,
@@ -72,7 +74,7 @@ namespace CUM.ProgramInstaller
                 GraphicAppsLabel,
                 OtherLabel
             };
-            for (int i = 0; i < (ProgramsListBoxCollection.Count > ProgramsListBoxLabels.Count ? ProgramsListBoxCollection.Count : ProgramsListBoxLabels.Count); ++i)
+            for (int i = 0; i < (ProgramsListBoxCollection.Count > Programs.Count ? Programs.Count : ProgramsListBoxCollection.Count); ++i)
             {
                 ProgramsListBoxLabels[i].Text = Programs[i].Category + ":";
             }

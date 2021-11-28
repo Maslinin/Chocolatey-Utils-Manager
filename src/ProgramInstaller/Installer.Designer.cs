@@ -373,7 +373,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Installer";
-            this.ShowIcon = false;
+            this.ShowIcon = true;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Chocolatey Utils Manager";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.InstallerClosed);
