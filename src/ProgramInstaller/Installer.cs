@@ -122,6 +122,13 @@ namespace CUM.ProgramInstaller
                 return;
             }
 
+            StartButton.Enabled = false;
+            StopButton.Enabled = true;
+            InstallButton.Enabled = false;
+            UpdateButton.Enabled = false;
+            DeleteButton.Enabled = false;
+            InstallerSplitContainer.Panel1.Enabled = false;
+
             try
             {
                 int packagesCount = ProgramsListBoxCollection.Select(l => l.CheckedItems.Count != 0).ToList().Where(p => p != false).Count();
@@ -164,6 +171,16 @@ namespace CUM.ProgramInstaller
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Error);
             }
+        }
+
+        private void StopButton_Click(object sender, EventArgs e)
+        {
+            StartButton.Enabled = true;
+            StopButton.Enabled = false;
+            InstallButton.Enabled = true;
+            UpdateButton.Enabled = true;
+            DeleteButton.Enabled = true;
+            InstallerSplitContainer.Panel1.Enabled = true;
         }
 
         private void InstallerClosed(object sender, FormClosedEventArgs e) => Application.Exit();

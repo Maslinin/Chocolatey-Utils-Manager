@@ -48,25 +48,21 @@
             this.WorkWithFilesListBox = new System.Windows.Forms.CheckedListBox();
             this.WorkWithFilesLabel = new System.Windows.Forms.Label();
             this.BrowsersLabel = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.splitContainer2 = new System.Windows.Forms.SplitContainer();
+            this.SelectAllCheckBox = new System.Windows.Forms.CheckBox();
             this.ModeSelectionGroupBox = new System.Windows.Forms.GroupBox();
             this.StartButton = new System.Windows.Forms.Button();
+            this.StopButton = new System.Windows.Forms.Button();
             this.DeleteButton = new System.Windows.Forms.RadioButton();
             this.InstallButton = new System.Windows.Forms.RadioButton();
             this.UpdateButton = new System.Windows.Forms.RadioButton();
-            this.SelectAllCheckBox = new System.Windows.Forms.CheckBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.PackagesInfoLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.InstallerSplitContainer)).BeginInit();
             this.InstallerSplitContainer.Panel1.SuspendLayout();
             this.InstallerSplitContainer.Panel2.SuspendLayout();
             this.InstallerSplitContainer.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).BeginInit();
-            this.splitContainer2.Panel1.SuspendLayout();
-            this.splitContainer2.Panel2.SuspendLayout();
-            this.splitContainer2.SuspendLayout();
             this.ModeSelectionGroupBox.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // BrowsersListBox
@@ -108,8 +104,9 @@
             // 
             // InstallerSplitContainer.Panel2
             // 
+            this.InstallerSplitContainer.Panel2.Controls.Add(this.SelectAllCheckBox);
+            this.InstallerSplitContainer.Panel2.Controls.Add(this.ModeSelectionGroupBox);
             this.InstallerSplitContainer.Panel2.Controls.Add(this.pictureBox1);
-            this.InstallerSplitContainer.Panel2.Controls.Add(this.splitContainer2);
             this.InstallerSplitContainer.Size = new System.Drawing.Size(907, 419);
             this.InstallerSplitContainer.SplitterDistance = 719;
             this.InstallerSplitContainer.TabIndex = 1;
@@ -276,44 +273,32 @@
             this.BrowsersLabel.TabIndex = 1;
             this.BrowsersLabel.Text = "Browsers:";
             // 
-            // pictureBox1
+            // SelectAllCheckBox
             // 
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(3, 3);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(175, 62);
-            this.pictureBox1.TabIndex = 2;
-            this.pictureBox1.TabStop = false;
-            // 
-            // splitContainer2
-            // 
-            this.splitContainer2.Location = new System.Drawing.Point(5, 68);
-            this.splitContainer2.Name = "splitContainer2";
-            this.splitContainer2.Orientation = System.Windows.Forms.Orientation.Horizontal;
-            // 
-            // splitContainer2.Panel1
-            // 
-            this.splitContainer2.Panel1.Controls.Add(this.ModeSelectionGroupBox);
-            // 
-            // splitContainer2.Panel2
-            // 
-            this.splitContainer2.Panel2.BackColor = System.Drawing.Color.PeachPuff;
-            this.splitContainer2.Panel2.Controls.Add(this.SelectAllCheckBox);
-            this.splitContainer2.Size = new System.Drawing.Size(173, 343);
-            this.splitContainer2.SplitterDistance = 143;
-            this.splitContainer2.TabIndex = 1;
+            this.SelectAllCheckBox.AutoSize = true;
+            this.SelectAllCheckBox.Checked = true;
+            this.SelectAllCheckBox.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.SelectAllCheckBox.Font = new System.Drawing.Font("Trebuchet MS", 11F);
+            this.SelectAllCheckBox.Location = new System.Drawing.Point(3, 390);
+            this.SelectAllCheckBox.Name = "SelectAllCheckBox";
+            this.SelectAllCheckBox.Size = new System.Drawing.Size(86, 24);
+            this.SelectAllCheckBox.TabIndex = 0;
+            this.SelectAllCheckBox.Text = "Select all";
+            this.SelectAllCheckBox.UseVisualStyleBackColor = true;
+            this.SelectAllCheckBox.CheckedChanged += new System.EventHandler(this.SelectAllCheckBox_CheckedChanged);
             // 
             // ModeSelectionGroupBox
             // 
             this.ModeSelectionGroupBox.BackColor = System.Drawing.Color.PeachPuff;
             this.ModeSelectionGroupBox.Controls.Add(this.StartButton);
+            this.ModeSelectionGroupBox.Controls.Add(this.StopButton);
             this.ModeSelectionGroupBox.Controls.Add(this.DeleteButton);
             this.ModeSelectionGroupBox.Controls.Add(this.InstallButton);
             this.ModeSelectionGroupBox.Controls.Add(this.UpdateButton);
             this.ModeSelectionGroupBox.Font = new System.Drawing.Font("Trebuchet MS", 12F);
-            this.ModeSelectionGroupBox.Location = new System.Drawing.Point(3, 3);
+            this.ModeSelectionGroupBox.Location = new System.Drawing.Point(3, 71);
             this.ModeSelectionGroupBox.Name = "ModeSelectionGroupBox";
-            this.ModeSelectionGroupBox.Size = new System.Drawing.Size(167, 140);
+            this.ModeSelectionGroupBox.Size = new System.Drawing.Size(175, 190);
             this.ModeSelectionGroupBox.TabIndex = 0;
             this.ModeSelectionGroupBox.TabStop = false;
             this.ModeSelectionGroupBox.Text = "Mode:";
@@ -322,13 +307,24 @@
             // 
             this.StartButton.BackColor = System.Drawing.Color.Aquamarine;
             this.StartButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.StartButton.Location = new System.Drawing.Point(6, 99);
+            this.StartButton.Location = new System.Drawing.Point(6, 103);
             this.StartButton.Name = "StartButton";
-            this.StartButton.Size = new System.Drawing.Size(155, 35);
+            this.StartButton.Size = new System.Drawing.Size(163, 35);
             this.StartButton.TabIndex = 3;
             this.StartButton.Text = "Start";
             this.StartButton.UseVisualStyleBackColor = false;
             this.StartButton.Click += new System.EventHandler(this.StartButton_Click);
+            // 
+            // StopButton
+            // 
+            this.StopButton.BackColor = System.Drawing.Color.Red;
+            this.StopButton.Location = new System.Drawing.Point(6, 144);
+            this.StopButton.Name = "StopButton";
+            this.StopButton.Size = new System.Drawing.Size(163, 35);
+            this.StopButton.TabIndex = 3;
+            this.StopButton.Text = "Stop";
+            this.StopButton.UseVisualStyleBackColor = false;
+            this.StopButton.Click += new System.EventHandler(this.StopButton_Click);
             // 
             // DeleteButton
             // 
@@ -365,19 +361,14 @@
             this.UpdateButton.Text = "Update";
             this.UpdateButton.UseVisualStyleBackColor = true;
             // 
-            // SelectAllCheckBox
+            // pictureBox1
             // 
-            this.SelectAllCheckBox.AutoSize = true;
-            this.SelectAllCheckBox.Checked = true;
-            this.SelectAllCheckBox.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.SelectAllCheckBox.Font = new System.Drawing.Font("Trebuchet MS", 11F);
-            this.SelectAllCheckBox.Location = new System.Drawing.Point(3, 7);
-            this.SelectAllCheckBox.Name = "SelectAllCheckBox";
-            this.SelectAllCheckBox.Size = new System.Drawing.Size(86, 24);
-            this.SelectAllCheckBox.TabIndex = 0;
-            this.SelectAllCheckBox.Text = "Select all";
-            this.SelectAllCheckBox.UseVisualStyleBackColor = true;
-            this.SelectAllCheckBox.CheckedChanged += new System.EventHandler(this.SelectAllCheckBox_CheckedChanged);
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(3, 3);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(175, 62);
+            this.pictureBox1.TabIndex = 2;
+            this.pictureBox1.TabStop = false;
             // 
             // PackagesInfoLabel
             // 
@@ -407,18 +398,15 @@
             this.InstallerSplitContainer.Panel1.ResumeLayout(false);
             this.InstallerSplitContainer.Panel1.PerformLayout();
             this.InstallerSplitContainer.Panel2.ResumeLayout(false);
+            this.InstallerSplitContainer.Panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.InstallerSplitContainer)).EndInit();
             this.InstallerSplitContainer.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            this.splitContainer2.Panel1.ResumeLayout(false);
-            this.splitContainer2.Panel2.ResumeLayout(false);
-            this.splitContainer2.Panel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).EndInit();
-            this.splitContainer2.ResumeLayout(false);
             this.ModeSelectionGroupBox.ResumeLayout(false);
             this.ModeSelectionGroupBox.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
+
         }
 
         #endregion
@@ -442,7 +430,6 @@
         private System.Windows.Forms.Label MessengersLabel;
         private System.Windows.Forms.Label DataBasesLabel;
         private System.Windows.Forms.Label GraphicAppsLabel;
-        private System.Windows.Forms.SplitContainer splitContainer2;
         private System.Windows.Forms.RadioButton InstallButton;
         private System.Windows.Forms.RadioButton DeleteButton;
         private System.Windows.Forms.RadioButton UpdateButton;
@@ -451,6 +438,7 @@
         private System.Windows.Forms.CheckBox SelectAllCheckBox;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label PackagesInfoLabel;
+        private System.Windows.Forms.Button StopButton;
     }
 }
 
