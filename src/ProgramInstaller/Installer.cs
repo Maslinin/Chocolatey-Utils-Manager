@@ -2,6 +2,7 @@
 using System.IO;
 using System.Linq;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 using CUM.ProgramInstaller.Models;
 
@@ -85,9 +86,12 @@ namespace CUM.ProgramInstaller
 
         private async void Installer_Shown(object sender, EventArgs e)
         {
-            PackagesInfoLabel.Text = "Chocolate isn't found on your computer. Installing it...";
-            await Choco.ChocoInstallAsync();
-            PackagesInfoLabel.Text = "No package(s) selected";
+            if (!Choco.ChocoChild.ChocoExists)
+            {
+                PackagesInfoLabel.Text = "Chocolate isn't found on your computer. Installing it...";
+                await Choco.ChocoInstallAsync();
+                PackagesInfoLabel.Text = "No package(s) selected";
+            }
         }
 
         private void SelectAllCheckBox_CheckedChanged(object sender, EventArgs e)
