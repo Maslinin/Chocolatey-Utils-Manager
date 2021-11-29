@@ -5,10 +5,14 @@ namespace CUM.Chocolatey
 {
     internal class ChocoBaseInstaller
     {
-        internal string ChocolatePath { get; set; } = @"C:\Program Files\Internet Explorer\iexplore.exe";
         internal string PSPath { get; set; } = $@"{Environment.SystemDirectory}\WindowsPowerShell\v1.0\powershell.exe";
 
         internal ChocoBaseInstaller() { }
+
+        internal bool ChocoExists
+        {
+            get => Environment.GetEnvironmentVariable("ChocolateyInstall") != null ? true : false;
+        }
 
         internal void ChocoInstall()
         {
@@ -81,11 +85,6 @@ namespace CUM.Chocolatey
             chocoInstall.StandardInput.Flush();
             chocoInstall.StandardInput.Close();
             chocoInstall.WaitForExit();
-        }
-
-        internal bool ChocoExists()
-        {
-            return Environment.GetEnvironmentVariable("ChocolateyInstall") != null ? true : false;
         }
     }
 }

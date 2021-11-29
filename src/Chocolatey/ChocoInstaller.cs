@@ -14,7 +14,7 @@ namespace CUM.Chocolatey
         /// <param name="auth"></param>
         internal async void ChocoInstallAsync()
         {
-            if (!ChocoChild.ChocoExists())
+            if (!ChocoChild.ChocoExists)
             {
                 await Task.Run(() => ChocoChild.ChocoInstall());
             }
@@ -25,7 +25,7 @@ namespace CUM.Chocolatey
         /// <param name="packageLinkName"></param>
         internal async void InstallPackageAsync(string packageLinkName)
         {
-            if (ChocoChild.ChocoExists())
+            if (ChocoChild.ChocoExists)
             {
                 await Task.Run(() => ChocoChild.InstallPackage(packageLinkName));
             }
@@ -36,7 +36,7 @@ namespace CUM.Chocolatey
         /// <param name="packageLinkName"></param>
         internal async void UpdatePackageAsync(string packageLinkName)
         {
-            if (ChocoChild.ChocoExists())
+            if (ChocoChild.ChocoExists)
             {
                 await Task.Run(() => ChocoChild.UpdatePackage(packageLinkName));
             }
@@ -47,7 +47,7 @@ namespace CUM.Chocolatey
         /// <param name="packageLinkName"></param>
         internal async void DeletePackageAsync(string packageLinkName)
         {
-            if (ChocoChild.ChocoExists())
+            if (ChocoChild.ChocoExists)
             {
                 await Task.Run(() => ChocoChild.DeletePackage(packageLinkName));
             }

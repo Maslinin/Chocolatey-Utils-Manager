@@ -104,7 +104,7 @@
     <None Include="packages.config" />
     <ContentWithTargetPath Include="src\ProgramInstaller\ProgramList.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-	  <TargetPath>ProgramList.json</TargetPath>
+      <TargetPath>ProgramList.json</TargetPath>
     </ContentWithTargetPath>
     <None Include="Properties\app.manifest" />
     <None Include="Properties\Settings.settings">
