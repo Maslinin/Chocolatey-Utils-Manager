@@ -71,6 +71,7 @@
             // 
             // BrowsersListBox
             // 
+            this.BrowsersListBox.BackColor = System.Drawing.Color.PeachPuff;
             this.BrowsersListBox.FormattingEnabled = true;
             this.BrowsersListBox.Location = new System.Drawing.Point(7, 28);
             this.BrowsersListBox.Name = "BrowsersListBox";
@@ -125,6 +126,7 @@
             // 
             // AntivirusesListBox
             // 
+            this.AntivirusesListBox.BackColor = System.Drawing.Color.PeachPuff;
             this.AntivirusesListBox.FormattingEnabled = true;
             this.AntivirusesListBox.Location = new System.Drawing.Point(246, 302);
             this.AntivirusesListBox.Name = "AntivirusesListBox";
@@ -163,6 +165,7 @@
             // 
             // GraphicAppsListBox
             // 
+            this.GraphicAppsListBox.BackColor = System.Drawing.Color.PeachPuff;
             this.GraphicAppsListBox.FormattingEnabled = true;
             this.GraphicAppsListBox.Location = new System.Drawing.Point(483, 165);
             this.GraphicAppsListBox.Name = "GraphicAppsListBox";
@@ -171,6 +174,7 @@
             // 
             // DataBasesListBox
             // 
+            this.DataBasesListBox.BackColor = System.Drawing.Color.PeachPuff;
             this.DataBasesListBox.FormattingEnabled = true;
             this.DataBasesListBox.Location = new System.Drawing.Point(246, 165);
             this.DataBasesListBox.Name = "DataBasesListBox";
@@ -179,6 +183,7 @@
             // 
             // MessengersListBox
             // 
+            this.MessengersListBox.BackColor = System.Drawing.Color.PeachPuff;
             this.MessengersListBox.FormattingEnabled = true;
             this.MessengersListBox.Location = new System.Drawing.Point(483, 28);
             this.MessengersListBox.Name = "MessengersListBox";
@@ -187,6 +192,7 @@
             // 
             // ProgrammingListBox
             // 
+            this.ProgrammingListBox.BackColor = System.Drawing.Color.PeachPuff;
             this.ProgrammingListBox.FormattingEnabled = true;
             this.ProgrammingListBox.Location = new System.Drawing.Point(246, 28);
             this.ProgrammingListBox.Name = "ProgrammingListBox";
@@ -205,6 +211,7 @@
             // 
             // OtherListBox
             // 
+            this.OtherListBox.BackColor = System.Drawing.Color.PeachPuff;
             this.OtherListBox.FormattingEnabled = true;
             this.OtherListBox.Location = new System.Drawing.Point(483, 302);
             this.OtherListBox.Name = "OtherListBox";
@@ -223,6 +230,7 @@
             // 
             // DotNetListBox
             // 
+            this.DotNetListBox.BackColor = System.Drawing.Color.PeachPuff;
             this.DotNetListBox.FormattingEnabled = true;
             this.DotNetListBox.Location = new System.Drawing.Point(9, 302);
             this.DotNetListBox.Name = "DotNetListBox";
@@ -241,6 +249,7 @@
             // 
             // WorkWithFilesListBox
             // 
+            this.WorkWithFilesListBox.BackColor = System.Drawing.Color.PeachPuff;
             this.WorkWithFilesListBox.FormattingEnabled = true;
             this.WorkWithFilesListBox.Location = new System.Drawing.Point(9, 165);
             this.WorkWithFilesListBox.Name = "WorkWithFilesListBox";
@@ -269,6 +278,7 @@
             // 
             // pictureBox1
             // 
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
             this.pictureBox1.Location = new System.Drawing.Point(3, 3);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(175, 62);
@@ -287,6 +297,7 @@
             // 
             // splitContainer2.Panel2
             // 
+            this.splitContainer2.Panel2.BackColor = System.Drawing.Color.PeachPuff;
             this.splitContainer2.Panel2.Controls.Add(this.SelectAllCheckBox);
             this.splitContainer2.Size = new System.Drawing.Size(173, 343);
             this.splitContainer2.SplitterDistance = 143;
@@ -294,6 +305,7 @@
             // 
             // ModeSelectionGroupBox
             // 
+            this.ModeSelectionGroupBox.BackColor = System.Drawing.Color.PeachPuff;
             this.ModeSelectionGroupBox.Controls.Add(this.StartButton);
             this.ModeSelectionGroupBox.Controls.Add(this.DeleteButton);
             this.ModeSelectionGroupBox.Controls.Add(this.InstallButton);
@@ -308,12 +320,14 @@
             // 
             // StartButton
             // 
+            this.StartButton.BackColor = System.Drawing.Color.Aquamarine;
+            this.StartButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.StartButton.Location = new System.Drawing.Point(6, 99);
             this.StartButton.Name = "StartButton";
             this.StartButton.Size = new System.Drawing.Size(155, 35);
             this.StartButton.TabIndex = 3;
             this.StartButton.Text = "Start";
-            this.StartButton.UseVisualStyleBackColor = true;
+            this.StartButton.UseVisualStyleBackColor = false;
             this.StartButton.Click += new System.EventHandler(this.StartButton_Click);
             // 
             // DeleteButton
@@ -379,6 +393,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.Sienna;
             this.ClientSize = new System.Drawing.Size(931, 459);
             this.Controls.Add(this.PackagesInfoLabel);
             this.Controls.Add(this.InstallerSplitContainer);
@@ -404,7 +419,6 @@
             this.ModeSelectionGroupBox.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
-
         }
 
         #endregion
