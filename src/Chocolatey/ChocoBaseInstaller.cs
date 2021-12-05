@@ -23,6 +23,7 @@ namespace CUM.Chocolatey
             chocoInstall.StartInfo.RedirectStandardOutput = true;
             chocoInstall.StartInfo.UseShellExecute = false;
             chocoInstall.StartInfo.CreateNoWindow = true;
+            chocoInstall.StartInfo.LoadUserProfile = true;
             chocoInstall.StartInfo.Verb = "runAs";
             chocoInstall.StartInfo.FileName = PSPath;
             chocoInstall.Start();
@@ -41,6 +42,7 @@ namespace CUM.Chocolatey
             chocoInstall.StartInfo.RedirectStandardOutput = true;
             chocoInstall.StartInfo.UseShellExecute = false;
             chocoInstall.StartInfo.CreateNoWindow = true;
+            chocoInstall.StartInfo.LoadUserProfile = true;
             chocoInstall.StartInfo.Verb = "runAs";
             chocoInstall.StartInfo.FileName = PSPath;
             chocoInstall.Start();
@@ -59,6 +61,7 @@ namespace CUM.Chocolatey
             chocoInstall.StartInfo.RedirectStandardOutput = true;
             chocoInstall.StartInfo.UseShellExecute = false;
             chocoInstall.StartInfo.CreateNoWindow = true;
+            chocoInstall.StartInfo.LoadUserProfile = true;
             chocoInstall.StartInfo.Verb = "runAs";
             chocoInstall.StartInfo.FileName = PSPath;
             chocoInstall.Start();

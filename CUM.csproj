@@ -90,6 +90,7 @@
     <Compile Include="src\ProgramInstaller\Installer.Designer.cs">
       <DependentUpon>Installer.cs</DependentUpon>
     </Compile>
+    <Compile Include="src\ProgramInstaller\InstallerFormExtensions.cs" />
     <Compile Include="src\ProgramInstaller\Models\ProgramInfo.cs" />
     <Compile Include="src\ProgramInstaller\Models\ProgramList.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

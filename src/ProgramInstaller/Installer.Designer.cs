@@ -411,34 +411,34 @@
 
         #endregion
 
-        private System.Windows.Forms.CheckedListBox BrowsersListBox;
-        private System.Windows.Forms.SplitContainer InstallerSplitContainer;
-        private System.Windows.Forms.Label BrowsersLabel;
-        private System.Windows.Forms.Label WorkWithFilesLabel;
-        private System.Windows.Forms.CheckedListBox WorkWithFilesListBox;
-        private System.Windows.Forms.Label DotNetLabel;
-        private System.Windows.Forms.CheckedListBox DotNetListBox;
-        private System.Windows.Forms.Label OtherLabel;
-        private System.Windows.Forms.Label AntivirusesLabel;
-        private System.Windows.Forms.CheckedListBox OtherListBox;
-        private System.Windows.Forms.CheckedListBox AntivirusesListBox;
-        private System.Windows.Forms.CheckedListBox ProgrammingListBox;
-        private System.Windows.Forms.CheckedListBox GraphicAppsListBox;
-        private System.Windows.Forms.CheckedListBox DataBasesListBox;
-        private System.Windows.Forms.CheckedListBox MessengersListBox;
-        private System.Windows.Forms.Label ProgrammingLabel;
-        private System.Windows.Forms.Label MessengersLabel;
-        private System.Windows.Forms.Label DataBasesLabel;
-        private System.Windows.Forms.Label GraphicAppsLabel;
-        private System.Windows.Forms.RadioButton InstallButton;
-        private System.Windows.Forms.RadioButton DeleteButton;
-        private System.Windows.Forms.RadioButton UpdateButton;
-        private System.Windows.Forms.GroupBox ModeSelectionGroupBox;
-        private System.Windows.Forms.Button StartButton;
-        private System.Windows.Forms.CheckBox SelectAllCheckBox;
-        private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.Label PackagesInfoLabel;
-        private System.Windows.Forms.Button StopButton;
+        public System.Windows.Forms.CheckedListBox BrowsersListBox { get; set; }
+        public System.Windows.Forms.SplitContainer InstallerSplitContainer { get; set; }
+        public System.Windows.Forms.Label BrowsersLabel { get; set; }
+        public System.Windows.Forms.Label WorkWithFilesLabel { get; set; }
+        public System.Windows.Forms.CheckedListBox WorkWithFilesListBox { get; set; }
+        public System.Windows.Forms.Label DotNetLabel { get; set; }
+        public System.Windows.Forms.CheckedListBox DotNetListBox { get; set; }
+        public System.Windows.Forms.Label OtherLabel { get; set; }
+        public System.Windows.Forms.Label AntivirusesLabel { get; set; }
+        public System.Windows.Forms.CheckedListBox OtherListBox { get; set; }
+        public System.Windows.Forms.CheckedListBox AntivirusesListBox { get; set; }
+        public System.Windows.Forms.CheckedListBox ProgrammingListBox { get; set; }
+        public System.Windows.Forms.CheckedListBox GraphicAppsListBox { get; set; }
+        public System.Windows.Forms.CheckedListBox DataBasesListBox { get; set; }
+        public System.Windows.Forms.CheckedListBox MessengersListBox { get; set; }
+        public System.Windows.Forms.Label ProgrammingLabel { get; set; }
+        public System.Windows.Forms.Label MessengersLabel { get; set; }
+        public System.Windows.Forms.Label DataBasesLabel { get; set; }
+        public System.Windows.Forms.Label GraphicAppsLabel { get; set; }
+        public System.Windows.Forms.RadioButton InstallButton { get; set; }
+        public System.Windows.Forms.RadioButton DeleteButton { get; set; }
+        public System.Windows.Forms.RadioButton UpdateButton { get; set; }
+        public System.Windows.Forms.GroupBox ModeSelectionGroupBox { get; set; }
+        public System.Windows.Forms.Button StartButton { get; set; }
+        public System.Windows.Forms.CheckBox SelectAllCheckBox { get; set; }
+        public System.Windows.Forms.PictureBox pictureBox1 { get; set; }
+        public System.Windows.Forms.Label PackagesInfoLabel { get; set; }
+        public System.Windows.Forms.Button StopButton { get; set; }
     }
 }
 
