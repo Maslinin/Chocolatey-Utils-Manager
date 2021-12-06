@@ -2,17 +2,17 @@
 
 namespace CUM.Chocolatey
 {
-    sealed class ChocoInstaller
+    sealed class ChocoAsyncInstaller
     {
         internal ChocoBaseInstaller ChocoChild { get; private set; }
 
-        public ChocoInstaller() => ChocoChild = new ChocoBaseInstaller();
+        public ChocoAsyncInstaller() => ChocoChild = new ChocoBaseInstaller();
 
         /// <summary>
         /// Installs Chocolatey if it is not installed
         /// </summary>
         /// <param name="auth"></param>
-        internal async Task ChocoInstallAsync()
+        internal async Task InstallChocoAsync()
         {
             if (!ChocoChild.ChocoExists)
             {
@@ -45,11 +45,11 @@ namespace CUM.Chocolatey
         /// Deletes the specified Chocolatey package
         /// </summary>
         /// <param name="packageLinkName"></param>
-        internal async Task DeletePackageAsync(string packageLinkName)
+        internal async Task UninstallPackageAsync(string packageLinkName)
         {
             if (ChocoChild.ChocoExists)
             {
-                await Task.Run(() => ChocoChild.DeletePackage(packageLinkName));
+                await Task.Run(() => ChocoChild.UninstallPackage(packageLinkName));
             }
         }
     }

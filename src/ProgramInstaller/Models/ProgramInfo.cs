@@ -10,6 +10,7 @@
             this.ProgramName = ProgramName;
             this.ChocolateyInstallName = ChocolateyInstallName;
         }
+
         public override string ToString() => ProgramName;
     }
 }

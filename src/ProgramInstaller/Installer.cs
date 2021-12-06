@@ -1,8 +1,6 @@
 ﻿using System;
 using System.IO;
-using System.Linq;
 using System.Collections.Generic;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using CUM.ProgramInstaller.Models;
 
@@ -12,12 +10,13 @@ namespace CUM.ProgramInstaller
     {
         internal List<CheckedListBox> ProgramsListBoxCollection { get; private set; }
         internal List<ProgramList> Programs { get; private set; }
-        internal Chocolatey.ChocoInstaller Choco { get; private set; }
+        internal Chocolatey.ChocoAsyncInstaller Choco { get; private set; }
+        internal int SelectedPackagesCount { get; private set; }
 
-        public Installer()
+        internal Installer()
         {
             InitializeComponent();
-            Choco = new Chocolatey.ChocoInstaller();
+            Choco = new Chocolatey.ChocoAsyncInstaller();
             //ProgramsListBoxCollection.Count must be ProgramsListBoxLabels.Count
             ProgramsListBoxCollection = new List<CheckedListBox>
             {
@@ -86,12 +85,13 @@ namespace CUM.ProgramInstaller
             StopButton.Enabled = false;
         }
 
+        //Immediately after opening the window, it is checked whether the chocolate package manager is installed on the computer
         private async void Installer_Shown(object sender, EventArgs e)
         {
             if (!Choco.ChocoChild.ChocoExists)
             {
                 PackagesInfoLabel.Text = "Chocolate isn't found on your computer. Installing it...";
-                await Choco.ChocoInstallAsync();
+                await Choco.InstallChocoAsync();
                 PackagesInfoLabel.Text = "Chocolate was installed";
             }
         }
@@ -112,9 +112,9 @@ namespace CUM.ProgramInstaller
                     }
         }
 
-        private void StartButton_Click(object sender, EventArgs e)
+        private async void StartButton_Click(object sender, EventArgs e)
         {
-            int packagesCount = ProgramsListBoxCollection.Select(l => l.CheckedItems.Count != 0).ToList().Where(p => p != false).Count();
+            int packagesCount = this.GetSelectedPackagesCount();
             //If no packages are selected:
             if (packagesCount == 0)
             {
@@ -125,7 +125,7 @@ namespace CUM.ProgramInstaller
                 return;
             }
 
-            this.LockForm();
+            this.LockInstallerForm();
 
             try
             {
@@ -136,9 +136,10 @@ namespace CUM.ProgramInstaller
                     foreach (var listBox in ProgramsListBoxCollection)
                         foreach (ProgramInfo program in listBox.CheckedItems)
                         {
-                            Task.Run(async() => await Choco.InstallPackageAsync(program.ChocolateyInstallName));
-                            PackagesInfoLabel.Text = $"{++i} out of {packagesCount} packages installed";
+                            PackagesInfoLabel.Text = $"{i++} out of {packagesCount} packages installed: installing {program.ChocolateyInstallName}";
+                            await Choco.InstallPackageAsync(program.ChocolateyInstallName);
                         }
+                    PackagesInfoLabel.Text = "Installing completed";
                 }
                 else if (UpdateButton.Checked)
                 {
@@ -146,9 +147,10 @@ namespace CUM.ProgramInstaller
                     foreach (var listBox in ProgramsListBoxCollection)
                         foreach (ProgramInfo program in listBox.CheckedItems)
                         {
-                            Task.Run(async () => await Choco.UpdatePackageAsync(program.ChocolateyInstallName));
-                            PackagesInfoLabel.Text = $"{++i} out of {packagesCount} packages updated";
+                            PackagesInfoLabel.Text = $"{i++} out of {packagesCount} packages updated: updating {program.ChocolateyInstallName}";
+                            await Choco.UpdatePackageAsync(program.ChocolateyInstallName);
                         }
+                    PackagesInfoLabel.Text = "Updating completed";
                 }
                 else
                 {
@@ -156,9 +158,10 @@ namespace CUM.ProgramInstaller
                     foreach (var listBox in ProgramsListBoxCollection)
                         foreach (ProgramInfo program in listBox.CheckedItems)
                         {
-                            Task.Run(async () => await Choco.UpdatePackageAsync(program.ChocolateyInstallName));
-                            PackagesInfoLabel.Text = $"{++i} out of {packagesCount} packages deleted";
+                            PackagesInfoLabel.Text = $"{i++} out of {packagesCount} packages uninstalled: uninstalling {program.ChocolateyInstallName}";
+                            await Choco.UpdatePackageAsync(program.ChocolateyInstallName);
                         }
+                    PackagesInfoLabel.Text = "Uninstallation completed";
                 }
             }
             catch(Exception ex)
@@ -169,12 +172,14 @@ namespace CUM.ProgramInstaller
                     MessageBoxIcon.Error);
             }
 
-            this.UnLockForm();
+            this.UnLockInstallerForm();
         }
 
         private void StopButton_Click(object sender, EventArgs e)
         {
-            this.UnLockForm();
+            this.UnLockInstallerForm();
+
+            PackagesInfoLabel.Text = "Installing canceled";
         }
 
         private void InstallerClosed(object sender, FormClosedEventArgs e) => Application.Exit();

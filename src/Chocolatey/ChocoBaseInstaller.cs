@@ -5,9 +5,23 @@ namespace CUM.Chocolatey
 {
     internal class ChocoBaseInstaller
     {
-        internal string PSPath { get; set; } = $@"{Environment.SystemDirectory}\WindowsPowerShell\v1.0\powershell.exe";
+        internal string PSPath { get; private set; } = $@"{Environment.SystemDirectory}\WindowsPowerShell\v1.0\powershell.exe";
 
-        internal ChocoBaseInstaller() { }
+        internal ProcessStartInfo ProcessStartInfo { get; private set; }
+
+        internal ChocoBaseInstaller()
+        {
+            ProcessStartInfo = new ProcessStartInfo
+            {
+                RedirectStandardInput = true,
+                RedirectStandardOutput = true,
+                UseShellExecute = false,
+                CreateNoWindow = true,
+                LoadUserProfile = true,
+                Verb = "runAs",
+                FileName = PSPath
+            };
+        }
 
         internal bool ChocoExists
         {
@@ -17,15 +31,8 @@ namespace CUM.Chocolatey
         internal void ChocoInstall()
         {
             string install = "Set-ExecutionPolicy Bypass -Scope Process -Force -Verb RunAs; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))";
-            var chocoInstall = new Process();
+            var chocoInstall = new Process { StartInfo = ProcessStartInfo };
 
-            chocoInstall.StartInfo.RedirectStandardInput = true;
-            chocoInstall.StartInfo.RedirectStandardOutput = true;
-            chocoInstall.StartInfo.UseShellExecute = false;
-            chocoInstall.StartInfo.CreateNoWindow = true;
-            chocoInstall.StartInfo.LoadUserProfile = true;
-            chocoInstall.StartInfo.Verb = "runAs";
-            chocoInstall.StartInfo.FileName = PSPath;
             chocoInstall.Start();
 
             chocoInstall.StandardInput.WriteLine(install);
@@ -36,15 +43,8 @@ namespace CUM.Chocolatey
 
         internal void InstallPackage(string packageLinkName)
         {
-            var chocoInstall = new Process();
+            var chocoInstall = new Process { StartInfo = ProcessStartInfo };
 
-            chocoInstall.StartInfo.RedirectStandardInput = true;
-            chocoInstall.StartInfo.RedirectStandardOutput = true;
-            chocoInstall.StartInfo.UseShellExecute = false;
-            chocoInstall.StartInfo.CreateNoWindow = true;
-            chocoInstall.StartInfo.LoadUserProfile = true;
-            chocoInstall.StartInfo.Verb = "runAs";
-            chocoInstall.StartInfo.FileName = PSPath;
             chocoInstall.Start();
 
             chocoInstall.StandardInput.WriteLine($"choco install {packageLinkName} -y");
@@ -55,15 +55,8 @@ namespace CUM.Chocolatey
 
         internal void UpdatePackage(string packageLinkName)
         {
-            var chocoInstall = new Process();
+            var chocoInstall = new Process { StartInfo = ProcessStartInfo };
 
-            chocoInstall.StartInfo.RedirectStandardInput = true;
-            chocoInstall.StartInfo.RedirectStandardOutput = true;
-            chocoInstall.StartInfo.UseShellExecute = false;
-            chocoInstall.StartInfo.CreateNoWindow = true;
-            chocoInstall.StartInfo.LoadUserProfile = true;
-            chocoInstall.StartInfo.Verb = "runAs";
-            chocoInstall.StartInfo.FileName = PSPath;
             chocoInstall.Start();
 
             chocoInstall.StandardInput.WriteLine($"choco update {packageLinkName} -y");
@@ -72,16 +65,10 @@ namespace CUM.Chocolatey
             chocoInstall.WaitForExit();
         }
 
-        internal void DeletePackage(string packageLinkName)
+        internal void UninstallPackage(string packageLinkName)
         {
-            var chocoInstall = new Process();
+            var chocoInstall = new Process { StartInfo = ProcessStartInfo };
 
-            chocoInstall.StartInfo.RedirectStandardInput = true;
-            chocoInstall.StartInfo.RedirectStandardOutput = true;
-            chocoInstall.StartInfo.UseShellExecute = false;
-            chocoInstall.StartInfo.CreateNoWindow = true;
-            chocoInstall.StartInfo.Verb = "runAs";
-            chocoInstall.StartInfo.FileName = PSPath;
             chocoInstall.Start();
 
             chocoInstall.StandardInput.WriteLine($"choco uninstall {packageLinkName} -y");

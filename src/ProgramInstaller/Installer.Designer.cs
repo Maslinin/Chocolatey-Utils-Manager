@@ -332,9 +332,9 @@
             this.DeleteButton.Font = new System.Drawing.Font("Trebuchet MS", 12F);
             this.DeleteButton.Location = new System.Drawing.Point(6, 71);
             this.DeleteButton.Name = "DeleteButton";
-            this.DeleteButton.Size = new System.Drawing.Size(75, 26);
+            this.DeleteButton.Size = new System.Drawing.Size(87, 26);
             this.DeleteButton.TabIndex = 2;
-            this.DeleteButton.Text = "Delete";
+            this.DeleteButton.Text = "Uninstall";
             this.DeleteButton.UseVisualStyleBackColor = true;
             // 
             // InstallButton
@@ -411,34 +411,33 @@
 
         #endregion
 
-        public System.Windows.Forms.CheckedListBox BrowsersListBox { get; set; }
-        public System.Windows.Forms.SplitContainer InstallerSplitContainer { get; set; }
-        public System.Windows.Forms.Label BrowsersLabel { get; set; }
-        public System.Windows.Forms.Label WorkWithFilesLabel { get; set; }
-        public System.Windows.Forms.CheckedListBox WorkWithFilesListBox { get; set; }
-        public System.Windows.Forms.Label DotNetLabel { get; set; }
-        public System.Windows.Forms.CheckedListBox DotNetListBox { get; set; }
-        public System.Windows.Forms.Label OtherLabel { get; set; }
-        public System.Windows.Forms.Label AntivirusesLabel { get; set; }
-        public System.Windows.Forms.CheckedListBox OtherListBox { get; set; }
-        public System.Windows.Forms.CheckedListBox AntivirusesListBox { get; set; }
-        public System.Windows.Forms.CheckedListBox ProgrammingListBox { get; set; }
-        public System.Windows.Forms.CheckedListBox GraphicAppsListBox { get; set; }
-        public System.Windows.Forms.CheckedListBox DataBasesListBox { get; set; }
-        public System.Windows.Forms.CheckedListBox MessengersListBox { get; set; }
-        public System.Windows.Forms.Label ProgrammingLabel { get; set; }
-        public System.Windows.Forms.Label MessengersLabel { get; set; }
-        public System.Windows.Forms.Label DataBasesLabel { get; set; }
-        public System.Windows.Forms.Label GraphicAppsLabel { get; set; }
-        public System.Windows.Forms.RadioButton InstallButton { get; set; }
-        public System.Windows.Forms.RadioButton DeleteButton { get; set; }
-        public System.Windows.Forms.RadioButton UpdateButton { get; set; }
-        public System.Windows.Forms.GroupBox ModeSelectionGroupBox { get; set; }
-        public System.Windows.Forms.Button StartButton { get; set; }
-        public System.Windows.Forms.CheckBox SelectAllCheckBox { get; set; }
-        public System.Windows.Forms.PictureBox pictureBox1 { get; set; }
-        public System.Windows.Forms.Label PackagesInfoLabel { get; set; }
-        public System.Windows.Forms.Button StopButton { get; set; }
+        internal System.Windows.Forms.CheckedListBox BrowsersListBox;
+        internal System.Windows.Forms.Label BrowsersLabel;
+        internal System.Windows.Forms.Label WorkWithFilesLabel;
+        internal System.Windows.Forms.CheckedListBox WorkWithFilesListBox;
+        internal System.Windows.Forms.Label DotNetLabel;
+        internal System.Windows.Forms.CheckedListBox DotNetListBox;
+        internal System.Windows.Forms.Label OtherLabel;
+        internal System.Windows.Forms.Label AntivirusesLabel;
+        internal System.Windows.Forms.CheckedListBox OtherListBox;
+        internal System.Windows.Forms.CheckedListBox AntivirusesListBox;
+        internal System.Windows.Forms.CheckedListBox ProgrammingListBox;
+        internal System.Windows.Forms.CheckedListBox GraphicAppsListBox;
+        internal System.Windows.Forms.CheckedListBox DataBasesListBox;
+        internal System.Windows.Forms.CheckedListBox MessengersListBox;
+        internal System.Windows.Forms.Label ProgrammingLabel;
+        internal System.Windows.Forms.Label MessengersLabel;
+        internal System.Windows.Forms.Label DataBasesLabel;
+        internal System.Windows.Forms.Label GraphicAppsLabel;
+        internal System.Windows.Forms.RadioButton InstallButton;
+        internal System.Windows.Forms.RadioButton DeleteButton;
+        internal System.Windows.Forms.RadioButton UpdateButton;
+        internal System.Windows.Forms.GroupBox ModeSelectionGroupBox;
+        internal System.Windows.Forms.Button StartButton;
+        internal System.Windows.Forms.CheckBox SelectAllCheckBox;
+        internal System.Windows.Forms.PictureBox pictureBox1;
+        internal System.Windows.Forms.Label PackagesInfoLabel;
+        internal System.Windows.Forms.Button StopButton;
+        internal System.Windows.Forms.SplitContainer InstallerSplitContainer;
     }
 }
-
