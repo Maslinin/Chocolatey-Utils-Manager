@@ -16,7 +16,7 @@ namespace CUM.ProgramInstaller
         internal static int GetSelectedPackagesCount(this Installer installer)
         {
             int packageCount = 0;
-            foreach (var listBox in installer.ProgramsListBoxCollection)
+            foreach (var listBox in installer.ProgramsCheckedListBoxCollection)
             {
                 packageCount += listBox.CheckedItems.Count;
             }
@@ -33,7 +33,7 @@ namespace CUM.ProgramInstaller
         {
             List<Models.ProgramInfo> programs = new List<Models.ProgramInfo>();
 
-            foreach (var listBox in installer.ProgramsListBoxCollection)
+            foreach (var listBox in installer.ProgramsCheckedListBoxCollection)
             {
                 programs.AddRange(listBox.CheckedItems.Cast<Models.ProgramInfo>());
             }

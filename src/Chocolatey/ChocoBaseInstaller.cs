@@ -25,7 +25,7 @@ namespace CUM.Chocolatey
 
         internal bool ChocoExists
         {
-            get => Environment.GetEnvironmentVariable("ChocolateyInstall") != null ? true : false;
+            get => Environment.GetEnvironmentVariable("ChocolateyInstall") == null ? false : true;
         }
 
         internal void ChocoInstall()

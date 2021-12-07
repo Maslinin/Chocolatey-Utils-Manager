@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // Общие сведения об этой сборке предоставляются следующим набором
 // набора атрибутов. Измените значения этих атрибутов, чтобы изменить сведения,
 // связанные со сборкой.
-[assembly: AssemblyTitle("Chocolatey UM")]
+[assembly: AssemblyTitle("ChocoUM")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("Chocolatey UM")]
+[assembly: AssemblyProduct("Chocolatey Utils Manager")]
 [assembly: AssemblyCopyright("© 2021")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]

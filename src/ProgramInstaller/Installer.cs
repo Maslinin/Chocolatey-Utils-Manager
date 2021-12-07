@@ -8,17 +8,16 @@ namespace CUM.ProgramInstaller
 {
     internal partial class Installer : Form
     {
-        internal List<CheckedListBox> ProgramsListBoxCollection { get; private set; }
         internal List<ProgramList> Programs { get; private set; }
         internal Chocolatey.ChocoAsyncInstaller Choco { get; private set; }
-        internal int SelectedPackagesCount { get; private set; }
+        internal List<CheckedListBox> ProgramsCheckedListBoxCollection { get; private set; }
 
         internal Installer()
         {
             InitializeComponent();
             Choco = new Chocolatey.ChocoAsyncInstaller();
             //ProgramsListBoxCollection.Count must be ProgramsListBoxLabels.Count
-            ProgramsListBoxCollection = new List<CheckedListBox>
+            ProgramsCheckedListBoxCollection = new List<CheckedListBox>
             {
                 BrowsersListBox,
                 WorkWithFilesListBox,
@@ -30,6 +29,11 @@ namespace CUM.ProgramInstaller
                 GraphicAppsListBox,
                 OtherListBox
             };
+
+            foreach(var checkedBox in ProgramsCheckedListBoxCollection)
+            {
+                checkedBox.ItemCheck += this.CheckedListBoxEvent_ItemCheck;
+            }
 
             Programs = Newtonsoft.Json.JsonConvert.DeserializeObject<List<ProgramList>>(
                 File.ReadAllText(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "ProgramList.json")));
@@ -75,12 +79,10 @@ namespace CUM.ProgramInstaller
                 GraphicAppsLabel,
                 OtherLabel
             };
-            for (int i = 0; i < (ProgramsListBoxCollection.Count >= Programs.Count ? Programs.Count : ProgramsListBoxCollection.Count); ++i)
+            for (int i = 0; i < (ProgramsCheckedListBoxCollection.Count >= Programs.Count ? Programs.Count : ProgramsCheckedListBoxCollection.Count); ++i)
             {
                 ProgramsListBoxLabels[i].Text = Programs[i].Category + ":";
             }
-
-            PackagesInfoLabel.Text = "No package(s) selected";
 
             StopButton.Enabled = false;
         }
@@ -152,6 +154,14 @@ namespace CUM.ProgramInstaller
                 this.UnselectAllPackages();
         }
 
+        private void CheckedListBoxEvent_ItemCheck(object sender, EventArgs e)
+        {
+            this.UpdatePackagesInfoLabel();
+        }
+
+        private void InstallerSplitContainer_Panel1_Paint(object sender, PaintEventArgs e) => this.UpdatePackagesInfoLabel();
+
         private void InstallerClosed(object sender, FormClosedEventArgs e) => Application.Exit();
+
     }
 }

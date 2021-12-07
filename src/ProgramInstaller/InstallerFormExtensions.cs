@@ -6,6 +6,20 @@
     internal static class InstallerFormExtensions
     {
         /// <summary>
+        /// Updates the package information label
+        /// </summary>
+        /// <param name="installer"></param>
+        internal static void UpdatePackagesInfoLabel(this Installer installer)
+        {
+            int packagesCount = installer.GetSelectedPackagesCount();
+            if (packagesCount == 0)
+            {
+                installer.PackagesInfoLabel.Text = "No package(s) selected";
+            }
+            installer.PackagesInfoLabel.Text = $"Select(ed) {packagesCount} package(s)";
+        }
+
+        /// <summary>
         /// Locks the form so that only the STOP button becomes available and remains
         /// </summary>
         /// <param name="installer"></param>
@@ -41,7 +55,7 @@
         /// <param name="installer"></param>
         internal static void SelectAllPackages(this Installer installer)
         {
-            foreach (var listBox in installer.ProgramsListBoxCollection)
+            foreach (var listBox in installer.ProgramsCheckedListBoxCollection)
                 for (int i = 0; i < listBox.Items.Count; ++i)
                 {
                     listBox.SetItemCheckState(i, System.Windows.Forms.CheckState.Checked);
@@ -54,7 +68,7 @@
         /// <param name="installer"></param>
         internal static void UnselectAllPackages(this Installer installer)
         {
-            foreach (var listBox in installer.ProgramsListBoxCollection)
+            foreach (var listBox in installer.ProgramsCheckedListBoxCollection)
                 for (int i = 0; i < listBox.Items.Count; ++i)
                 {
                     listBox.SetItemCheckState(i, System.Windows.Forms.CheckState.Unchecked);
