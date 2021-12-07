@@ -1,5 +1,8 @@
 ﻿namespace CUM.ProgramInstaller
 {
+    /// <summary>
+    /// Static class that contains extensions for working with Installer visual display
+    /// </summary>
     internal static class InstallerFormExtensions
     {
         /// <summary>
@@ -10,9 +13,9 @@
         {
             installer.StartButton.Enabled = false;
             installer.StopButton.Enabled = true;
-            installer.InstallButton.Enabled = false;
-            installer.UpdateButton.Enabled = false;
-            installer.DeleteButton.Enabled = false;
+            installer.InstallRadioButton.Enabled = false;
+            installer.UpdateRadioButton.Enabled = false;
+            installer.DeleteRadioButton.Enabled = false;
             installer.InstallerSplitContainer.Panel1.Enabled = false;
             installer.SelectAllCheckBox.Enabled = false;
         }
@@ -25,19 +28,37 @@
         {
             installer.StartButton.Enabled = true;
             installer.StopButton.Enabled = false;
-            installer.InstallButton.Enabled = true;
-            installer.UpdateButton.Enabled = true;
-            installer.DeleteButton.Enabled = true;
+            installer.InstallRadioButton.Enabled = true;
+            installer.UpdateRadioButton.Enabled = true;
+            installer.DeleteRadioButton.Enabled = true;
             installer.InstallerSplitContainer.Panel1.Enabled = true;
             installer.SelectAllCheckBox.Enabled = true;
         }
 
-        internal static int GetSelectedPackagesCount(this Installer installer)
+        /// <summary>
+        /// Sets Cheсked to all items CheckedBox
+        /// </summary>
+        /// <param name="installer"></param>
+        internal static void SelectAllPackages(this Installer installer)
         {
-            int packageCount = 0;
             foreach (var listBox in installer.ProgramsListBoxCollection)
-                packageCount += listBox.CheckedItems.Count;
-            return packageCount;
+                for (int i = 0; i < listBox.Items.Count; ++i)
+                {
+                    listBox.SetItemCheckState(i, System.Windows.Forms.CheckState.Checked);
+                }
+        }
+
+        /// <summary>
+        /// Clears Cheсked to all items CheckedBox
+        /// </summary>
+        /// <param name="installer"></param>
+        internal static void UnselectAllPackages(this Installer installer)
+        {
+            foreach (var listBox in installer.ProgramsListBoxCollection)
+                for (int i = 0; i < listBox.Items.Count; ++i)
+                {
+                    listBox.SetItemCheckState(i, System.Windows.Forms.CheckState.Unchecked);
+                }
         }
     }
 }

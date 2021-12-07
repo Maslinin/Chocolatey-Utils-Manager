@@ -52,9 +52,9 @@
             this.ModeSelectionGroupBox = new System.Windows.Forms.GroupBox();
             this.StartButton = new System.Windows.Forms.Button();
             this.StopButton = new System.Windows.Forms.Button();
-            this.DeleteButton = new System.Windows.Forms.RadioButton();
-            this.InstallButton = new System.Windows.Forms.RadioButton();
-            this.UpdateButton = new System.Windows.Forms.RadioButton();
+            this.DeleteRadioButton = new System.Windows.Forms.RadioButton();
+            this.InstallRadioButton = new System.Windows.Forms.RadioButton();
+            this.UpdateRadioButton = new System.Windows.Forms.RadioButton();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.PackagesInfoLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.InstallerSplitContainer)).BeginInit();
@@ -292,9 +292,9 @@
             this.ModeSelectionGroupBox.BackColor = System.Drawing.Color.PeachPuff;
             this.ModeSelectionGroupBox.Controls.Add(this.StartButton);
             this.ModeSelectionGroupBox.Controls.Add(this.StopButton);
-            this.ModeSelectionGroupBox.Controls.Add(this.DeleteButton);
-            this.ModeSelectionGroupBox.Controls.Add(this.InstallButton);
-            this.ModeSelectionGroupBox.Controls.Add(this.UpdateButton);
+            this.ModeSelectionGroupBox.Controls.Add(this.DeleteRadioButton);
+            this.ModeSelectionGroupBox.Controls.Add(this.InstallRadioButton);
+            this.ModeSelectionGroupBox.Controls.Add(this.UpdateRadioButton);
             this.ModeSelectionGroupBox.Font = new System.Drawing.Font("Trebuchet MS", 12F);
             this.ModeSelectionGroupBox.Location = new System.Drawing.Point(3, 71);
             this.ModeSelectionGroupBox.Name = "ModeSelectionGroupBox";
@@ -318,6 +318,7 @@
             // StopButton
             // 
             this.StopButton.BackColor = System.Drawing.Color.Red;
+            this.StopButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.StopButton.Location = new System.Drawing.Point(6, 144);
             this.StopButton.Name = "StopButton";
             this.StopButton.Size = new System.Drawing.Size(163, 35);
@@ -326,40 +327,40 @@
             this.StopButton.UseVisualStyleBackColor = false;
             this.StopButton.Click += new System.EventHandler(this.StopButton_Click);
             // 
-            // DeleteButton
+            // DeleteRadioButton
             // 
-            this.DeleteButton.AutoSize = true;
-            this.DeleteButton.Font = new System.Drawing.Font("Trebuchet MS", 12F);
-            this.DeleteButton.Location = new System.Drawing.Point(6, 71);
-            this.DeleteButton.Name = "DeleteButton";
-            this.DeleteButton.Size = new System.Drawing.Size(87, 26);
-            this.DeleteButton.TabIndex = 2;
-            this.DeleteButton.Text = "Uninstall";
-            this.DeleteButton.UseVisualStyleBackColor = true;
+            this.DeleteRadioButton.AutoSize = true;
+            this.DeleteRadioButton.Font = new System.Drawing.Font("Trebuchet MS", 12F);
+            this.DeleteRadioButton.Location = new System.Drawing.Point(6, 71);
+            this.DeleteRadioButton.Name = "DeleteRadioButton";
+            this.DeleteRadioButton.Size = new System.Drawing.Size(87, 26);
+            this.DeleteRadioButton.TabIndex = 2;
+            this.DeleteRadioButton.Text = "Uninstall";
+            this.DeleteRadioButton.UseVisualStyleBackColor = true;
             // 
-            // InstallButton
+            // InstallRadioButton
             // 
-            this.InstallButton.AutoSize = true;
-            this.InstallButton.Checked = true;
-            this.InstallButton.Font = new System.Drawing.Font("Trebuchet MS", 12F);
-            this.InstallButton.Location = new System.Drawing.Point(6, 25);
-            this.InstallButton.Name = "InstallButton";
-            this.InstallButton.Size = new System.Drawing.Size(68, 26);
-            this.InstallButton.TabIndex = 0;
-            this.InstallButton.TabStop = true;
-            this.InstallButton.Text = "Install";
-            this.InstallButton.UseVisualStyleBackColor = true;
+            this.InstallRadioButton.AutoSize = true;
+            this.InstallRadioButton.Checked = true;
+            this.InstallRadioButton.Font = new System.Drawing.Font("Trebuchet MS", 12F);
+            this.InstallRadioButton.Location = new System.Drawing.Point(6, 25);
+            this.InstallRadioButton.Name = "InstallRadioButton";
+            this.InstallRadioButton.Size = new System.Drawing.Size(68, 26);
+            this.InstallRadioButton.TabIndex = 0;
+            this.InstallRadioButton.TabStop = true;
+            this.InstallRadioButton.Text = "Install";
+            this.InstallRadioButton.UseVisualStyleBackColor = true;
             // 
-            // UpdateButton
+            // UpdateRadioButton
             // 
-            this.UpdateButton.AutoSize = true;
-            this.UpdateButton.Font = new System.Drawing.Font("Trebuchet MS", 12F);
-            this.UpdateButton.Location = new System.Drawing.Point(6, 46);
-            this.UpdateButton.Name = "UpdateButton";
-            this.UpdateButton.Size = new System.Drawing.Size(79, 26);
-            this.UpdateButton.TabIndex = 1;
-            this.UpdateButton.Text = "Update";
-            this.UpdateButton.UseVisualStyleBackColor = true;
+            this.UpdateRadioButton.AutoSize = true;
+            this.UpdateRadioButton.Font = new System.Drawing.Font("Trebuchet MS", 12F);
+            this.UpdateRadioButton.Location = new System.Drawing.Point(6, 46);
+            this.UpdateRadioButton.Name = "UpdateRadioButton";
+            this.UpdateRadioButton.Size = new System.Drawing.Size(79, 26);
+            this.UpdateRadioButton.TabIndex = 1;
+            this.UpdateRadioButton.Text = "Update";
+            this.UpdateRadioButton.UseVisualStyleBackColor = true;
             // 
             // pictureBox1
             // 
@@ -429,9 +430,9 @@
         internal System.Windows.Forms.Label MessengersLabel;
         internal System.Windows.Forms.Label DataBasesLabel;
         internal System.Windows.Forms.Label GraphicAppsLabel;
-        internal System.Windows.Forms.RadioButton InstallButton;
-        internal System.Windows.Forms.RadioButton DeleteButton;
-        internal System.Windows.Forms.RadioButton UpdateButton;
+        internal System.Windows.Forms.RadioButton InstallRadioButton;
+        internal System.Windows.Forms.RadioButton DeleteRadioButton;
+        internal System.Windows.Forms.RadioButton UpdateRadioButton;
         internal System.Windows.Forms.GroupBox ModeSelectionGroupBox;
         internal System.Windows.Forms.Button StartButton;
         internal System.Windows.Forms.CheckBox SelectAllCheckBox;

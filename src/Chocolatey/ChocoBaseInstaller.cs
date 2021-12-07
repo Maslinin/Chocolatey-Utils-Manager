@@ -31,9 +31,11 @@ namespace CUM.Chocolatey
         internal void ChocoInstall()
         {
             string install = "Set-ExecutionPolicy Bypass -Scope Process -Force -Verb RunAs; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))";
+
             var chocoInstall = new Process { StartInfo = ProcessStartInfo };
 
             chocoInstall.Start();
+            chocoInstall.PriorityClass = ProcessPriorityClass.High;
 
             chocoInstall.StandardInput.WriteLine(install);
             chocoInstall.StandardInput.Flush();
@@ -46,8 +48,9 @@ namespace CUM.Chocolatey
             var chocoInstall = new Process { StartInfo = ProcessStartInfo };
 
             chocoInstall.Start();
+            chocoInstall.PriorityClass = ProcessPriorityClass.High;
 
-            chocoInstall.StandardInput.WriteLine($"choco install {packageLinkName} -y");
+            chocoInstall.StandardInput.WriteLine($"choco install {packageLinkName} -y -f");
             chocoInstall.StandardInput.Flush();
             chocoInstall.StandardInput.Close();
             chocoInstall.WaitForExit();
@@ -58,8 +61,9 @@ namespace CUM.Chocolatey
             var chocoInstall = new Process { StartInfo = ProcessStartInfo };
 
             chocoInstall.Start();
+            chocoInstall.PriorityClass = ProcessPriorityClass.High;
 
-            chocoInstall.StandardInput.WriteLine($"choco update {packageLinkName} -y");
+            chocoInstall.StandardInput.WriteLine($"choco update {packageLinkName} -y -f");
             chocoInstall.StandardInput.Flush();
             chocoInstall.StandardInput.Close();
             chocoInstall.WaitForExit();
@@ -70,8 +74,9 @@ namespace CUM.Chocolatey
             var chocoInstall = new Process { StartInfo = ProcessStartInfo };
 
             chocoInstall.Start();
+            chocoInstall.PriorityClass = ProcessPriorityClass.High;
 
-            chocoInstall.StandardInput.WriteLine($"choco uninstall {packageLinkName} -y");
+            chocoInstall.StandardInput.WriteLine($"choco uninstall {packageLinkName} -y -f");
             chocoInstall.StandardInput.Flush();
             chocoInstall.StandardInput.Close();
             chocoInstall.WaitForExit();

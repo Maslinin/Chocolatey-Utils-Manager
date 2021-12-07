@@ -2,11 +2,9 @@
 
 namespace CUM.Chocolatey
 {
-    sealed class ChocoAsyncInstaller
+    sealed class ChocoAsyncInstaller : ChocoBaseInstaller
     {
-        internal ChocoBaseInstaller ChocoChild { get; private set; }
-
-        public ChocoAsyncInstaller() => ChocoChild = new ChocoBaseInstaller();
+        internal ChocoAsyncInstaller() : base() { }
 
         /// <summary>
         /// Installs Chocolatey if it is not installed
@@ -14,42 +12,45 @@ namespace CUM.Chocolatey
         /// <param name="auth"></param>
         internal async Task InstallChocoAsync()
         {
-            if (!ChocoChild.ChocoExists)
+            if (!base.ChocoExists)
             {
-                await Task.Run(() => ChocoChild.ChocoInstall());
+                await Task.Run(() => base.ChocoInstall());
             }
         }
+
         /// <summary>
         /// Installs the specified Chocolatey package
         /// </summary>
         /// <param name="packageLinkName"></param>
         internal async Task InstallPackageAsync(string packageLinkName)
         {
-            if (ChocoChild.ChocoExists)
+            if (base.ChocoExists)
             {
-                await Task.Run(() => ChocoChild.InstallPackage(packageLinkName));
+                await Task.Run(() => base.InstallPackage(packageLinkName));
             }
         }
+
         /// <summary>
         /// Updates the specified Chocolatey package
         /// </summary>
         /// <param name="packageLinkName"></param>
         internal async Task UpdatePackageAsync(string packageLinkName)
         {
-            if (ChocoChild.ChocoExists)
+            if (base.ChocoExists)
             {
-                await Task.Run(() => ChocoChild.UpdatePackage(packageLinkName));
+                await Task.Run(() => base.UpdatePackage(packageLinkName));
             }
         }
+
         /// <summary>
         /// Deletes the specified Chocolatey package
         /// </summary>
         /// <param name="packageLinkName"></param>
         internal async Task UninstallPackageAsync(string packageLinkName)
         {
-            if (ChocoChild.ChocoExists)
+            if (base.ChocoExists)
             {
-                await Task.Run(() => ChocoChild.UninstallPackage(packageLinkName));
+                await Task.Run(() => base.UninstallPackage(packageLinkName));
             }
         }
     }
