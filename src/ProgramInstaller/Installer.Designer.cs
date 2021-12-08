@@ -101,7 +101,6 @@
             this.InstallerSplitContainer.Panel1.Controls.Add(this.WorkWithFilesLabel);
             this.InstallerSplitContainer.Panel1.Controls.Add(this.BrowsersLabel);
             this.InstallerSplitContainer.Panel1.Controls.Add(this.BrowsersListBox);
-            this.InstallerSplitContainer.Panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.InstallerSplitContainer_Panel1_Paint);
             // 
             // InstallerSplitContainer.Panel2
             // 

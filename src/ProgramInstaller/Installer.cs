@@ -84,6 +84,8 @@ namespace CUM.ProgramInstaller
                 ProgramsListBoxLabels[i].Text = Programs[i].Category + ":";
             }
 
+            this.UpdatePackagesInfoLabel();
+
             StopButton.Enabled = false;
         }
 
@@ -158,8 +160,6 @@ namespace CUM.ProgramInstaller
         {
             this.UpdatePackagesInfoLabel();
         }
-
-        private void InstallerSplitContainer_Panel1_Paint(object sender, PaintEventArgs e) => this.UpdatePackagesInfoLabel();
 
         private void InstallerClosed(object sender, FormClosedEventArgs e) => Application.Exit();
 
