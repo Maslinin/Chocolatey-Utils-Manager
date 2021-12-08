@@ -19,15 +19,15 @@ namespace CUM.ProgramInstaller
             //ProgramsListBoxCollection.Count must be ProgramsListBoxLabels.Count
             ProgramsCheckedListBoxCollection = new List<CheckedListBox>
             {
-                BrowsersListBox,
-                WorkWithFilesListBox,
-                DotNetListBox,
-                ProgrammingListBox,
-                DataBasesListBox,
-                AntivirusesListBox,
-                MessengersListBox,
-                GraphicAppsListBox,
-                OtherListBox
+                this.BrowsersListBox,
+                this.WorkWithFilesListBox,
+                this.DotNetListBox,
+                this.ProgrammingListBox,
+                this.DataBasesListBox,
+                this.AntivirusesListBox,
+                this.MessengersListBox,
+                this.GraphicAppsListBox,
+                this.OtherListBox
             };
 
             foreach(var checkedBox in ProgramsCheckedListBoxCollection)
@@ -69,15 +69,15 @@ namespace CUM.ProgramInstaller
             //ProgramsListBoxLabels.Count must be ProgramsListBoxCollection.Count
             var ProgramsListBoxLabels = new List<Label>
             {
-                BrowsersLabel,
-                WorkWithFilesLabel,
-                DotNetLabel,
-                ProgrammingLabel,
-                DataBasesLabel,
-                AntivirusesLabel,
-                MessengersLabel,
-                GraphicAppsLabel,
-                OtherLabel
+                this.BrowsersLabel,
+                this.WorkWithFilesLabel,
+                this.DotNetLabel,
+                this.ProgrammingLabel,
+                this.DataBasesLabel,
+                this.AntivirusesLabel,
+                this.MessengersLabel,
+                this.GraphicAppsLabel,
+                this.OtherLabel
             };
             for (int i = 0; i < (ProgramsCheckedListBoxCollection.Count >= Programs.Count ? Programs.Count : ProgramsCheckedListBoxCollection.Count); ++i)
             {
@@ -86,7 +86,8 @@ namespace CUM.ProgramInstaller
 
             this.UpdatePackagesInfoLabel();
 
-            StopButton.Enabled = false;
+            this.StopButton.Enabled = false;
+            this.StopButton.Visible = false;
         }
 
         //Immediately after opening the window, it is checked whether the chocolate package manager is installed on the computer
@@ -94,13 +95,13 @@ namespace CUM.ProgramInstaller
         {
             if (!Choco.ChocoExists)
             {
-                PackagesInfoLabel.Text = "Chocolate isn't found on your computer. Installing it...";
+                this.PackagesInfoLabel.Text = "Chocolate isn't found on your computer. Installing it...";
                 await Choco.InstallChocoAsync();
-                PackagesInfoLabel.Text = "Chocolate was installed";
+                this.PackagesInfoLabel.Text = "Chocolate was installed";
             }
         }
 
-        private void StartButton_Click(object sender, EventArgs e)
+        private async void StartButton_Click(object sender, EventArgs e)
         {
             //If no packages are selected:
             if (this.GetSelectedPackagesCount() == 0)
@@ -119,15 +120,15 @@ namespace CUM.ProgramInstaller
             {
                 if (InstallRadioButton.Checked)
                 {
-                    this.InstallPackages(this.GetSelectedPackagesItems());
+                    await this.InstallPackages(this.GetSelectedPackagesItems());
                 }
                 else if (UpdateRadioButton.Checked)
                 {
-                    this.UpdatePackages(this.GetSelectedPackagesItems());
+                    await this.UpdatePackages(this.GetSelectedPackagesItems());
                 }
                 else
                 {
-                    this.UninstallPackages(this.GetSelectedPackagesItems());
+                    await this.UninstallPackages(this.GetSelectedPackagesItems());
                 }
             }
             catch(Exception ex)
@@ -145,7 +146,7 @@ namespace CUM.ProgramInstaller
         {
             this.UnLockInstallerForm();
 
-            PackagesInfoLabel.Text = "Installing canceled";
+            this.PackagesInfoLabel.Text = "Installing canceled";
         }
 
         private void SelectAllCheckBox_CheckedChanged(object sender, EventArgs e)

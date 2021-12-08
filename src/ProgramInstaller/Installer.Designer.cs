@@ -278,6 +278,7 @@
             this.SelectAllCheckBox.AutoSize = true;
             this.SelectAllCheckBox.Checked = true;
             this.SelectAllCheckBox.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.SelectAllCheckBox.Cursor = System.Windows.Forms.Cursors.Hand;
             this.SelectAllCheckBox.Font = new System.Drawing.Font("Trebuchet MS", 11F);
             this.SelectAllCheckBox.Location = new System.Drawing.Point(3, 390);
             this.SelectAllCheckBox.Name = "SelectAllCheckBox";
@@ -306,6 +307,7 @@
             // StartButton
             // 
             this.StartButton.BackColor = System.Drawing.Color.Aquamarine;
+            this.StartButton.Cursor = System.Windows.Forms.Cursors.Hand;
             this.StartButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.StartButton.Location = new System.Drawing.Point(6, 103);
             this.StartButton.Name = "StartButton";
@@ -318,6 +320,7 @@
             // StopButton
             // 
             this.StopButton.BackColor = System.Drawing.Color.Red;
+            this.StopButton.Cursor = System.Windows.Forms.Cursors.Hand;
             this.StopButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.StopButton.Location = new System.Drawing.Point(6, 144);
             this.StopButton.Name = "StopButton";
@@ -391,6 +394,7 @@
             this.Controls.Add(this.InstallerSplitContainer);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
             this.Name = "Installer";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Chocolatey Utils Manager";

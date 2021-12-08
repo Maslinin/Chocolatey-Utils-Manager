@@ -27,6 +27,7 @@
         {
             installer.StartButton.Enabled = false;
             installer.StopButton.Enabled = true;
+            installer.StopButton.Visible = true;
             installer.InstallRadioButton.Enabled = false;
             installer.UpdateRadioButton.Enabled = false;
             installer.DeleteRadioButton.Enabled = false;
@@ -42,6 +43,7 @@
         {
             installer.StartButton.Enabled = true;
             installer.StopButton.Enabled = false;
+            installer.StopButton.Visible = false;
             installer.InstallRadioButton.Enabled = true;
             installer.UpdateRadioButton.Enabled = true;
             installer.DeleteRadioButton.Enabled = true;
