@@ -41,6 +41,16 @@ namespace CUM.ProgramInstaller
             return programs;
         }
 
+        internal static async System.Threading.Tasks.Task InstallChoco(this Installer installer)
+        {
+            if (!installer.Choco.ChocoExists)
+            {
+                installer.PackagesInfoLabel.Text = "Chocolate isn't found on your computer. Installing it...";
+                await installer.Choco.InstallChocoAsync();
+                installer.PackagesInfoLabel.Text = "Chocolate was installed";
+            }
+        }
+
         /// <summary>
         /// Installs the packages passed to the parameter as a collection
         /// </summary>
