@@ -93,12 +93,7 @@ namespace CUM.ProgramInstaller
         //Immediately after opening the window, it is checked whether the chocolate package manager is installed on the computer
         private async void Installer_Shown(object sender, EventArgs e)
         {
-            if (!Choco.ChocoExists)
-            {
-                this.PackagesInfoLabel.Text = "Chocolate isn't found on your computer. Installing it...";
-                await Choco.InstallChocoAsync();
-                this.PackagesInfoLabel.Text = "Chocolate was installed";
-            }
+            await this.InstallChoco();
         }
 
         private async void StartButton_Click(object sender, EventArgs e)

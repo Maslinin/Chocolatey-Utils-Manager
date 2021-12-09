@@ -30,7 +30,7 @@ namespace CUM.Chocolatey
 
         internal void ChocoInstall()
         {
-            string install = "Set-ExecutionPolicy Bypass -Scope Process -Force -Verb RunAs; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))";
+            string install = "Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))";
 
             var chocoInstall = new Process { StartInfo = ProcessStartInfo };
 
@@ -43,8 +43,6 @@ namespace CUM.Chocolatey
             chocoInstall.StandardInput.WriteLine(install);
             chocoInstall.StandardInput.Flush();
             chocoInstall.StandardInput.Close();
-
-            this.SetHighPriorityToChocoProcesses();
 
             chocoInstall.WaitForExit();
             chocoInstall.Close();
