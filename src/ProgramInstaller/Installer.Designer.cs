@@ -299,7 +299,7 @@
             this.ModeSelectionGroupBox.Font = new System.Drawing.Font("Trebuchet MS", 12F);
             this.ModeSelectionGroupBox.Location = new System.Drawing.Point(3, 71);
             this.ModeSelectionGroupBox.Name = "ModeSelectionGroupBox";
-            this.ModeSelectionGroupBox.Size = new System.Drawing.Size(175, 190);
+            this.ModeSelectionGroupBox.Size = new System.Drawing.Size(175, 186);
             this.ModeSelectionGroupBox.TabIndex = 0;
             this.ModeSelectionGroupBox.TabStop = false;
             this.ModeSelectionGroupBox.Text = "Mode:";

@@ -84,6 +84,8 @@ namespace CUM.ProgramInstaller
                 ProgramsListBoxLabels[i].Text = Programs[i].Category + ":";
             }
 
+            this.UnLockInstallerForm();
+
             this.UpdatePackagesInfoLabel();
 
             this.StopButton.Enabled = false;

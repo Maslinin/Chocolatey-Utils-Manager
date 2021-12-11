@@ -36,6 +36,7 @@
             installer.DeleteRadioButton.Enabled = false;
             installer.InstallerSplitContainer.Panel1.Enabled = false;
             installer.SelectAllCheckBox.Enabled = false;
+            installer.ModeSelectionGroupBox.Height += installer.StopButton.Height;
         }
 
         /// <summary>
@@ -52,6 +53,7 @@
             installer.DeleteRadioButton.Enabled = true;
             installer.InstallerSplitContainer.Panel1.Enabled = true;
             installer.SelectAllCheckBox.Enabled = true;
+            installer.ModeSelectionGroupBox.Height -= installer.StopButton.Height;
         }
 
         /// <summary>
