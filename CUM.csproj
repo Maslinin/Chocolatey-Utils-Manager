@@ -62,6 +62,9 @@
   <PropertyGroup>
     <ApplicationManifest>Properties\app.manifest</ApplicationManifest>
   </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>CUM.Program</StartupObject>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>packages\Newtonsoft.Json.13.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
@@ -82,7 +85,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="src\Chocolatey\ChocoAsyncInstaller.cs" />
-    <Compile Include="src\Chocolatey\ChocoWorkExtensions.cs" />
     <Compile Include="src\Program.cs" />
     <Compile Include="src\Chocolatey\ChocoBaseInstaller.cs" />
     <Compile Include="src\ProgramInstaller\Installer.cs">

@@ -101,7 +101,7 @@ namespace CUM.ProgramInstaller
             //If no packages are selected:
             if (this.GetSelectedPackagesCount() == 0)
             {
-                MessageBox.Show("No package selected for installation",
+                MessageBox.Show("No packages selected for operation",
                     "No packages selected",
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Error);
@@ -121,7 +121,7 @@ namespace CUM.ProgramInstaller
                 {
                     await this.UpdatePackages(this.GetSelectedPackagesItems());
                 }
-                else
+                else if(DeleteRadioButton.Checked)
                 {
                     await this.UninstallPackages(this.GetSelectedPackagesItems());
                 }

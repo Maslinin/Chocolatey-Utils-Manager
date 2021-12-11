@@ -16,7 +16,10 @@
             {
                 installer.PackagesInfoLabel.Text = "No package(s) selected";
             }
-            installer.PackagesInfoLabel.Text = $"Select(ed) {packagesCount} package(s)";
+            else
+            {
+                installer.PackagesInfoLabel.Text = $"Select(ed) {packagesCount} package(s)";
+            }
         }
 
         /// <summary>

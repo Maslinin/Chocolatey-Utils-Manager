@@ -100,7 +100,7 @@ namespace CUM.ProgramInstaller
             foreach (var program in programs)
             {
                 installer.PackagesInfoLabel.Text = $"{i++} out of {packagesCount} packages uninstalled: uninstalling {program.ProgramName}";
-                await installer.Choco.UpdatePackageAsync(program.ChocolateyInstallName);
+                await installer.Choco.UninstallPackageAsync(program.ChocolateyInstallName);
             }
             installer.PackagesInfoLabel.Text = "Uninstallation completed";
         }

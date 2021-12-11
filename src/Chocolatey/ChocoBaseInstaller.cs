@@ -17,7 +17,7 @@ namespace CUM.Chocolatey
                 RedirectStandardOutput = true,
                 UseShellExecute = false,
                 CreateNoWindow = true,
-                LoadUserProfile = true,
+                //LoadUserProfile = true,
                 Verb = "runAs",
                 FileName = PSPath
             };
@@ -62,8 +62,6 @@ namespace CUM.Chocolatey
             chocoInstall.StandardInput.Flush();
             chocoInstall.StandardInput.Close();
 
-            this.SetHighPriorityToChocoProcesses();
-
             chocoInstall.WaitForExit();
             chocoInstall.Close();
         }
@@ -82,8 +80,6 @@ namespace CUM.Chocolatey
             chocoInstall.StandardInput.Flush();
             chocoInstall.StandardInput.Close();
 
-            this.SetHighPriorityToChocoProcesses();
-
             chocoInstall.WaitForExit();
             chocoInstall.Close();
         }
@@ -101,8 +97,6 @@ namespace CUM.Chocolatey
             chocoInstall.StandardInput.WriteLine($"choco uninstall {packageLinkName} -y -f");
             chocoInstall.StandardInput.Flush();
             chocoInstall.StandardInput.Close();
-
-            this.SetHighPriorityToChocoProcesses();
 
             chocoInstall.WaitForExit();
             chocoInstall.Close();
