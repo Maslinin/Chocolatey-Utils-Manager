@@ -95,6 +95,7 @@
     </Compile>
     <Compile Include="src\ProgramInstaller\InstallerFormExtensions.cs" />
     <Compile Include="src\ProgramInstaller\InstallerWorkExtensions.cs" />
+    <Compile Include="src\ProgramInstaller\Models\Categories.cs" />
     <Compile Include="src\ProgramInstaller\Models\ProgramInfo.cs" />
     <Compile Include="src\ProgramInstaller\Models\ProgramList.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -126,6 +127,10 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <ContentWithTargetPath Include="src\ProgramInstaller\Categories.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <TargetPath>Categories.json</TargetPath>
+    </ContentWithTargetPath>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

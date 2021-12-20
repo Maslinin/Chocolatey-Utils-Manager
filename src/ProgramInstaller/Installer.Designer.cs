@@ -29,25 +29,25 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Installer));
-            this.BrowsersListBox = new System.Windows.Forms.CheckedListBox();
+            this.ProgramsCheckedListBox1 = new System.Windows.Forms.CheckedListBox();
             this.InstallerSplitContainer = new System.Windows.Forms.SplitContainer();
-            this.GraphicAppsLabel = new System.Windows.Forms.Label();
-            this.AntivirusesListBox = new System.Windows.Forms.CheckedListBox();
-            this.DataBasesLabel = new System.Windows.Forms.Label();
-            this.MessengersLabel = new System.Windows.Forms.Label();
-            this.ProgrammingLabel = new System.Windows.Forms.Label();
-            this.GraphicAppsListBox = new System.Windows.Forms.CheckedListBox();
-            this.DataBasesListBox = new System.Windows.Forms.CheckedListBox();
-            this.MessengersListBox = new System.Windows.Forms.CheckedListBox();
-            this.ProgrammingListBox = new System.Windows.Forms.CheckedListBox();
-            this.AntivirusesLabel = new System.Windows.Forms.Label();
-            this.OtherListBox = new System.Windows.Forms.CheckedListBox();
-            this.OtherLabel = new System.Windows.Forms.Label();
-            this.DotNetListBox = new System.Windows.Forms.CheckedListBox();
-            this.DotNetLabel = new System.Windows.Forms.Label();
-            this.WorkWithFilesListBox = new System.Windows.Forms.CheckedListBox();
-            this.WorkWithFilesLabel = new System.Windows.Forms.Label();
-            this.BrowsersLabel = new System.Windows.Forms.Label();
+            this.ProgramsCheckedListBoxLabel8 = new System.Windows.Forms.Label();
+            this.ProgramsCheckedListBox6 = new System.Windows.Forms.CheckedListBox();
+            this.ProgramsCheckedListBoxLabel5 = new System.Windows.Forms.Label();
+            this.ProgramsCheckedListBoxLabel7 = new System.Windows.Forms.Label();
+            this.ProgramsCheckedListBoxLabel4 = new System.Windows.Forms.Label();
+            this.ProgramsCheckedListBox8 = new System.Windows.Forms.CheckedListBox();
+            this.ProgramsCheckedListBox5 = new System.Windows.Forms.CheckedListBox();
+            this.ProgramsCheckedListBox7 = new System.Windows.Forms.CheckedListBox();
+            this.ProgramsCheckedListBox4 = new System.Windows.Forms.CheckedListBox();
+            this.ProgramsCheckedListBoxLabel6 = new System.Windows.Forms.Label();
+            this.OtherProgramsListBox = new System.Windows.Forms.CheckedListBox();
+            this.OtherProgramsLabel = new System.Windows.Forms.Label();
+            this.ProgramsCheckedListBox3 = new System.Windows.Forms.CheckedListBox();
+            this.ProgramsCheckedListBoxLabel3 = new System.Windows.Forms.Label();
+            this.ProgramsCheckedListBox2 = new System.Windows.Forms.CheckedListBox();
+            this.ProgramsCheckedListBoxLabel2 = new System.Windows.Forms.Label();
+            this.ProgramsCheckedListBoxLabel1 = new System.Windows.Forms.Label();
             this.SelectAllCheckBox = new System.Windows.Forms.CheckBox();
             this.ModeSelectionGroupBox = new System.Windows.Forms.GroupBox();
             this.StartButton = new System.Windows.Forms.Button();
@@ -65,14 +65,14 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
-            // BrowsersListBox
+            // ProgramsCheckedListBox1
             // 
-            this.BrowsersListBox.BackColor = System.Drawing.Color.PeachPuff;
-            this.BrowsersListBox.FormattingEnabled = true;
-            this.BrowsersListBox.Location = new System.Drawing.Point(7, 28);
-            this.BrowsersListBox.Name = "BrowsersListBox";
-            this.BrowsersListBox.Size = new System.Drawing.Size(231, 109);
-            this.BrowsersListBox.TabIndex = 0;
+            this.ProgramsCheckedListBox1.BackColor = System.Drawing.Color.PeachPuff;
+            this.ProgramsCheckedListBox1.FormattingEnabled = true;
+            this.ProgramsCheckedListBox1.Location = new System.Drawing.Point(7, 28);
+            this.ProgramsCheckedListBox1.Name = "ProgramsCheckedListBox1";
+            this.ProgramsCheckedListBox1.Size = new System.Drawing.Size(231, 109);
+            this.ProgramsCheckedListBox1.TabIndex = 0;
             // 
             // InstallerSplitContainer
             // 
@@ -83,24 +83,24 @@
             // 
             // InstallerSplitContainer.Panel1
             // 
-            this.InstallerSplitContainer.Panel1.Controls.Add(this.GraphicAppsLabel);
-            this.InstallerSplitContainer.Panel1.Controls.Add(this.AntivirusesListBox);
-            this.InstallerSplitContainer.Panel1.Controls.Add(this.DataBasesLabel);
-            this.InstallerSplitContainer.Panel1.Controls.Add(this.MessengersLabel);
-            this.InstallerSplitContainer.Panel1.Controls.Add(this.ProgrammingLabel);
-            this.InstallerSplitContainer.Panel1.Controls.Add(this.GraphicAppsListBox);
-            this.InstallerSplitContainer.Panel1.Controls.Add(this.DataBasesListBox);
-            this.InstallerSplitContainer.Panel1.Controls.Add(this.MessengersListBox);
-            this.InstallerSplitContainer.Panel1.Controls.Add(this.ProgrammingListBox);
-            this.InstallerSplitContainer.Panel1.Controls.Add(this.AntivirusesLabel);
-            this.InstallerSplitContainer.Panel1.Controls.Add(this.OtherListBox);
-            this.InstallerSplitContainer.Panel1.Controls.Add(this.OtherLabel);
-            this.InstallerSplitContainer.Panel1.Controls.Add(this.DotNetListBox);
-            this.InstallerSplitContainer.Panel1.Controls.Add(this.DotNetLabel);
-            this.InstallerSplitContainer.Panel1.Controls.Add(this.WorkWithFilesListBox);
-            this.InstallerSplitContainer.Panel1.Controls.Add(this.WorkWithFilesLabel);
-            this.InstallerSplitContainer.Panel1.Controls.Add(this.BrowsersLabel);
-            this.InstallerSplitContainer.Panel1.Controls.Add(this.BrowsersListBox);
+            this.InstallerSplitContainer.Panel1.Controls.Add(this.ProgramsCheckedListBoxLabel8);
+            this.InstallerSplitContainer.Panel1.Controls.Add(this.ProgramsCheckedListBox6);
+            this.InstallerSplitContainer.Panel1.Controls.Add(this.ProgramsCheckedListBoxLabel5);
+            this.InstallerSplitContainer.Panel1.Controls.Add(this.ProgramsCheckedListBoxLabel7);
+            this.InstallerSplitContainer.Panel1.Controls.Add(this.ProgramsCheckedListBoxLabel4);
+            this.InstallerSplitContainer.Panel1.Controls.Add(this.ProgramsCheckedListBox8);
+            this.InstallerSplitContainer.Panel1.Controls.Add(this.ProgramsCheckedListBox5);
+            this.InstallerSplitContainer.Panel1.Controls.Add(this.ProgramsCheckedListBox7);
+            this.InstallerSplitContainer.Panel1.Controls.Add(this.ProgramsCheckedListBox4);
+            this.InstallerSplitContainer.Panel1.Controls.Add(this.ProgramsCheckedListBoxLabel6);
+            this.InstallerSplitContainer.Panel1.Controls.Add(this.OtherProgramsListBox);
+            this.InstallerSplitContainer.Panel1.Controls.Add(this.OtherProgramsLabel);
+            this.InstallerSplitContainer.Panel1.Controls.Add(this.ProgramsCheckedListBox3);
+            this.InstallerSplitContainer.Panel1.Controls.Add(this.ProgramsCheckedListBoxLabel3);
+            this.InstallerSplitContainer.Panel1.Controls.Add(this.ProgramsCheckedListBox2);
+            this.InstallerSplitContainer.Panel1.Controls.Add(this.ProgramsCheckedListBoxLabel2);
+            this.InstallerSplitContainer.Panel1.Controls.Add(this.ProgramsCheckedListBoxLabel1);
+            this.InstallerSplitContainer.Panel1.Controls.Add(this.ProgramsCheckedListBox1);
             // 
             // InstallerSplitContainer.Panel2
             // 
@@ -111,167 +111,167 @@
             this.InstallerSplitContainer.SplitterDistance = 719;
             this.InstallerSplitContainer.TabIndex = 1;
             // 
-            // GraphicAppsLabel
+            // ProgramsCheckedListBoxLabel8
             // 
-            this.GraphicAppsLabel.AutoSize = true;
-            this.GraphicAppsLabel.Font = new System.Drawing.Font("Trebuchet MS", 12F);
-            this.GraphicAppsLabel.Location = new System.Drawing.Point(479, 142);
-            this.GraphicAppsLabel.Name = "GraphicAppsLabel";
-            this.GraphicAppsLabel.Size = new System.Drawing.Size(84, 22);
-            this.GraphicAppsLabel.TabIndex = 17;
-            this.GraphicAppsLabel.Text = "Graphical:";
+            this.ProgramsCheckedListBoxLabel8.AutoSize = true;
+            this.ProgramsCheckedListBoxLabel8.Font = new System.Drawing.Font("Trebuchet MS", 12F);
+            this.ProgramsCheckedListBoxLabel8.Location = new System.Drawing.Point(479, 142);
+            this.ProgramsCheckedListBoxLabel8.Name = "ProgramsCheckedListBoxLabel8";
+            this.ProgramsCheckedListBoxLabel8.Size = new System.Drawing.Size(84, 22);
+            this.ProgramsCheckedListBoxLabel8.TabIndex = 17;
+            this.ProgramsCheckedListBoxLabel8.Text = "Graphical:";
             // 
-            // AntivirusesListBox
+            // ProgramsCheckedListBox6
             // 
-            this.AntivirusesListBox.BackColor = System.Drawing.Color.PeachPuff;
-            this.AntivirusesListBox.FormattingEnabled = true;
-            this.AntivirusesListBox.Location = new System.Drawing.Point(246, 302);
-            this.AntivirusesListBox.Name = "AntivirusesListBox";
-            this.AntivirusesListBox.Size = new System.Drawing.Size(231, 109);
-            this.AntivirusesListBox.TabIndex = 9;
+            this.ProgramsCheckedListBox6.BackColor = System.Drawing.Color.PeachPuff;
+            this.ProgramsCheckedListBox6.FormattingEnabled = true;
+            this.ProgramsCheckedListBox6.Location = new System.Drawing.Point(246, 302);
+            this.ProgramsCheckedListBox6.Name = "ProgramsCheckedListBox6";
+            this.ProgramsCheckedListBox6.Size = new System.Drawing.Size(231, 109);
+            this.ProgramsCheckedListBox6.TabIndex = 9;
             // 
-            // DataBasesLabel
+            // ProgramsCheckedListBoxLabel5
             // 
-            this.DataBasesLabel.AutoSize = true;
-            this.DataBasesLabel.Font = new System.Drawing.Font("Trebuchet MS", 12F);
-            this.DataBasesLabel.Location = new System.Drawing.Point(242, 142);
-            this.DataBasesLabel.Name = "DataBasesLabel";
-            this.DataBasesLabel.Size = new System.Drawing.Size(86, 22);
-            this.DataBasesLabel.TabIndex = 16;
-            this.DataBasesLabel.Text = "Databases:";
+            this.ProgramsCheckedListBoxLabel5.AutoSize = true;
+            this.ProgramsCheckedListBoxLabel5.Font = new System.Drawing.Font("Trebuchet MS", 12F);
+            this.ProgramsCheckedListBoxLabel5.Location = new System.Drawing.Point(242, 142);
+            this.ProgramsCheckedListBoxLabel5.Name = "ProgramsCheckedListBoxLabel5";
+            this.ProgramsCheckedListBoxLabel5.Size = new System.Drawing.Size(86, 22);
+            this.ProgramsCheckedListBoxLabel5.TabIndex = 16;
+            this.ProgramsCheckedListBoxLabel5.Text = "Databases:";
             // 
-            // MessengersLabel
+            // ProgramsCheckedListBoxLabel7
             // 
-            this.MessengersLabel.AutoSize = true;
-            this.MessengersLabel.Font = new System.Drawing.Font("Trebuchet MS", 12F);
-            this.MessengersLabel.Location = new System.Drawing.Point(479, 6);
-            this.MessengersLabel.Name = "MessengersLabel";
-            this.MessengersLabel.Size = new System.Drawing.Size(94, 22);
-            this.MessengersLabel.TabIndex = 15;
-            this.MessengersLabel.Text = "Messengers:";
+            this.ProgramsCheckedListBoxLabel7.AutoSize = true;
+            this.ProgramsCheckedListBoxLabel7.Font = new System.Drawing.Font("Trebuchet MS", 12F);
+            this.ProgramsCheckedListBoxLabel7.Location = new System.Drawing.Point(479, 6);
+            this.ProgramsCheckedListBoxLabel7.Name = "ProgramsCheckedListBoxLabel7";
+            this.ProgramsCheckedListBoxLabel7.Size = new System.Drawing.Size(94, 22);
+            this.ProgramsCheckedListBoxLabel7.TabIndex = 15;
+            this.ProgramsCheckedListBoxLabel7.Text = "Messengers:";
             // 
-            // ProgrammingLabel
+            // ProgramsCheckedListBoxLabel4
             // 
-            this.ProgrammingLabel.AutoSize = true;
-            this.ProgrammingLabel.Font = new System.Drawing.Font("Trebuchet MS", 12F);
-            this.ProgrammingLabel.Location = new System.Drawing.Point(242, 6);
-            this.ProgrammingLabel.Name = "ProgrammingLabel";
-            this.ProgrammingLabel.Size = new System.Drawing.Size(108, 22);
-            this.ProgrammingLabel.TabIndex = 14;
-            this.ProgrammingLabel.Text = "Programming:";
+            this.ProgramsCheckedListBoxLabel4.AutoSize = true;
+            this.ProgramsCheckedListBoxLabel4.Font = new System.Drawing.Font("Trebuchet MS", 12F);
+            this.ProgramsCheckedListBoxLabel4.Location = new System.Drawing.Point(242, 6);
+            this.ProgramsCheckedListBoxLabel4.Name = "ProgramsCheckedListBoxLabel4";
+            this.ProgramsCheckedListBoxLabel4.Size = new System.Drawing.Size(108, 22);
+            this.ProgramsCheckedListBoxLabel4.TabIndex = 14;
+            this.ProgramsCheckedListBoxLabel4.Text = "Programming:";
             // 
-            // GraphicAppsListBox
+            // ProgramsCheckedListBox8
             // 
-            this.GraphicAppsListBox.BackColor = System.Drawing.Color.PeachPuff;
-            this.GraphicAppsListBox.FormattingEnabled = true;
-            this.GraphicAppsListBox.Location = new System.Drawing.Point(483, 165);
-            this.GraphicAppsListBox.Name = "GraphicAppsListBox";
-            this.GraphicAppsListBox.Size = new System.Drawing.Size(231, 109);
-            this.GraphicAppsListBox.TabIndex = 13;
+            this.ProgramsCheckedListBox8.BackColor = System.Drawing.Color.PeachPuff;
+            this.ProgramsCheckedListBox8.FormattingEnabled = true;
+            this.ProgramsCheckedListBox8.Location = new System.Drawing.Point(483, 165);
+            this.ProgramsCheckedListBox8.Name = "ProgramsCheckedListBox8";
+            this.ProgramsCheckedListBox8.Size = new System.Drawing.Size(231, 109);
+            this.ProgramsCheckedListBox8.TabIndex = 13;
             // 
-            // DataBasesListBox
+            // ProgramsCheckedListBox5
             // 
-            this.DataBasesListBox.BackColor = System.Drawing.Color.PeachPuff;
-            this.DataBasesListBox.FormattingEnabled = true;
-            this.DataBasesListBox.Location = new System.Drawing.Point(246, 165);
-            this.DataBasesListBox.Name = "DataBasesListBox";
-            this.DataBasesListBox.Size = new System.Drawing.Size(231, 109);
-            this.DataBasesListBox.TabIndex = 12;
+            this.ProgramsCheckedListBox5.BackColor = System.Drawing.Color.PeachPuff;
+            this.ProgramsCheckedListBox5.FormattingEnabled = true;
+            this.ProgramsCheckedListBox5.Location = new System.Drawing.Point(246, 165);
+            this.ProgramsCheckedListBox5.Name = "ProgramsCheckedListBox5";
+            this.ProgramsCheckedListBox5.Size = new System.Drawing.Size(231, 109);
+            this.ProgramsCheckedListBox5.TabIndex = 12;
             // 
-            // MessengersListBox
+            // ProgramsCheckedListBox7
             // 
-            this.MessengersListBox.BackColor = System.Drawing.Color.PeachPuff;
-            this.MessengersListBox.FormattingEnabled = true;
-            this.MessengersListBox.Location = new System.Drawing.Point(483, 28);
-            this.MessengersListBox.Name = "MessengersListBox";
-            this.MessengersListBox.Size = new System.Drawing.Size(231, 109);
-            this.MessengersListBox.TabIndex = 11;
+            this.ProgramsCheckedListBox7.BackColor = System.Drawing.Color.PeachPuff;
+            this.ProgramsCheckedListBox7.FormattingEnabled = true;
+            this.ProgramsCheckedListBox7.Location = new System.Drawing.Point(483, 28);
+            this.ProgramsCheckedListBox7.Name = "ProgramsCheckedListBox7";
+            this.ProgramsCheckedListBox7.Size = new System.Drawing.Size(231, 109);
+            this.ProgramsCheckedListBox7.TabIndex = 11;
             // 
-            // ProgrammingListBox
+            // ProgramsCheckedListBox4
             // 
-            this.ProgrammingListBox.BackColor = System.Drawing.Color.PeachPuff;
-            this.ProgrammingListBox.FormattingEnabled = true;
-            this.ProgrammingListBox.Location = new System.Drawing.Point(246, 28);
-            this.ProgrammingListBox.Name = "ProgrammingListBox";
-            this.ProgrammingListBox.Size = new System.Drawing.Size(231, 109);
-            this.ProgrammingListBox.TabIndex = 10;
+            this.ProgramsCheckedListBox4.BackColor = System.Drawing.Color.PeachPuff;
+            this.ProgramsCheckedListBox4.FormattingEnabled = true;
+            this.ProgramsCheckedListBox4.Location = new System.Drawing.Point(246, 28);
+            this.ProgramsCheckedListBox4.Name = "ProgramsCheckedListBox4";
+            this.ProgramsCheckedListBox4.Size = new System.Drawing.Size(231, 109);
+            this.ProgramsCheckedListBox4.TabIndex = 10;
             // 
-            // AntivirusesLabel
+            // ProgramsCheckedListBoxLabel6
             // 
-            this.AntivirusesLabel.AutoSize = true;
-            this.AntivirusesLabel.Font = new System.Drawing.Font("Trebuchet MS", 12F);
-            this.AntivirusesLabel.Location = new System.Drawing.Point(242, 277);
-            this.AntivirusesLabel.Name = "AntivirusesLabel";
-            this.AntivirusesLabel.Size = new System.Drawing.Size(93, 22);
-            this.AntivirusesLabel.TabIndex = 8;
-            this.AntivirusesLabel.Text = "Antiviruses:";
+            this.ProgramsCheckedListBoxLabel6.AutoSize = true;
+            this.ProgramsCheckedListBoxLabel6.Font = new System.Drawing.Font("Trebuchet MS", 12F);
+            this.ProgramsCheckedListBoxLabel6.Location = new System.Drawing.Point(242, 277);
+            this.ProgramsCheckedListBoxLabel6.Name = "ProgramsCheckedListBoxLabel6";
+            this.ProgramsCheckedListBoxLabel6.Size = new System.Drawing.Size(93, 22);
+            this.ProgramsCheckedListBoxLabel6.TabIndex = 8;
+            this.ProgramsCheckedListBoxLabel6.Text = "Antiviruses:";
             // 
-            // OtherListBox
+            // OtherProgramsListBox
             // 
-            this.OtherListBox.BackColor = System.Drawing.Color.PeachPuff;
-            this.OtherListBox.FormattingEnabled = true;
-            this.OtherListBox.Location = new System.Drawing.Point(483, 302);
-            this.OtherListBox.Name = "OtherListBox";
-            this.OtherListBox.Size = new System.Drawing.Size(231, 109);
-            this.OtherListBox.TabIndex = 7;
+            this.OtherProgramsListBox.BackColor = System.Drawing.Color.PeachPuff;
+            this.OtherProgramsListBox.FormattingEnabled = true;
+            this.OtherProgramsListBox.Location = new System.Drawing.Point(483, 302);
+            this.OtherProgramsListBox.Name = "OtherProgramsListBox";
+            this.OtherProgramsListBox.Size = new System.Drawing.Size(231, 109);
+            this.OtherProgramsListBox.TabIndex = 7;
             // 
-            // OtherLabel
+            // OtherProgramsLabel
             // 
-            this.OtherLabel.AutoSize = true;
-            this.OtherLabel.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.OtherLabel.Location = new System.Drawing.Point(479, 277);
-            this.OtherLabel.Name = "OtherLabel";
-            this.OtherLabel.Size = new System.Drawing.Size(63, 22);
-            this.OtherLabel.TabIndex = 6;
-            this.OtherLabel.Text = "Others:";
+            this.OtherProgramsLabel.AutoSize = true;
+            this.OtherProgramsLabel.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.OtherProgramsLabel.Location = new System.Drawing.Point(479, 277);
+            this.OtherProgramsLabel.Name = "OtherProgramsLabel";
+            this.OtherProgramsLabel.Size = new System.Drawing.Size(63, 22);
+            this.OtherProgramsLabel.TabIndex = 6;
+            this.OtherProgramsLabel.Text = "Others:";
             // 
-            // DotNetListBox
+            // ProgramsCheckedListBox3
             // 
-            this.DotNetListBox.BackColor = System.Drawing.Color.PeachPuff;
-            this.DotNetListBox.FormattingEnabled = true;
-            this.DotNetListBox.Location = new System.Drawing.Point(9, 302);
-            this.DotNetListBox.Name = "DotNetListBox";
-            this.DotNetListBox.Size = new System.Drawing.Size(231, 109);
-            this.DotNetListBox.TabIndex = 5;
+            this.ProgramsCheckedListBox3.BackColor = System.Drawing.Color.PeachPuff;
+            this.ProgramsCheckedListBox3.FormattingEnabled = true;
+            this.ProgramsCheckedListBox3.Location = new System.Drawing.Point(9, 302);
+            this.ProgramsCheckedListBox3.Name = "ProgramsCheckedListBox3";
+            this.ProgramsCheckedListBox3.Size = new System.Drawing.Size(231, 109);
+            this.ProgramsCheckedListBox3.TabIndex = 5;
             // 
-            // DotNetLabel
+            // ProgramsCheckedListBoxLabel3
             // 
-            this.DotNetLabel.AutoSize = true;
-            this.DotNetLabel.Font = new System.Drawing.Font("Trebuchet MS", 12F);
-            this.DotNetLabel.Location = new System.Drawing.Point(5, 277);
-            this.DotNetLabel.Name = "DotNetLabel";
-            this.DotNetLabel.Size = new System.Drawing.Size(48, 22);
-            this.DotNetLabel.TabIndex = 4;
-            this.DotNetLabel.Text = ".NET:";
+            this.ProgramsCheckedListBoxLabel3.AutoSize = true;
+            this.ProgramsCheckedListBoxLabel3.Font = new System.Drawing.Font("Trebuchet MS", 12F);
+            this.ProgramsCheckedListBoxLabel3.Location = new System.Drawing.Point(5, 277);
+            this.ProgramsCheckedListBoxLabel3.Name = "ProgramsCheckedListBoxLabel3";
+            this.ProgramsCheckedListBoxLabel3.Size = new System.Drawing.Size(48, 22);
+            this.ProgramsCheckedListBoxLabel3.TabIndex = 4;
+            this.ProgramsCheckedListBoxLabel3.Text = ".NET:";
             // 
-            // WorkWithFilesListBox
+            // ProgramsCheckedListBox2
             // 
-            this.WorkWithFilesListBox.BackColor = System.Drawing.Color.PeachPuff;
-            this.WorkWithFilesListBox.FormattingEnabled = true;
-            this.WorkWithFilesListBox.Location = new System.Drawing.Point(9, 165);
-            this.WorkWithFilesListBox.Name = "WorkWithFilesListBox";
-            this.WorkWithFilesListBox.Size = new System.Drawing.Size(231, 109);
-            this.WorkWithFilesListBox.TabIndex = 3;
+            this.ProgramsCheckedListBox2.BackColor = System.Drawing.Color.PeachPuff;
+            this.ProgramsCheckedListBox2.FormattingEnabled = true;
+            this.ProgramsCheckedListBox2.Location = new System.Drawing.Point(9, 165);
+            this.ProgramsCheckedListBox2.Name = "ProgramsCheckedListBox2";
+            this.ProgramsCheckedListBox2.Size = new System.Drawing.Size(231, 109);
+            this.ProgramsCheckedListBox2.TabIndex = 3;
             // 
-            // WorkWithFilesLabel
+            // ProgramsCheckedListBoxLabel2
             // 
-            this.WorkWithFilesLabel.AutoSize = true;
-            this.WorkWithFilesLabel.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.WorkWithFilesLabel.Location = new System.Drawing.Point(5, 142);
-            this.WorkWithFilesLabel.Name = "WorkWithFilesLabel";
-            this.WorkWithFilesLabel.Size = new System.Drawing.Size(151, 22);
-            this.WorkWithFilesLabel.TabIndex = 2;
-            this.WorkWithFilesLabel.Text = "Working With Files:";
+            this.ProgramsCheckedListBoxLabel2.AutoSize = true;
+            this.ProgramsCheckedListBoxLabel2.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.ProgramsCheckedListBoxLabel2.Location = new System.Drawing.Point(5, 142);
+            this.ProgramsCheckedListBoxLabel2.Name = "ProgramsCheckedListBoxLabel2";
+            this.ProgramsCheckedListBoxLabel2.Size = new System.Drawing.Size(151, 22);
+            this.ProgramsCheckedListBoxLabel2.TabIndex = 2;
+            this.ProgramsCheckedListBoxLabel2.Text = "Working With Files:";
             // 
-            // BrowsersLabel
+            // ProgramsCheckedListBoxLabel1
             // 
-            this.BrowsersLabel.AutoSize = true;
-            this.BrowsersLabel.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.BrowsersLabel.Location = new System.Drawing.Point(3, 6);
-            this.BrowsersLabel.Name = "BrowsersLabel";
-            this.BrowsersLabel.Size = new System.Drawing.Size(80, 22);
-            this.BrowsersLabel.TabIndex = 1;
-            this.BrowsersLabel.Text = "Browsers:";
+            this.ProgramsCheckedListBoxLabel1.AutoSize = true;
+            this.ProgramsCheckedListBoxLabel1.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.ProgramsCheckedListBoxLabel1.Location = new System.Drawing.Point(3, 6);
+            this.ProgramsCheckedListBoxLabel1.Name = "ProgramsCheckedListBoxLabel1";
+            this.ProgramsCheckedListBoxLabel1.Size = new System.Drawing.Size(80, 22);
+            this.ProgramsCheckedListBoxLabel1.TabIndex = 1;
+            this.ProgramsCheckedListBoxLabel1.Text = "Browsers:";
             // 
             // SelectAllCheckBox
             // 
@@ -334,7 +334,7 @@
             // 
             this.DeleteRadioButton.AutoSize = true;
             this.DeleteRadioButton.Font = new System.Drawing.Font("Trebuchet MS", 12F);
-            this.DeleteRadioButton.Location = new System.Drawing.Point(6, 71);
+            this.DeleteRadioButton.Location = new System.Drawing.Point(6, 67);
             this.DeleteRadioButton.Name = "DeleteRadioButton";
             this.DeleteRadioButton.Size = new System.Drawing.Size(87, 26);
             this.DeleteRadioButton.TabIndex = 2;
@@ -416,24 +416,24 @@
 
         #endregion
 
-        internal System.Windows.Forms.CheckedListBox BrowsersListBox;
-        internal System.Windows.Forms.Label BrowsersLabel;
-        internal System.Windows.Forms.Label WorkWithFilesLabel;
-        internal System.Windows.Forms.CheckedListBox WorkWithFilesListBox;
-        internal System.Windows.Forms.Label DotNetLabel;
-        internal System.Windows.Forms.CheckedListBox DotNetListBox;
-        internal System.Windows.Forms.Label OtherLabel;
-        internal System.Windows.Forms.Label AntivirusesLabel;
-        internal System.Windows.Forms.CheckedListBox OtherListBox;
-        internal System.Windows.Forms.CheckedListBox AntivirusesListBox;
-        internal System.Windows.Forms.CheckedListBox ProgrammingListBox;
-        internal System.Windows.Forms.CheckedListBox GraphicAppsListBox;
-        internal System.Windows.Forms.CheckedListBox DataBasesListBox;
-        internal System.Windows.Forms.CheckedListBox MessengersListBox;
-        internal System.Windows.Forms.Label ProgrammingLabel;
-        internal System.Windows.Forms.Label MessengersLabel;
-        internal System.Windows.Forms.Label DataBasesLabel;
-        internal System.Windows.Forms.Label GraphicAppsLabel;
+        internal System.Windows.Forms.CheckedListBox ProgramsCheckedListBox1;
+        internal System.Windows.Forms.Label ProgramsCheckedListBoxLabel1;
+        internal System.Windows.Forms.Label ProgramsCheckedListBoxLabel2;
+        internal System.Windows.Forms.CheckedListBox ProgramsCheckedListBox2;
+        internal System.Windows.Forms.Label ProgramsCheckedListBoxLabel3;
+        internal System.Windows.Forms.CheckedListBox ProgramsCheckedListBox3;
+        internal System.Windows.Forms.Label OtherProgramsLabel;
+        internal System.Windows.Forms.Label ProgramsCheckedListBoxLabel6;
+        internal System.Windows.Forms.CheckedListBox OtherProgramsListBox;
+        internal System.Windows.Forms.CheckedListBox ProgramsCheckedListBox6;
+        internal System.Windows.Forms.CheckedListBox ProgramsCheckedListBox4;
+        internal System.Windows.Forms.CheckedListBox ProgramsCheckedListBox8;
+        internal System.Windows.Forms.CheckedListBox ProgramsCheckedListBox5;
+        internal System.Windows.Forms.CheckedListBox ProgramsCheckedListBox7;
+        internal System.Windows.Forms.Label ProgramsCheckedListBoxLabel4;
+        internal System.Windows.Forms.Label ProgramsCheckedListBoxLabel7;
+        internal System.Windows.Forms.Label ProgramsCheckedListBoxLabel5;
+        internal System.Windows.Forms.Label ProgramsCheckedListBoxLabel8;
         internal System.Windows.Forms.RadioButton InstallRadioButton;
         internal System.Windows.Forms.RadioButton DeleteRadioButton;
         internal System.Windows.Forms.RadioButton UpdateRadioButton;
