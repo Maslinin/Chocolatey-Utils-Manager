@@ -110,21 +110,24 @@ namespace CUM.ProgramInstaller
                 return;
             }
 
+            if(!this.Choco.CancellationToken.IsCancellationRequested)
+                this.Choco.CancellationToken = new System.Threading.CancellationTokenSource();
+
             this.LockInstallerForm();
 
             try
             {
                 if (InstallRadioButton.Checked)
                 {
-                    await this.InstallPackages(this.GetSelectedPackagesItems());
+                    await this.InstallPackages(this.GetSelectedPackagesListItems());
                 }
                 else if (UpdateRadioButton.Checked)
                 {
-                    await this.UpdatePackages(this.GetSelectedPackagesItems());
+                    await this.UpdatePackages(this.GetSelectedPackagesListItems());
                 }
                 else if(DeleteRadioButton.Checked)
                 {
-                    await this.UninstallPackages(this.GetSelectedPackagesItems());
+                    await this.UninstallPackages(this.GetSelectedPackagesListItems());
                 }
             }
             catch(Exception ex)
@@ -140,8 +143,9 @@ namespace CUM.ProgramInstaller
 
         private void StopButton_Click(object sender, EventArgs e)
         {
-            this.UnLockInstallerForm();
+            this.Choco.CancellationToken?.Cancel();
 
+            this.UnLockInstallerForm();
             this.PackagesInfoLabel.Text = "Installing canceled";
         }
 

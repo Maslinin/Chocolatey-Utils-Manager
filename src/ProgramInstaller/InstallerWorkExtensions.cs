@@ -12,7 +12,7 @@ namespace CUM.ProgramInstaller
         /// Gets the number of selected packages
         /// </summary>
         /// <param name="installer"></param>
-        /// <returns></returns>
+        /// <returns>Packages selected count</returns>
         internal static int GetSelectedPackagesCount(this Installer installer)
         {
             int packageCount = 0;
@@ -28,8 +28,8 @@ namespace CUM.ProgramInstaller
         /// Gets all entities of the type selected for operation ProgramInfo
         /// </summary>
         /// <param name="installer"></param>
-        /// <returns></returns>
-        internal static List<Models.ProgramInfo> GetSelectedPackagesItems(this Installer installer)
+        /// <returns>List of marked entities ProgramInfo</returns>
+        internal static List<Models.ProgramInfo> GetSelectedPackagesListItems(this Installer installer)
         {
             List<Models.ProgramInfo> programs = new List<Models.ProgramInfo>();
 
@@ -41,6 +41,10 @@ namespace CUM.ProgramInstaller
             return programs;
         }
 
+        /// <summary>
+        /// Installs Chocololatey if it is not installed
+        /// </summary>
+        /// <param name="installer"></param>
         internal static async System.Threading.Tasks.Task InstallChoco(this Installer installer)
         {
             if (!installer.Choco.ChocoExists)
