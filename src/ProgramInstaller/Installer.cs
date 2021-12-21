@@ -1,6 +1,5 @@
 ﻿using System;
 using System.IO;
-using System.Linq;
 using System.Collections.Generic;
 using System.Windows.Forms;
 using CUM.ProgramInstaller.Models;
@@ -85,11 +84,8 @@ namespace CUM.ProgramInstaller
                     temp.Items.Add(program, CheckState.Checked);
             }
 
-            this.UnLockInstallerForm();
+            this.LockStopButton();
             this.UpdatePackagesInfoLabel();
-
-            this.StopButton.Enabled = false;
-            this.StopButton.Visible = false;
         }
 
         //Immediately after opening the window, it is checked whether the chocolate package manager is installed on the computer
@@ -148,6 +144,7 @@ namespace CUM.ProgramInstaller
             this.Choco.CancellationToken?.Cancel();
 
             this.UnLockInstallerForm();
+            this.LockStopButton();
             this.PackagesInfoLabel.Text = "Installing canceled";
         }
 

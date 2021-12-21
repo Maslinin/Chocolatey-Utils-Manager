@@ -30,7 +30,6 @@
         {
             installer.StartButton.Enabled = false;
             installer.StopButton.Enabled = false;
-            installer.StopButton.Visible = true;
             installer.InstallRadioButton.Enabled = false;
             installer.UpdateRadioButton.Enabled = false;
             installer.DeleteRadioButton.Enabled = false;
@@ -44,9 +43,8 @@
         /// <param name="installer"></param>
         internal static void UnLockInstallerForm(this Installer installer)
         {
-            installer.StartButton.Enabled = false;
+            installer.StartButton.Enabled = true;
             installer.StopButton.Enabled = false;
-            installer.StopButton.Visible = false;
             installer.InstallRadioButton.Enabled = true;
             installer.UpdateRadioButton.Enabled = true;
             installer.DeleteRadioButton.Enabled = true;
@@ -61,6 +59,7 @@
         internal static void LockStopButton(this Installer installer)
         {
             installer.StopButton.Enabled = false;
+            installer.StopButton.Visible = false;
             installer.ModeSelectionGroupBox.Height -= installer.StopButton.Height;
         }
 
@@ -71,6 +70,7 @@
         internal static void UnLockStopButton(this Installer installer)
         {
             installer.StopButton.Enabled = true;
+            installer.StopButton.Visible = true;
             installer.ModeSelectionGroupBox.Height += installer.StopButton.Height;
         }
 
