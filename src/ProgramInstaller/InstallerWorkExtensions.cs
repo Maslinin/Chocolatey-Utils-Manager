@@ -49,9 +49,11 @@ namespace CUM.ProgramInstaller
         {
             if (!installer.Choco.ChocoExists)
             {
+                installer.LockInstallerForm();
                 installer.PackagesInfoLabel.Text = "Chocolate isn't found on your computer. Installing it...";
                 await installer.Choco.InstallChocoAsync();
                 installer.PackagesInfoLabel.Text = "Chocolate was installed";
+                installer.UnLockInstallerForm();
             }
         }
 

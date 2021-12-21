@@ -114,6 +114,7 @@ namespace CUM.ProgramInstaller
                 this.Choco.CancellationToken = new System.Threading.CancellationTokenSource();
 
             this.LockInstallerForm();
+            this.UnLockStopButton();
 
             try
             {
@@ -139,6 +140,7 @@ namespace CUM.ProgramInstaller
             }
 
             this.UnLockInstallerForm();
+            this.LockStopButton();
         }
 
         private void StopButton_Click(object sender, EventArgs e)
