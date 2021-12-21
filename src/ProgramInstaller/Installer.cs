@@ -8,86 +8,84 @@ namespace CUM.ProgramInstaller
 {
     internal partial class Installer : Form
     {
-        internal List<ProgramList> Programs { get; private set; }
-        internal Chocolatey.ChocoAsyncInstaller Choco { get; private set; }
-        internal List<CheckedListBox> ProgramsCheckedListBoxCollection { get; private set; }
+        /// <summary>
+        /// List of programs from the json file available for installation in Chocolatey
+        /// </summary>
+        internal List<ProgramList> Programs { get; }
+        internal List<CheckedListBox> ProgramsCheckedListBoxCollection { get; }
+        internal Chocolatey.ChocoAsyncInstaller Choco { get; }
 
         internal Installer()
         {
             InitializeComponent();
             Choco = new Chocolatey.ChocoAsyncInstaller();
+
             //ProgramsListBoxCollection.Count must be ProgramsListBoxLabels.Count
             ProgramsCheckedListBoxCollection = new List<CheckedListBox>
             {
-                this.BrowsersListBox,
-                this.WorkWithFilesListBox,
-                this.DotNetListBox,
-                this.ProgrammingListBox,
-                this.DataBasesListBox,
-                this.AntivirusesListBox,
-                this.MessengersListBox,
-                this.GraphicAppsListBox,
-                this.OtherListBox
+                this.ProgramsCheckedListBox1,
+                this.ProgramsCheckedListBox2,
+                this.ProgramsCheckedListBox3,
+                this.ProgramsCheckedListBox4,
+                this.ProgramsCheckedListBox5,
+                this.ProgramsCheckedListBox6,
+                this.ProgramsCheckedListBox7,
+                this.ProgramsCheckedListBox8,
+                this.OtherProgramsListBox
+            };
+            var ProgramsListBoxLabels = new List<Label>
+            {
+                this.ProgramsCheckedListBoxLabel1,
+                this.ProgramsCheckedListBoxLabel2,
+                this.ProgramsCheckedListBoxLabel3,
+                this.ProgramsCheckedListBoxLabel4,
+                this.ProgramsCheckedListBoxLabel5,
+                this.ProgramsCheckedListBoxLabel6,
+                this.ProgramsCheckedListBoxLabel7,
+                this.ProgramsCheckedListBoxLabel8,
+                this.OtherProgramsLabel
             };
 
-            foreach(var checkedBox in ProgramsCheckedListBoxCollection)
+            foreach (var checkedBox in ProgramsCheckedListBoxCollection)
             {
                 checkedBox.ItemCheck += this.CheckedListBoxEvent_ItemCheck;
             }
 
+            //Deserialization of json files into objects
             Programs = Newtonsoft.Json.JsonConvert.DeserializeObject<List<ProgramList>>(
                 File.ReadAllText(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "ProgramList.json")));
+            var categories = Newtonsoft.Json.JsonConvert.DeserializeObject<Categories>(
+                File.ReadAllText(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Categories.json")));
 
-            CheckedListBox temp;
-            foreach (var list in Programs)
+            //To create register and space independence
+            for (int i = 0; i < categories.DisplayedCategories.Count; ++i)
             {
-                var category = list.Category.Replace(" ", "").ToLower();
-
-                if (category == "browsers")
-                    temp = BrowsersListBox;
-                else if (category == "workingwithfiles")
-                    temp = WorkWithFilesListBox;
-                else if (category == "dotnet")
-                    temp = DotNetListBox;
-                else if (category == "programming")
-                    temp = ProgrammingListBox;
-                else if (category == "databases")
-                    temp = DataBasesListBox;
-                else if (category == "antiviruses")
-                    temp = AntivirusesListBox;
-                else if (category == "messengers")
-                    temp = MessengersListBox;
-                else if (category == "graphic")
-                    temp = GraphicAppsListBox;
-                else
-                    temp = OtherListBox;
-
-                foreach (var program in list.Programs)
-                    temp.Items.Add(program, CheckState.Checked);
+                categories.DisplayedCategories[i] = categories.DisplayedCategories[i].Replace(" ", "").ToLower();
             }
 
-            //ProgramsListBoxLabels.Count must be ProgramsListBoxCollection.Count
-            var ProgramsListBoxLabels = new List<Label>
-            {
-                this.BrowsersLabel,
-                this.WorkWithFilesLabel,
-                this.DotNetLabel,
-                this.ProgrammingLabel,
-                this.DataBasesLabel,
-                this.AntivirusesLabel,
-                this.MessengersLabel,
-                this.GraphicAppsLabel,
-                this.OtherLabel
-            };
-            for (int i = 0; i < (ProgramsCheckedListBoxCollection.Count >= Programs.Count ? Programs.Count : ProgramsCheckedListBoxCollection.Count); ++i)
+            //Get the number of listbox to process, ProgramsListBoxLabels.Count must be ProgramsListBoxCollection.Count
+            int programsListBoxCount = (ProgramsCheckedListBoxCollection.Count >= Programs.Count ? Programs.Count : ProgramsCheckedListBoxCollection.Count);
+
+            //Set the names of CheckedListBox labels
+            for (int i = 0; i < programsListBoxCount; ++i)
             {
                 ProgramsListBoxLabels[i].Text = Programs[i].Category + ":";
             }
 
-            this.UpdatePackagesInfoLabel();
+            CheckedListBox temp;
+            for (int i = 0; i < programsListBoxCount; ++i)
+            {
+                var categoryFromFile = Programs[i].Category.Replace(" ", "").ToLower(); //To create register and space independence
+                var categoryPredicate = categories.DisplayedCategories.Find(c => c == categoryFromFile);
 
-            this.StopButton.Enabled = false;
-            this.StopButton.Visible = false;
+                temp = (categoryFromFile == categoryPredicate) ? ProgramsCheckedListBoxCollection[i] : OtherProgramsListBox;
+
+                foreach (var program in Programs[i].Programs)
+                    temp.Items.Add(program, CheckState.Checked);
+            }
+
+            this.LockStopButton();
+            this.UpdatePackagesInfoLabel();
         }
 
         //Immediately after opening the window, it is checked whether the chocolate package manager is installed on the computer
@@ -101,29 +99,32 @@ namespace CUM.ProgramInstaller
             //If no packages are selected:
             if (this.GetSelectedPackagesCount() == 0)
             {
-                MessageBox.Show("No package selected for installation",
+                MessageBox.Show("No packages selected for operation",
                     "No packages selected",
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Error);
-
                 return;
             }
 
+            if(!this.Choco.CancellationToken.IsCancellationRequested)
+                this.Choco.CancellationToken = new System.Threading.CancellationTokenSource();
+
             this.LockInstallerForm();
+            this.UnLockStopButton();
 
             try
             {
                 if (InstallRadioButton.Checked)
                 {
-                    await this.InstallPackages(this.GetSelectedPackagesItems());
+                    await this.InstallPackages(this.GetSelectedPackagesListItems());
                 }
                 else if (UpdateRadioButton.Checked)
                 {
-                    await this.UpdatePackages(this.GetSelectedPackagesItems());
+                    await this.UpdatePackages(this.GetSelectedPackagesListItems());
                 }
-                else
+                else if(DeleteRadioButton.Checked)
                 {
-                    await this.UninstallPackages(this.GetSelectedPackagesItems());
+                    await this.UninstallPackages(this.GetSelectedPackagesListItems());
                 }
             }
             catch(Exception ex)
@@ -135,12 +136,15 @@ namespace CUM.ProgramInstaller
             }
 
             this.UnLockInstallerForm();
+            this.LockStopButton();
         }
 
         private void StopButton_Click(object sender, EventArgs e)
         {
-            this.UnLockInstallerForm();
+            this.Choco.CancellationToken?.Cancel();
 
+            this.UnLockInstallerForm();
+            this.LockStopButton();
             this.PackagesInfoLabel.Text = "Installing canceled";
         }
 

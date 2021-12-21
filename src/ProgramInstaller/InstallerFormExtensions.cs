@@ -16,18 +16,20 @@
             {
                 installer.PackagesInfoLabel.Text = "No package(s) selected";
             }
-            installer.PackagesInfoLabel.Text = $"Select(ed) {packagesCount} package(s)";
+            else
+            {
+                installer.PackagesInfoLabel.Text = $"Select(ed) {packagesCount} package(s)";
+            }
         }
 
         /// <summary>
-        /// Locks the form so that only the STOP button becomes available and remains
+        /// UnLocks all form elements
         /// </summary>
         /// <param name="installer"></param>
         internal static void LockInstallerForm(this Installer installer)
         {
             installer.StartButton.Enabled = false;
-            installer.StopButton.Enabled = true;
-            installer.StopButton.Visible = true;
+            installer.StopButton.Enabled = false;
             installer.InstallRadioButton.Enabled = false;
             installer.UpdateRadioButton.Enabled = false;
             installer.DeleteRadioButton.Enabled = false;
@@ -36,19 +38,40 @@
         }
 
         /// <summary>
-        /// Locks the STOP button, making other form elements available for use
+        /// Locks all form elements
         /// </summary>
         /// <param name="installer"></param>
         internal static void UnLockInstallerForm(this Installer installer)
         {
             installer.StartButton.Enabled = true;
             installer.StopButton.Enabled = false;
-            installer.StopButton.Visible = false;
             installer.InstallRadioButton.Enabled = true;
             installer.UpdateRadioButton.Enabled = true;
             installer.DeleteRadioButton.Enabled = true;
             installer.InstallerSplitContainer.Panel1.Enabled = true;
             installer.SelectAllCheckBox.Enabled = true;
+        }
+
+        /// <summary>
+        /// Locks and hides the Stop button on the form
+        /// </summary>
+        /// <param name="installer"></param>
+        internal static void LockStopButton(this Installer installer)
+        {
+            installer.StopButton.Enabled = false;
+            installer.StopButton.Visible = false;
+            installer.ModeSelectionGroupBox.Height -= installer.StopButton.Height;
+        }
+
+        /// <summary>
+        /// Unlocks and displays the Stop button on the form
+        /// </summary>
+        /// <param name="installer"></param>
+        internal static void UnLockStopButton(this Installer installer)
+        {
+            installer.StopButton.Enabled = true;
+            installer.StopButton.Visible = true;
+            installer.ModeSelectionGroupBox.Height += installer.StopButton.Height;
         }
 
         /// <summary>

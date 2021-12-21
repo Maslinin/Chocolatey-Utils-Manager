@@ -4,7 +4,12 @@ namespace CUM.Chocolatey
 {
     sealed class ChocoAsyncInstaller : ChocoBaseInstaller
     {
-        internal ChocoAsyncInstaller() : base() { }
+        internal System.Threading.CancellationTokenSource CancellationToken { get; set; }
+
+        internal ChocoAsyncInstaller() : base()
+        {
+            CancellationToken = new System.Threading.CancellationTokenSource();
+        }
 
         /// <summary>
         /// Installs Chocolatey if it is not installed
@@ -14,7 +19,7 @@ namespace CUM.Chocolatey
         {
             if (!base.ChocoExists)
             {
-                await Task.Run(() => base.ChocoInstall());
+                await Task.Run(() => base.ChocoInstall(), CancellationToken.Token);
             }
         }
 
@@ -26,7 +31,7 @@ namespace CUM.Chocolatey
         {
             if (base.ChocoExists)
             {
-                await Task.Run(() => base.InstallPackage(packageLinkName));
+                await Task.Run(() => base.InstallPackage(packageLinkName), CancellationToken.Token);
             }
         }
 
@@ -38,7 +43,7 @@ namespace CUM.Chocolatey
         {
             if (base.ChocoExists)
             {
-                await Task.Run(() => base.UpdatePackage(packageLinkName));
+                await Task.Run(() => base.UpdatePackage(packageLinkName), CancellationToken.Token);
             }
         }
 
@@ -50,7 +55,7 @@ namespace CUM.Chocolatey
         {
             if (base.ChocoExists)
             {
-                await Task.Run(() => base.UninstallPackage(packageLinkName));
+                await Task.Run(() => base.UninstallPackage(packageLinkName), CancellationToken.Token);
             }
         }
     }
