@@ -69,16 +69,19 @@
             // 
             this.ProgramsCheckedListBox1.BackColor = System.Drawing.Color.PeachPuff;
             this.ProgramsCheckedListBox1.FormattingEnabled = true;
-            this.ProgramsCheckedListBox1.Location = new System.Drawing.Point(7, 28);
+            this.ProgramsCheckedListBox1.Location = new System.Drawing.Point(8, 32);
+            this.ProgramsCheckedListBox1.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.ProgramsCheckedListBox1.Name = "ProgramsCheckedListBox1";
-            this.ProgramsCheckedListBox1.Size = new System.Drawing.Size(231, 109);
+            this.ProgramsCheckedListBox1.Size = new System.Drawing.Size(269, 112);
             this.ProgramsCheckedListBox1.TabIndex = 0;
             // 
             // InstallerSplitContainer
             // 
             this.InstallerSplitContainer.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.InstallerSplitContainer.Cursor = System.Windows.Forms.Cursors.VSplit;
             this.InstallerSplitContainer.IsSplitterFixed = true;
-            this.InstallerSplitContainer.Location = new System.Drawing.Point(12, 12);
+            this.InstallerSplitContainer.Location = new System.Drawing.Point(13, 12);
+            this.InstallerSplitContainer.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.InstallerSplitContainer.Name = "InstallerSplitContainer";
             // 
             // InstallerSplitContainer.Panel1
@@ -107,15 +110,17 @@
             this.InstallerSplitContainer.Panel2.Controls.Add(this.SelectAllCheckBox);
             this.InstallerSplitContainer.Panel2.Controls.Add(this.ModeSelectionGroupBox);
             this.InstallerSplitContainer.Panel2.Controls.Add(this.pictureBox1);
-            this.InstallerSplitContainer.Size = new System.Drawing.Size(907, 419);
-            this.InstallerSplitContainer.SplitterDistance = 719;
+            this.InstallerSplitContainer.Size = new System.Drawing.Size(1030, 440);
+            this.InstallerSplitContainer.SplitterDistance = 843;
+            this.InstallerSplitContainer.SplitterWidth = 5;
             this.InstallerSplitContainer.TabIndex = 1;
             // 
             // ProgramsCheckedListBoxLabel8
             // 
             this.ProgramsCheckedListBoxLabel8.AutoSize = true;
-            this.ProgramsCheckedListBoxLabel8.Font = new System.Drawing.Font("Trebuchet MS", 12F);
-            this.ProgramsCheckedListBoxLabel8.Location = new System.Drawing.Point(479, 142);
+            this.ProgramsCheckedListBoxLabel8.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.ProgramsCheckedListBoxLabel8.Location = new System.Drawing.Point(564, 147);
+            this.ProgramsCheckedListBoxLabel8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.ProgramsCheckedListBoxLabel8.Name = "ProgramsCheckedListBoxLabel8";
             this.ProgramsCheckedListBoxLabel8.Size = new System.Drawing.Size(84, 22);
             this.ProgramsCheckedListBoxLabel8.TabIndex = 17;
@@ -125,16 +130,18 @@
             // 
             this.ProgramsCheckedListBox6.BackColor = System.Drawing.Color.PeachPuff;
             this.ProgramsCheckedListBox6.FormattingEnabled = true;
-            this.ProgramsCheckedListBox6.Location = new System.Drawing.Point(246, 302);
+            this.ProgramsCheckedListBox6.Location = new System.Drawing.Point(287, 312);
+            this.ProgramsCheckedListBox6.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.ProgramsCheckedListBox6.Name = "ProgramsCheckedListBox6";
-            this.ProgramsCheckedListBox6.Size = new System.Drawing.Size(231, 109);
+            this.ProgramsCheckedListBox6.Size = new System.Drawing.Size(269, 112);
             this.ProgramsCheckedListBox6.TabIndex = 9;
             // 
             // ProgramsCheckedListBoxLabel5
             // 
             this.ProgramsCheckedListBoxLabel5.AutoSize = true;
-            this.ProgramsCheckedListBoxLabel5.Font = new System.Drawing.Font("Trebuchet MS", 12F);
-            this.ProgramsCheckedListBoxLabel5.Location = new System.Drawing.Point(242, 142);
+            this.ProgramsCheckedListBoxLabel5.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.ProgramsCheckedListBoxLabel5.Location = new System.Drawing.Point(287, 147);
+            this.ProgramsCheckedListBoxLabel5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.ProgramsCheckedListBoxLabel5.Name = "ProgramsCheckedListBoxLabel5";
             this.ProgramsCheckedListBoxLabel5.Size = new System.Drawing.Size(86, 22);
             this.ProgramsCheckedListBoxLabel5.TabIndex = 16;
@@ -143,8 +150,9 @@
             // ProgramsCheckedListBoxLabel7
             // 
             this.ProgramsCheckedListBoxLabel7.AutoSize = true;
-            this.ProgramsCheckedListBoxLabel7.Font = new System.Drawing.Font("Trebuchet MS", 12F);
-            this.ProgramsCheckedListBoxLabel7.Location = new System.Drawing.Point(479, 6);
+            this.ProgramsCheckedListBoxLabel7.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.ProgramsCheckedListBoxLabel7.Location = new System.Drawing.Point(559, 7);
+            this.ProgramsCheckedListBoxLabel7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.ProgramsCheckedListBoxLabel7.Name = "ProgramsCheckedListBoxLabel7";
             this.ProgramsCheckedListBoxLabel7.Size = new System.Drawing.Size(94, 22);
             this.ProgramsCheckedListBoxLabel7.TabIndex = 15;
@@ -153,8 +161,9 @@
             // ProgramsCheckedListBoxLabel4
             // 
             this.ProgramsCheckedListBoxLabel4.AutoSize = true;
-            this.ProgramsCheckedListBoxLabel4.Font = new System.Drawing.Font("Trebuchet MS", 12F);
-            this.ProgramsCheckedListBoxLabel4.Location = new System.Drawing.Point(242, 6);
+            this.ProgramsCheckedListBoxLabel4.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.ProgramsCheckedListBoxLabel4.Location = new System.Drawing.Point(282, 7);
+            this.ProgramsCheckedListBoxLabel4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.ProgramsCheckedListBoxLabel4.Name = "ProgramsCheckedListBoxLabel4";
             this.ProgramsCheckedListBoxLabel4.Size = new System.Drawing.Size(108, 22);
             this.ProgramsCheckedListBoxLabel4.TabIndex = 14;
@@ -164,43 +173,48 @@
             // 
             this.ProgramsCheckedListBox8.BackColor = System.Drawing.Color.PeachPuff;
             this.ProgramsCheckedListBox8.FormattingEnabled = true;
-            this.ProgramsCheckedListBox8.Location = new System.Drawing.Point(483, 165);
+            this.ProgramsCheckedListBox8.Location = new System.Drawing.Point(564, 172);
+            this.ProgramsCheckedListBox8.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.ProgramsCheckedListBox8.Name = "ProgramsCheckedListBox8";
-            this.ProgramsCheckedListBox8.Size = new System.Drawing.Size(231, 109);
+            this.ProgramsCheckedListBox8.Size = new System.Drawing.Size(269, 112);
             this.ProgramsCheckedListBox8.TabIndex = 13;
             // 
             // ProgramsCheckedListBox5
             // 
             this.ProgramsCheckedListBox5.BackColor = System.Drawing.Color.PeachPuff;
             this.ProgramsCheckedListBox5.FormattingEnabled = true;
-            this.ProgramsCheckedListBox5.Location = new System.Drawing.Point(246, 165);
+            this.ProgramsCheckedListBox5.Location = new System.Drawing.Point(287, 172);
+            this.ProgramsCheckedListBox5.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.ProgramsCheckedListBox5.Name = "ProgramsCheckedListBox5";
-            this.ProgramsCheckedListBox5.Size = new System.Drawing.Size(231, 109);
+            this.ProgramsCheckedListBox5.Size = new System.Drawing.Size(269, 112);
             this.ProgramsCheckedListBox5.TabIndex = 12;
             // 
             // ProgramsCheckedListBox7
             // 
             this.ProgramsCheckedListBox7.BackColor = System.Drawing.Color.PeachPuff;
             this.ProgramsCheckedListBox7.FormattingEnabled = true;
-            this.ProgramsCheckedListBox7.Location = new System.Drawing.Point(483, 28);
+            this.ProgramsCheckedListBox7.Location = new System.Drawing.Point(564, 32);
+            this.ProgramsCheckedListBox7.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.ProgramsCheckedListBox7.Name = "ProgramsCheckedListBox7";
-            this.ProgramsCheckedListBox7.Size = new System.Drawing.Size(231, 109);
+            this.ProgramsCheckedListBox7.Size = new System.Drawing.Size(269, 112);
             this.ProgramsCheckedListBox7.TabIndex = 11;
             // 
             // ProgramsCheckedListBox4
             // 
             this.ProgramsCheckedListBox4.BackColor = System.Drawing.Color.PeachPuff;
             this.ProgramsCheckedListBox4.FormattingEnabled = true;
-            this.ProgramsCheckedListBox4.Location = new System.Drawing.Point(246, 28);
+            this.ProgramsCheckedListBox4.Location = new System.Drawing.Point(287, 32);
+            this.ProgramsCheckedListBox4.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.ProgramsCheckedListBox4.Name = "ProgramsCheckedListBox4";
-            this.ProgramsCheckedListBox4.Size = new System.Drawing.Size(231, 109);
+            this.ProgramsCheckedListBox4.Size = new System.Drawing.Size(269, 112);
             this.ProgramsCheckedListBox4.TabIndex = 10;
             // 
             // ProgramsCheckedListBoxLabel6
             // 
             this.ProgramsCheckedListBoxLabel6.AutoSize = true;
-            this.ProgramsCheckedListBoxLabel6.Font = new System.Drawing.Font("Trebuchet MS", 12F);
-            this.ProgramsCheckedListBoxLabel6.Location = new System.Drawing.Point(242, 277);
+            this.ProgramsCheckedListBoxLabel6.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.ProgramsCheckedListBoxLabel6.Location = new System.Drawing.Point(287, 287);
+            this.ProgramsCheckedListBoxLabel6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.ProgramsCheckedListBoxLabel6.Name = "ProgramsCheckedListBoxLabel6";
             this.ProgramsCheckedListBoxLabel6.Size = new System.Drawing.Size(93, 22);
             this.ProgramsCheckedListBoxLabel6.TabIndex = 8;
@@ -210,16 +224,18 @@
             // 
             this.OtherProgramsListBox.BackColor = System.Drawing.Color.PeachPuff;
             this.OtherProgramsListBox.FormattingEnabled = true;
-            this.OtherProgramsListBox.Location = new System.Drawing.Point(483, 302);
+            this.OtherProgramsListBox.Location = new System.Drawing.Point(564, 312);
+            this.OtherProgramsListBox.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.OtherProgramsListBox.Name = "OtherProgramsListBox";
-            this.OtherProgramsListBox.Size = new System.Drawing.Size(231, 109);
+            this.OtherProgramsListBox.Size = new System.Drawing.Size(269, 112);
             this.OtherProgramsListBox.TabIndex = 7;
             // 
             // OtherProgramsLabel
             // 
             this.OtherProgramsLabel.AutoSize = true;
-            this.OtherProgramsLabel.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.OtherProgramsLabel.Location = new System.Drawing.Point(479, 277);
+            this.OtherProgramsLabel.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.OtherProgramsLabel.Location = new System.Drawing.Point(564, 287);
+            this.OtherProgramsLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.OtherProgramsLabel.Name = "OtherProgramsLabel";
             this.OtherProgramsLabel.Size = new System.Drawing.Size(63, 22);
             this.OtherProgramsLabel.TabIndex = 6;
@@ -229,16 +245,18 @@
             // 
             this.ProgramsCheckedListBox3.BackColor = System.Drawing.Color.PeachPuff;
             this.ProgramsCheckedListBox3.FormattingEnabled = true;
-            this.ProgramsCheckedListBox3.Location = new System.Drawing.Point(9, 302);
+            this.ProgramsCheckedListBox3.Location = new System.Drawing.Point(8, 312);
+            this.ProgramsCheckedListBox3.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.ProgramsCheckedListBox3.Name = "ProgramsCheckedListBox3";
-            this.ProgramsCheckedListBox3.Size = new System.Drawing.Size(231, 109);
+            this.ProgramsCheckedListBox3.Size = new System.Drawing.Size(269, 112);
             this.ProgramsCheckedListBox3.TabIndex = 5;
             // 
             // ProgramsCheckedListBoxLabel3
             // 
             this.ProgramsCheckedListBoxLabel3.AutoSize = true;
-            this.ProgramsCheckedListBoxLabel3.Font = new System.Drawing.Font("Trebuchet MS", 12F);
-            this.ProgramsCheckedListBoxLabel3.Location = new System.Drawing.Point(5, 277);
+            this.ProgramsCheckedListBoxLabel3.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.ProgramsCheckedListBoxLabel3.Location = new System.Drawing.Point(8, 287);
+            this.ProgramsCheckedListBoxLabel3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.ProgramsCheckedListBoxLabel3.Name = "ProgramsCheckedListBoxLabel3";
             this.ProgramsCheckedListBoxLabel3.Size = new System.Drawing.Size(48, 22);
             this.ProgramsCheckedListBoxLabel3.TabIndex = 4;
@@ -248,16 +266,18 @@
             // 
             this.ProgramsCheckedListBox2.BackColor = System.Drawing.Color.PeachPuff;
             this.ProgramsCheckedListBox2.FormattingEnabled = true;
-            this.ProgramsCheckedListBox2.Location = new System.Drawing.Point(9, 165);
+            this.ProgramsCheckedListBox2.Location = new System.Drawing.Point(8, 172);
+            this.ProgramsCheckedListBox2.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.ProgramsCheckedListBox2.Name = "ProgramsCheckedListBox2";
-            this.ProgramsCheckedListBox2.Size = new System.Drawing.Size(231, 109);
+            this.ProgramsCheckedListBox2.Size = new System.Drawing.Size(269, 112);
             this.ProgramsCheckedListBox2.TabIndex = 3;
             // 
             // ProgramsCheckedListBoxLabel2
             // 
             this.ProgramsCheckedListBoxLabel2.AutoSize = true;
-            this.ProgramsCheckedListBoxLabel2.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.ProgramsCheckedListBoxLabel2.Location = new System.Drawing.Point(5, 142);
+            this.ProgramsCheckedListBoxLabel2.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.ProgramsCheckedListBoxLabel2.Location = new System.Drawing.Point(8, 147);
+            this.ProgramsCheckedListBoxLabel2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.ProgramsCheckedListBoxLabel2.Name = "ProgramsCheckedListBoxLabel2";
             this.ProgramsCheckedListBoxLabel2.Size = new System.Drawing.Size(151, 22);
             this.ProgramsCheckedListBoxLabel2.TabIndex = 2;
@@ -266,8 +286,9 @@
             // ProgramsCheckedListBoxLabel1
             // 
             this.ProgramsCheckedListBoxLabel1.AutoSize = true;
-            this.ProgramsCheckedListBoxLabel1.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.ProgramsCheckedListBoxLabel1.Location = new System.Drawing.Point(3, 6);
+            this.ProgramsCheckedListBoxLabel1.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.ProgramsCheckedListBoxLabel1.Location = new System.Drawing.Point(4, 7);
+            this.ProgramsCheckedListBoxLabel1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.ProgramsCheckedListBoxLabel1.Name = "ProgramsCheckedListBoxLabel1";
             this.ProgramsCheckedListBoxLabel1.Size = new System.Drawing.Size(80, 22);
             this.ProgramsCheckedListBoxLabel1.TabIndex = 1;
@@ -279,8 +300,9 @@
             this.SelectAllCheckBox.Checked = true;
             this.SelectAllCheckBox.CheckState = System.Windows.Forms.CheckState.Checked;
             this.SelectAllCheckBox.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.SelectAllCheckBox.Font = new System.Drawing.Font("Trebuchet MS", 11F);
-            this.SelectAllCheckBox.Location = new System.Drawing.Point(3, 390);
+            this.SelectAllCheckBox.Font = new System.Drawing.Font("Trebuchet MS", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.SelectAllCheckBox.Location = new System.Drawing.Point(11, 400);
+            this.SelectAllCheckBox.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.SelectAllCheckBox.Name = "SelectAllCheckBox";
             this.SelectAllCheckBox.Size = new System.Drawing.Size(86, 24);
             this.SelectAllCheckBox.TabIndex = 0;
@@ -296,10 +318,12 @@
             this.ModeSelectionGroupBox.Controls.Add(this.DeleteRadioButton);
             this.ModeSelectionGroupBox.Controls.Add(this.InstallRadioButton);
             this.ModeSelectionGroupBox.Controls.Add(this.UpdateRadioButton);
-            this.ModeSelectionGroupBox.Font = new System.Drawing.Font("Trebuchet MS", 12F);
-            this.ModeSelectionGroupBox.Location = new System.Drawing.Point(3, 71);
+            this.ModeSelectionGroupBox.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.ModeSelectionGroupBox.Location = new System.Drawing.Point(4, 82);
+            this.ModeSelectionGroupBox.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.ModeSelectionGroupBox.Name = "ModeSelectionGroupBox";
-            this.ModeSelectionGroupBox.Size = new System.Drawing.Size(175, 186);
+            this.ModeSelectionGroupBox.Padding = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.ModeSelectionGroupBox.Size = new System.Drawing.Size(173, 215);
             this.ModeSelectionGroupBox.TabIndex = 0;
             this.ModeSelectionGroupBox.TabStop = false;
             this.ModeSelectionGroupBox.Text = "Mode:";
@@ -309,9 +333,10 @@
             this.StartButton.BackColor = System.Drawing.Color.Aquamarine;
             this.StartButton.Cursor = System.Windows.Forms.Cursors.Hand;
             this.StartButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.StartButton.Location = new System.Drawing.Point(6, 103);
+            this.StartButton.Location = new System.Drawing.Point(7, 119);
+            this.StartButton.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.StartButton.Name = "StartButton";
-            this.StartButton.Size = new System.Drawing.Size(163, 35);
+            this.StartButton.Size = new System.Drawing.Size(158, 40);
             this.StartButton.TabIndex = 3;
             this.StartButton.Text = "Start";
             this.StartButton.UseVisualStyleBackColor = false;
@@ -322,9 +347,10 @@
             this.StopButton.BackColor = System.Drawing.Color.Red;
             this.StopButton.Cursor = System.Windows.Forms.Cursors.Hand;
             this.StopButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.StopButton.Location = new System.Drawing.Point(6, 144);
+            this.StopButton.Location = new System.Drawing.Point(7, 166);
+            this.StopButton.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.StopButton.Name = "StopButton";
-            this.StopButton.Size = new System.Drawing.Size(163, 35);
+            this.StopButton.Size = new System.Drawing.Size(158, 40);
             this.StopButton.TabIndex = 3;
             this.StopButton.Text = "Stop";
             this.StopButton.UseVisualStyleBackColor = false;
@@ -333,8 +359,9 @@
             // DeleteRadioButton
             // 
             this.DeleteRadioButton.AutoSize = true;
-            this.DeleteRadioButton.Font = new System.Drawing.Font("Trebuchet MS", 12F);
-            this.DeleteRadioButton.Location = new System.Drawing.Point(6, 67);
+            this.DeleteRadioButton.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.DeleteRadioButton.Location = new System.Drawing.Point(7, 77);
+            this.DeleteRadioButton.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.DeleteRadioButton.Name = "DeleteRadioButton";
             this.DeleteRadioButton.Size = new System.Drawing.Size(87, 26);
             this.DeleteRadioButton.TabIndex = 2;
@@ -345,8 +372,9 @@
             // 
             this.InstallRadioButton.AutoSize = true;
             this.InstallRadioButton.Checked = true;
-            this.InstallRadioButton.Font = new System.Drawing.Font("Trebuchet MS", 12F);
-            this.InstallRadioButton.Location = new System.Drawing.Point(6, 25);
+            this.InstallRadioButton.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.InstallRadioButton.Location = new System.Drawing.Point(7, 29);
+            this.InstallRadioButton.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.InstallRadioButton.Name = "InstallRadioButton";
             this.InstallRadioButton.Size = new System.Drawing.Size(68, 26);
             this.InstallRadioButton.TabIndex = 0;
@@ -357,8 +385,9 @@
             // UpdateRadioButton
             // 
             this.UpdateRadioButton.AutoSize = true;
-            this.UpdateRadioButton.Font = new System.Drawing.Font("Trebuchet MS", 12F);
-            this.UpdateRadioButton.Location = new System.Drawing.Point(6, 46);
+            this.UpdateRadioButton.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.UpdateRadioButton.Location = new System.Drawing.Point(7, 53);
+            this.UpdateRadioButton.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.UpdateRadioButton.Name = "UpdateRadioButton";
             this.UpdateRadioButton.Size = new System.Drawing.Size(79, 26);
             this.UpdateRadioButton.TabIndex = 1;
@@ -368,17 +397,19 @@
             // pictureBox1
             // 
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(3, 3);
+            this.pictureBox1.Location = new System.Drawing.Point(4, 3);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(175, 62);
+            this.pictureBox1.Size = new System.Drawing.Size(175, 73);
             this.pictureBox1.TabIndex = 2;
             this.pictureBox1.TabStop = false;
             // 
             // PackagesInfoLabel
             // 
             this.PackagesInfoLabel.AutoSize = true;
-            this.PackagesInfoLabel.Font = new System.Drawing.Font("Trebuchet MS", 12.25F);
-            this.PackagesInfoLabel.Location = new System.Drawing.Point(8, 434);
+            this.PackagesInfoLabel.Font = new System.Drawing.Font("Trebuchet MS", 12.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.PackagesInfoLabel.Location = new System.Drawing.Point(7, 454);
+            this.PackagesInfoLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.PackagesInfoLabel.Name = "PackagesInfoLabel";
             this.PackagesInfoLabel.Size = new System.Drawing.Size(186, 23);
             this.PackagesInfoLabel.TabIndex = 2;
@@ -386,14 +417,15 @@
             // 
             // Installer
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Sienna;
-            this.ClientSize = new System.Drawing.Size(931, 459);
+            this.ClientSize = new System.Drawing.Size(1050, 483);
             this.Controls.Add(this.PackagesInfoLabel);
             this.Controls.Add(this.InstallerSplitContainer);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.MaximizeBox = false;
             this.Name = "Installer";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

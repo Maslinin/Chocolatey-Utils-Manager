@@ -127,6 +127,10 @@ namespace CUM.ProgramInstaller
                     await this.UninstallPackages(this.GetSelectedPackagesListItems());
                 }
             }
+            catch(OperationCanceledException)
+            {
+                Choco.CancellationToken.Dispose();
+            }
             catch(Exception ex)
             {
                 MessageBox.Show(ex.ToString(),

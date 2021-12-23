@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Diagnostics;
+using System.Threading;
 
 namespace CUM.Chocolatey
 {
@@ -48,8 +49,11 @@ namespace CUM.Chocolatey
             chocoInstall.Close();
         }
 
-        internal void InstallPackage(string packageLinkName)
+        internal void InstallPackage(string packageLinkName, CancellationToken token = default)
         {
+            if(token.IsCancellationRequested)
+                token.ThrowIfCancellationRequested();
+
             var chocoInstall = new Process { StartInfo = ProcessStartInfo };
 
             if (!chocoInstall.Start())
@@ -66,8 +70,11 @@ namespace CUM.Chocolatey
             chocoInstall.Close();
         }
 
-        internal void UpdatePackage(string packageLinkName)
+        internal void UpdatePackage(string packageLinkName, CancellationToken token = default)
         {
+            if (token.IsCancellationRequested)
+                token.ThrowIfCancellationRequested();
+
             var chocoInstall = new Process { StartInfo = ProcessStartInfo };
 
             if (!chocoInstall.Start())
@@ -84,8 +91,11 @@ namespace CUM.Chocolatey
             chocoInstall.Close();
         }
 
-        internal void UninstallPackage(string packageLinkName)
+        internal void UninstallPackage(string packageLinkName, CancellationToken token = default)
         {
+            if (token.IsCancellationRequested)
+                token.ThrowIfCancellationRequested();
+
             var chocoInstall = new Process { StartInfo = ProcessStartInfo };
 
             if (!chocoInstall.Start())

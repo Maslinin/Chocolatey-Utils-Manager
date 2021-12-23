@@ -19,7 +19,7 @@ namespace CUM.Chocolatey
         {
             if (!base.ChocoExists)
             {
-                await Task.Run(() => base.ChocoInstall(), CancellationToken.Token);
+                await Task.Run(() => base.ChocoInstall());
             }
         }
 
@@ -31,7 +31,7 @@ namespace CUM.Chocolatey
         {
             if (base.ChocoExists)
             {
-                await Task.Run(() => base.InstallPackage(packageLinkName), CancellationToken.Token);
+                await Task.Run(() => base.InstallPackage(packageLinkName, CancellationToken.Token), CancellationToken.Token);
             }
         }
 
@@ -43,7 +43,7 @@ namespace CUM.Chocolatey
         {
             if (base.ChocoExists)
             {
-                await Task.Run(() => base.UpdatePackage(packageLinkName), CancellationToken.Token);
+                await Task.Run(() => base.UpdatePackage(packageLinkName, CancellationToken.Token), CancellationToken.Token);
             }
         }
 
@@ -55,7 +55,7 @@ namespace CUM.Chocolatey
         {
             if (base.ChocoExists)
             {
-                await Task.Run(() => base.UninstallPackage(packageLinkName), CancellationToken.Token);
+                await Task.Run(() => base.UninstallPackage(packageLinkName, CancellationToken.Token), CancellationToken.Token);
             }
         }
     }
