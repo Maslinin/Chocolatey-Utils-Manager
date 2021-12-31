@@ -18,7 +18,6 @@ namespace CUM.Chocolatey
                 RedirectStandardOutput = true,
                 UseShellExecute = false,
                 CreateNoWindow = true,
-                //LoadUserProfile = true,
                 Verb = "runAs",
                 FileName = PSPath
             };
@@ -26,7 +25,9 @@ namespace CUM.Chocolatey
 
         internal bool ChocoExists
         {
+#pragma warning disable IDE0075 //Simplify conditional expression
             get => Environment.GetEnvironmentVariable("ChocolateyInstall") == null ? false : true;
+#pragma warning restore IDE0075 //Simplify conditional expression
         }
 
         internal void ChocoInstall()
@@ -49,10 +50,10 @@ namespace CUM.Chocolatey
             chocoInstall.Close();
         }
 
-        internal void InstallPackage(string packageLinkName, CancellationToken token = default)
+        internal void InstallPackage(string packageLinkName, CancellationToken ? token = default)
         {
-            if(token.IsCancellationRequested)
-                token.ThrowIfCancellationRequested();
+            if((bool)token?.IsCancellationRequested)
+                token?.ThrowIfCancellationRequested();
 
             var chocoInstall = new Process { StartInfo = ProcessStartInfo };
 
@@ -70,10 +71,10 @@ namespace CUM.Chocolatey
             chocoInstall.Close();
         }
 
-        internal void UpdatePackage(string packageLinkName, CancellationToken token = default)
+        internal void UpdatePackage(string packageLinkName, CancellationToken ? token = default)
         {
-            if (token.IsCancellationRequested)
-                token.ThrowIfCancellationRequested();
+            if ((bool)token?.IsCancellationRequested)
+                token?.ThrowIfCancellationRequested();
 
             var chocoInstall = new Process { StartInfo = ProcessStartInfo };
 
@@ -91,10 +92,10 @@ namespace CUM.Chocolatey
             chocoInstall.Close();
         }
 
-        internal void UninstallPackage(string packageLinkName, CancellationToken token = default)
+        internal void UninstallPackage(string packageLinkName, CancellationToken ? token = default)
         {
-            if (token.IsCancellationRequested)
-                token.ThrowIfCancellationRequested();
+            if ((bool)token?.IsCancellationRequested)
+                token?.ThrowIfCancellationRequested();
 
             var chocoInstall = new Process { StartInfo = ProcessStartInfo };
 

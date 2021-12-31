@@ -24,6 +24,22 @@ namespace CUM.ProgramInstaller
             return packageCount;
         }
 
+        internal static int GetSelectedPackagesCount(this Installer installer, System.Windows.Forms.ItemCheckEventArgs e)
+        {
+            int packageCount = 0;
+            foreach (var listBox in installer.ProgramsCheckedListBoxCollection)
+            {
+                packageCount += listBox.CheckedItems.Count;
+            }
+
+            //crutch:
+            if (e.NewValue == System.Windows.Forms.CheckState.Checked)
+                ++packageCount;
+            if (e.NewValue == System.Windows.Forms.CheckState.Unchecked)
+                --packageCount;
+            return packageCount;
+        }
+
         /// <summary>
         /// Gets all entities of the type selected for operation ProgramInfo
         /// </summary>

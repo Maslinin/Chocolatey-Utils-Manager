@@ -33,6 +33,7 @@ namespace CUM.ProgramInstaller
                 this.ProgramsCheckedListBox8,
                 this.OtherProgramsListBox
             };
+
             var ProgramsListBoxLabels = new List<Label>
             {
                 this.ProgramsCheckedListBoxLabel1,
@@ -45,11 +46,6 @@ namespace CUM.ProgramInstaller
                 this.ProgramsCheckedListBoxLabel8,
                 this.OtherProgramsLabel
             };
-
-            foreach (var checkedBox in ProgramsCheckedListBoxCollection)
-            {
-                checkedBox.ItemCheck += this.CheckedListBoxEvent_ItemCheck;
-            }
 
             //Deserialization of json files into objects
             Programs = Newtonsoft.Json.JsonConvert.DeserializeObject<List<ProgramList>>(
@@ -81,8 +77,16 @@ namespace CUM.ProgramInstaller
                 temp = (categoryFromFile == categoryPredicate) ? ProgramsCheckedListBoxCollection[i] : OtherProgramsListBox;
 
                 foreach (var program in Programs[i].Programs)
-                    temp.Items.Add(program, CheckState.Checked);
+                    temp.Items.Add(program, CheckState.Unchecked);
             }
+
+            foreach (var checkedBox in ProgramsCheckedListBoxCollection)
+            {
+                checkedBox.ItemCheck += this.CheckedListBoxEvent_ItemCheck;
+                checkedBox.CheckOnClick = true;
+            }
+
+            this.SelectAllCheckBox.Checked = false;
 
             this.LockStopButton();
             this.UpdatePackagesInfoLabel();
@@ -154,18 +158,29 @@ namespace CUM.ProgramInstaller
 
         private void SelectAllCheckBox_CheckedChanged(object sender, EventArgs e)
         {
+            foreach (var checkedBox in this.ProgramsCheckedListBoxCollection)
+            {
+                checkedBox.ItemCheck -= this.CheckedListBoxEvent_ItemCheck;
+            }
+
             if (SelectAllCheckBox.Checked)
                 this.SelectAllPackages();
             else
                 this.UnselectAllPackages();
+
+            this.UpdatePackagesInfoLabel();
+
+            foreach (var checkedBox in this.ProgramsCheckedListBoxCollection)
+            {
+                checkedBox.ItemCheck += this.CheckedListBoxEvent_ItemCheck;
+            }
         }
 
-        private void CheckedListBoxEvent_ItemCheck(object sender, EventArgs e)
+        public void CheckedListBoxEvent_ItemCheck(object sender, ItemCheckEventArgs e)
         {
-            this.UpdatePackagesInfoLabel();
+            this.UpdatePackagesInfoLabel(e);
         }
 
         private void InstallerClosed(object sender, FormClosedEventArgs e) => Application.Exit();
-
     }
 }

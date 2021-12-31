@@ -10,7 +10,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("Chocolatey Utils Manager")]
+[assembly: AssemblyProduct("ChocolateyUtilsManager")]
 [assembly: AssemblyCopyright("© Danil Rudin, Alexander Chernov, 2021")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]

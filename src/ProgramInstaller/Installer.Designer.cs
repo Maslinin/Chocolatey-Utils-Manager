@@ -104,12 +104,14 @@
             this.InstallerSplitContainer.Panel1.Controls.Add(this.ProgramsCheckedListBoxLabel2);
             this.InstallerSplitContainer.Panel1.Controls.Add(this.ProgramsCheckedListBoxLabel1);
             this.InstallerSplitContainer.Panel1.Controls.Add(this.ProgramsCheckedListBox1);
+            this.InstallerSplitContainer.Panel1.Cursor = System.Windows.Forms.Cursors.Arrow;
             // 
             // InstallerSplitContainer.Panel2
             // 
             this.InstallerSplitContainer.Panel2.Controls.Add(this.SelectAllCheckBox);
             this.InstallerSplitContainer.Panel2.Controls.Add(this.ModeSelectionGroupBox);
             this.InstallerSplitContainer.Panel2.Controls.Add(this.pictureBox1);
+            this.InstallerSplitContainer.Panel2.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.InstallerSplitContainer.Size = new System.Drawing.Size(1030, 440);
             this.InstallerSplitContainer.SplitterDistance = 843;
             this.InstallerSplitContainer.SplitterWidth = 5;
