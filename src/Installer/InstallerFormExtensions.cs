@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace CUM.ProgramInstaller
+namespace CUM.Installer
 {
     /// <summary>
     /// Static class that contains extensions for working with Installer visual display
@@ -125,7 +125,7 @@ namespace CUM.ProgramInstaller
         /// </summary>
         /// <param name="installer"></param>
         /// <param name="programs"></param>
-        internal static async System.Threading.Tasks.Task InstallPackages(this Installer installer, List<Models.ProgramInfo> programs)
+        internal static async System.Threading.Tasks.Task InstallPackages(this Installer installer, List<EntityModels.ProgramInfo> programs)
         {
             int i = 0, packagesCount = installer.GetSelectedPackagesCount();
 
@@ -143,7 +143,7 @@ namespace CUM.ProgramInstaller
         /// </summary>
         /// <param name="installer"></param>
         /// <param name="programs"></param>
-        internal static async System.Threading.Tasks.Task UpdatePackages(this Installer installer, List<Models.ProgramInfo> programs)
+        internal static async System.Threading.Tasks.Task UpdatePackages(this Installer installer, List<EntityModels.ProgramInfo> programs)
         {
             int i = 0, packagesCount = installer.GetSelectedPackagesCount();
 
@@ -161,7 +161,7 @@ namespace CUM.ProgramInstaller
         /// </summary>
         /// <param name="installer"></param>
         /// <param name="programs"></param>
-        internal static async System.Threading.Tasks.Task UninstallPackages(this Installer installer, List<Models.ProgramInfo> programs)
+        internal static async System.Threading.Tasks.Task UninstallPackages(this Installer installer, List<EntityModels.ProgramInfo> programs)
         {
             int i = 0, packagesCount = installer.GetSelectedPackagesCount();
 

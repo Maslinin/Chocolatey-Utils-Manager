@@ -1,11 +1,11 @@
 ﻿using System.Collections.Generic;
 
-namespace CUM.ProgramInstaller.Models
+namespace CUM.Installer.EntityModels
 {
-    sealed class Categories
+    sealed class InstallerCategories
     {
         public List<string> DisplayedCategories { get; set; } = new List<string>();
 
-        public Categories() { }
+        public InstallerCategories() { }
     }
 }

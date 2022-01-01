@@ -1,7 +1,7 @@
 ﻿using System.Linq;
 using System.Collections.Generic;
 
-namespace CUM.ProgramInstaller
+namespace CUM.Installer
 {
     /// <summary>
     /// Static class containing extensions to work with the Installer class
@@ -20,7 +20,6 @@ namespace CUM.ProgramInstaller
             {
                 packageCount += listBox.CheckedItems.Count;
             }
-
             return packageCount;
         }
 
@@ -45,13 +44,13 @@ namespace CUM.ProgramInstaller
         /// </summary>
         /// <param name="installer"></param>
         /// <returns>List of marked entities ProgramInfo</returns>
-        internal static List<Models.ProgramInfo> GetSelectedPackagesListItems(this Installer installer)
+        internal static List<EntityModels.ProgramInfo> GetSelectedPackagesListItems(this Installer installer)
         {
-            List<Models.ProgramInfo> programs = new List<Models.ProgramInfo>();
+            var programs = new List<EntityModels.ProgramInfo>();
 
             foreach (var listBox in installer.ProgramsCheckedListBoxCollection)
             {
-                programs.AddRange(listBox.CheckedItems.Cast<Models.ProgramInfo>());
+                programs.AddRange(listBox.CheckedItems.Cast<EntityModels.ProgramInfo>());
             }
             return programs;
         }

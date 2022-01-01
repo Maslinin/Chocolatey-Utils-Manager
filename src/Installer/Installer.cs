@@ -2,9 +2,9 @@
 using System.IO;
 using System.Collections.Generic;
 using System.Windows.Forms;
-using CUM.ProgramInstaller.Models;
+using CUM.Installer.EntityModels;
 
-namespace CUM.ProgramInstaller
+namespace CUM.Installer
 {
     internal partial class Installer : Form
     {
@@ -54,8 +54,8 @@ namespace CUM.ProgramInstaller
                 this.OtherProgramsLabel
             };
 
-            var categories = Newtonsoft.Json.JsonConvert.DeserializeObject<Categories>(
-                File.ReadAllText(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Categories.json")));
+            var categories = Newtonsoft.Json.JsonConvert.DeserializeObject<InstallerCategories>(
+                File.ReadAllText(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "InstallerCategories.json")));
 
             //To create register and space independence
             for (int i = 0; i < categories.DisplayedCategories.Count; ++i)

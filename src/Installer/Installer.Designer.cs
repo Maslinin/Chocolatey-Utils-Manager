@@ -1,4 +1,4 @@
-﻿namespace CUM.ProgramInstaller
+﻿namespace CUM.Installer
 {
     internal partial class Installer
     {
