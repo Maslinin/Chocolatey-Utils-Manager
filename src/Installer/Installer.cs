@@ -20,7 +20,6 @@ namespace CUM.ProgramInstaller
             InitializeComponent();
             Choco = new Chocolatey.ChocoAsyncInstaller();
 
-            //ProgramsListBoxCollection.Count must be ProgramsListBoxLabels.Count
             ProgramsCheckedListBoxCollection = new List<CheckedListBox>
             {
                 this.ProgramsCheckedListBox1,
@@ -34,6 +33,14 @@ namespace CUM.ProgramInstaller
                 this.OtherProgramsListBox
             };
 
+            //Deserialization of json files into objects
+            Programs = Newtonsoft.Json.JsonConvert.DeserializeObject<List<ProgramList>>(
+                File.ReadAllText(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "ProgramList.json")));
+        }
+
+        private void Installer_Load(object sender, EventArgs e)
+        {
+            //ProgramsListBoxCollection.Count must be ProgramsListBoxLabels.Count
             var ProgramsListBoxLabels = new List<Label>
             {
                 this.ProgramsCheckedListBoxLabel1,
@@ -47,9 +54,6 @@ namespace CUM.ProgramInstaller
                 this.OtherProgramsLabel
             };
 
-            //Deserialization of json files into objects
-            Programs = Newtonsoft.Json.JsonConvert.DeserializeObject<List<ProgramList>>(
-                File.ReadAllText(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "ProgramList.json")));
             var categories = Newtonsoft.Json.JsonConvert.DeserializeObject<Categories>(
                 File.ReadAllText(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Categories.json")));
 
@@ -74,19 +78,20 @@ namespace CUM.ProgramInstaller
                 var categoryFromFile = Programs[i].Category.Replace(" ", "").ToLower(); //To create register and space independence
                 var categoryPredicate = categories.DisplayedCategories.Find(c => c == categoryFromFile);
 
+                //Get the listbox to which the program will be added
                 temp = (categoryFromFile == categoryPredicate) ? ProgramsCheckedListBoxCollection[i] : OtherProgramsListBox;
-
                 foreach (var program in Programs[i].Programs)
                     temp.Items.Add(program, CheckState.Unchecked);
-            }
-
-            foreach (var checkedBox in ProgramsCheckedListBoxCollection)
-            {
-                checkedBox.ItemCheck += this.CheckedListBoxEvent_ItemCheck;
-                checkedBox.CheckOnClick = true;
-            }
-
+            } 
             this.SelectAllCheckBox.Checked = false;
+
+            foreach (var listBox in ProgramsCheckedListBoxCollection)
+            {
+                listBox.ItemCheck += this.CheckedListBoxEvent_ItemCheck;
+                listBox.CheckOnClick = true;
+                listBox.Sorted = true;
+                listBox.IntegralHeight = false;
+            }
 
             this.LockStopButton();
             this.UpdatePackagesInfoLabel();
@@ -110,8 +115,10 @@ namespace CUM.ProgramInstaller
                 return;
             }
 
-            if(!this.Choco.CancellationToken.IsCancellationRequested)
+            if (!this.Choco.CancellationToken.IsCancellationRequested)
+            {
                 this.Choco.CancellationToken = new System.Threading.CancellationTokenSource();
+            }
 
             this.LockInstallerForm();
             this.UnLockStopButton();
@@ -158,6 +165,7 @@ namespace CUM.ProgramInstaller
 
         private void SelectAllCheckBox_CheckedChanged(object sender, EventArgs e)
         {
+            //Remove the handler method so that the handler is not called after each check box is selected/cleared
             foreach (var checkedBox in this.ProgramsCheckedListBoxCollection)
             {
                 checkedBox.ItemCheck -= this.CheckedListBoxEvent_ItemCheck;
@@ -170,13 +178,14 @@ namespace CUM.ProgramInstaller
 
             this.UpdatePackagesInfoLabel();
 
+            //Return his method to the handler
             foreach (var checkedBox in this.ProgramsCheckedListBoxCollection)
             {
                 checkedBox.ItemCheck += this.CheckedListBoxEvent_ItemCheck;
             }
         }
 
-        public void CheckedListBoxEvent_ItemCheck(object sender, ItemCheckEventArgs e)
+        private void CheckedListBoxEvent_ItemCheck(object sender, ItemCheckEventArgs e)
         {
             this.UpdatePackagesInfoLabel(e);
         }

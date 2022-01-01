@@ -92,7 +92,7 @@ namespace CUM.ProgramInstaller
         /// <param name="installer"></param>
         internal static void UpdatePackagesInfoLabel(this Installer installer, System.Windows.Forms.ItemCheckEventArgs e = null)
         {
-            var packagesCount = e is null ? installer.GetSelectedPackagesCount() : installer.GetSelectedPackagesCount(e);
+            var packagesCount = e is null ? installer.GetSelectedPackagesCount() : installer.GetSelectedPackagesCountAfterEvent(e);
             if (packagesCount == 0)
             {
                 installer.PackagesInfoLabel.Text = "No package(s) selected";

@@ -24,7 +24,7 @@ namespace CUM.ProgramInstaller
             return packageCount;
         }
 
-        internal static int GetSelectedPackagesCount(this Installer installer, System.Windows.Forms.ItemCheckEventArgs e)
+        internal static int GetSelectedPackagesCountAfterEvent(this Installer installer, System.Windows.Forms.ItemCheckEventArgs e)
         {
             int packageCount = 0;
             foreach (var listBox in installer.ProgramsCheckedListBoxCollection)
@@ -53,7 +53,6 @@ namespace CUM.ProgramInstaller
             {
                 programs.AddRange(listBox.CheckedItems.Cast<Models.ProgramInfo>());
             }
-
             return programs;
         }
     }

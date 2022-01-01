@@ -6,9 +6,8 @@ namespace CUM.Chocolatey
 {
     internal class ChocoBaseInstaller
     {
-        internal string PSPath { get; private set; } = $@"{Environment.SystemDirectory}\WindowsPowerShell\v1.0\powershell.exe";
-
-        internal ProcessStartInfo ProcessStartInfo { get; private set; }
+        internal ProcessStartInfo ProcessStartInfo { get; }
+        internal string PSPath { get; } = $@"{Environment.SystemDirectory}\WindowsPowerShell\v1.0\powershell.exe";
 
         internal ChocoBaseInstaller()
         {
@@ -50,7 +49,7 @@ namespace CUM.Chocolatey
             chocoInstall.Close();
         }
 
-        internal void InstallPackage(string packageLinkName, CancellationToken ? token = default)
+        internal void InstallPackage(string packageLinkName, CancellationToken ? token = null)
         {
             if((bool)token?.IsCancellationRequested)
                 token?.ThrowIfCancellationRequested();
@@ -71,7 +70,7 @@ namespace CUM.Chocolatey
             chocoInstall.Close();
         }
 
-        internal void UpdatePackage(string packageLinkName, CancellationToken ? token = default)
+        internal void UpdatePackage(string packageLinkName, CancellationToken ? token = null)
         {
             if ((bool)token?.IsCancellationRequested)
                 token?.ThrowIfCancellationRequested();
@@ -92,7 +91,7 @@ namespace CUM.Chocolatey
             chocoInstall.Close();
         }
 
-        internal void UninstallPackage(string packageLinkName, CancellationToken ? token = default)
+        internal void UninstallPackage(string packageLinkName, CancellationToken ? token = null)
         {
             if ((bool)token?.IsCancellationRequested)
                 token?.ThrowIfCancellationRequested();
