@@ -9,6 +9,10 @@ namespace CUM.Installer
     internal partial class Installer : Form
     {
         /// <summary>
+        /// Returns an object for asynchronous Chocolatey operations
+        /// </summary>
+        internal Choco.ChocoAsyncInstaller Choco { get; }
+        /// <summary>
         /// Returns a list of programs from the json file available for installation in Chocolatey
         /// </summary>
         internal List<ProgramList> Programs { get; }
@@ -16,10 +20,6 @@ namespace CUM.Installer
         /// Returns a collection of displayed CheckedListBox containing packages to install
         /// </summary>
         internal List<CheckedListBox> ProgramsCheckedListBoxCollection { get; }
-        /// <summary>
-        /// Returns an object for asynchronous Chocolatey operations
-        /// </summary>
-        internal Choco.ChocoAsyncInstaller Choco { get; }
 
         internal Installer()
         {
@@ -92,6 +92,7 @@ namespace CUM.Installer
             } 
             this.SelectAllCheckBox.Checked = false;
 
+            //Customize Items CheckedListBox:
             foreach (var listBox in ProgramsCheckedListBoxCollection)
             {
                 listBox.ItemCheck += this.CheckedListBoxEvent_ItemCheck;
@@ -112,7 +113,6 @@ namespace CUM.Installer
 
         private async void StartButton_Click(object sender, EventArgs e)
         {
-            //If no packages are selected:
             if (this.GetSelectedPackagesCount() == 0)
             {
                 MessageBox.Show("No packages selected for operation",
@@ -134,15 +134,15 @@ namespace CUM.Installer
             {
                 if (InstallRadioButton.Checked)
                 {
-                    await this.InstallPackages(this.GetSelectedPackagesListItems(), Choco.CancellationToken);
+                    await this.InstallPackages(this.GetSelectedPackagesItems(), Choco.CancellationToken);
                 }
                 else if (UpdateRadioButton.Checked)
                 {
-                    await this.UpdatePackages(this.GetSelectedPackagesListItems(), Choco.CancellationToken);
+                    await this.UpdatePackages(this.GetSelectedPackagesItems(), Choco.CancellationToken);
                 }
                 else if(DeleteRadioButton.Checked)
                 {
-                    await this.UninstallPackages(this.GetSelectedPackagesListItems(), Choco.CancellationToken);
+                    await this.UninstallPackages(this.GetSelectedPackagesItems(), Choco.CancellationToken);
                 }
             }
             catch(OperationCanceledException)
@@ -165,7 +165,7 @@ namespace CUM.Installer
         {
             this.Choco.CancellationToken?.Cancel();
 
-            this.PackagesInfoLabel.Text = "Installing cancelled. Installation will stop as soon as the current package is installed.";
+            this.InfoLabel.Text = "Installing cancelled... The action will be completed after the current package is completed.";
         }
 
         private void SelectAllCheckBox_CheckedChanged(object sender, EventArgs e)

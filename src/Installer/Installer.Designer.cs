@@ -56,7 +56,7 @@
             this.InstallRadioButton = new System.Windows.Forms.RadioButton();
             this.UpdateRadioButton = new System.Windows.Forms.RadioButton();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.PackagesInfoLabel = new System.Windows.Forms.Label();
+            this.InfoLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.InstallerSplitContainer)).BeginInit();
             this.InstallerSplitContainer.Panel1.SuspendLayout();
             this.InstallerSplitContainer.Panel2.SuspendLayout();
@@ -428,16 +428,16 @@
             this.pictureBox1.TabIndex = 2;
             this.pictureBox1.TabStop = false;
             // 
-            // PackagesInfoLabel
+            // InfoLabel
             // 
-            this.PackagesInfoLabel.AutoSize = true;
-            this.PackagesInfoLabel.Font = new System.Drawing.Font("Trebuchet MS", 12.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.PackagesInfoLabel.Location = new System.Drawing.Point(13, 432);
-            this.PackagesInfoLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.PackagesInfoLabel.Name = "PackagesInfoLabel";
-            this.PackagesInfoLabel.Size = new System.Drawing.Size(186, 23);
-            this.PackagesInfoLabel.TabIndex = 2;
-            this.PackagesInfoLabel.Text = "No package(s) selected";
+            this.InfoLabel.AutoSize = true;
+            this.InfoLabel.Font = new System.Drawing.Font("Trebuchet MS", 12.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.InfoLabel.Location = new System.Drawing.Point(13, 432);
+            this.InfoLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.InfoLabel.Name = "InfoLabel";
+            this.InfoLabel.Size = new System.Drawing.Size(186, 23);
+            this.InfoLabel.TabIndex = 2;
+            this.InfoLabel.Text = "No package(s) selected";
             // 
             // Installer
             // 
@@ -445,7 +445,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Sienna;
             this.ClientSize = new System.Drawing.Size(1010, 459);
-            this.Controls.Add(this.PackagesInfoLabel);
+            this.Controls.Add(this.InfoLabel);
             this.Controls.Add(this.InstallerSplitContainer);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -497,7 +497,7 @@
         internal System.Windows.Forms.Button StartButton;
         internal System.Windows.Forms.CheckBox SelectAllCheckBox;
         internal System.Windows.Forms.PictureBox pictureBox1;
-        internal System.Windows.Forms.Label PackagesInfoLabel;
+        internal System.Windows.Forms.Label InfoLabel;
         internal System.Windows.Forms.Button StopButton;
         internal System.Windows.Forms.SplitContainer InstallerSplitContainer;
         internal System.Windows.Forms.CheckedListBox ProgramsCheckedListBox4;

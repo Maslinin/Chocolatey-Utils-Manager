@@ -54,7 +54,7 @@ namespace CUM.Installer
         /// </summary>
         /// <param name="installer"></param>
         /// <returns>List of marked entities ProgramInfo</returns>
-        internal static List<EntityModels.ProgramInfo> GetSelectedPackagesListItems(this Installer installer)
+        internal static List<EntityModels.ProgramInfo> GetSelectedPackagesItems(this Installer installer)
         {
             var programs = new List<EntityModels.ProgramInfo>();
 

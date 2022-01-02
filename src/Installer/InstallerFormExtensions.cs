@@ -97,11 +97,11 @@ namespace CUM.Installer
             var packagesCount = e is null ? installer.GetSelectedPackagesCount() : installer.GetSelectedPackagesCountAfterEvent(e);
             if (packagesCount == 0)
             {
-                installer.PackagesInfoLabel.Text = "No package(s) selected";
+                installer.InfoLabel.Text = "No package(s) selected";
             }
             else
             {
-                installer.PackagesInfoLabel.Text = $"Select(ed) {packagesCount} package(s)";
+                installer.InfoLabel.Text = $"Select(ed) {packagesCount} package(s)";
             }
         }
 
@@ -114,9 +114,9 @@ namespace CUM.Installer
             if (!installer.Choco.ChocoExists)
             {
                 installer.LockInstallerForm();
-                installer.PackagesInfoLabel.Text = "Chocolatey isn't found on your computer. Installing it...";
+                installer.InfoLabel.Text = "Chocolatey isn't found on your computer. Installing it...";
                 await installer.Choco.InstallChocoAsync();
-                installer.PackagesInfoLabel.Text = "Chocolatey was installed";
+                installer.InfoLabel.Text = "Chocolatey was installed";
                 installer.UnLockInstallerForm();
                 installer.LockStopButton();
             }
@@ -124,89 +124,89 @@ namespace CUM.Installer
 
         /// <summary>
         /// Installs the packages passed to the parameter as a collection<br/>
-        /// An additional "cancellationToken" parameter is required to cancel install and exit the asynchronous thread
+        /// cancellationToken parameter is required to cancel install and exit the asynchronous thread
         /// </summary>
         /// <param name="installer"></param>
         /// <param name="programs"></param>
         internal static async Task InstallPackages(this Installer installer, List<EntityModels.ProgramInfo> programs,
-            CancellationTokenSource cancellationToken = null)
+            CancellationTokenSource cancellationToken)
         {
             int i = 0, packagesCount = installer.GetSelectedPackagesCount();
 
-            installer.PackagesInfoLabel.Text = $"0 out of {packagesCount} packages installed";
+            installer.InfoLabel.Text = $"0 out of {packagesCount} packages installed";
             foreach (var program in programs)
             {
-                installer.PackagesInfoLabel.Text = $"{i++} out of {packagesCount} packages installed: installing {program.ProgramName}";
+                installer.InfoLabel.Text = $"{i++} out of {packagesCount} packages installed: installing {program.ProgramName}";
                 await installer.Choco.InstallPackageAsync(program.ChocolateyInstallName);
 
                 if (cancellationToken?.IsCancellationRequested ?? false)
                 {
                     installer.UnLockInstallerForm();
                     installer.LockStopButton();
-                    installer.PackagesInfoLabel.Text = "Installing canceled";
+                    installer.InfoLabel.Text = "Installing canceled";
 
                     throw new System.OperationCanceledException();
                 }
             }
-            installer.PackagesInfoLabel.Text = "Installing completed";
+            installer.InfoLabel.Text = "Installing completed";
         }
 
         /// <summary>
         /// Updates the packages passed to the parameter as a collection<br/>
-        /// An additional "cancellationToken" parameter is required to cancel update and exit the asynchronous thread
+        /// cancellationToken parameter is required to cancel update and exit the asynchronous thread
         /// </summary>
         /// <param name="installer"></param>
         /// <param name="programs"></param>
         internal static async Task UpdatePackages(this Installer installer, List<EntityModels.ProgramInfo> programs,
-            CancellationTokenSource cancellationToken = null)
+            CancellationTokenSource cancellationToken)
         {
             int i = 0, packagesCount = installer.GetSelectedPackagesCount();
 
-            installer.PackagesInfoLabel.Text = $"0 out of {packagesCount} packages updated";
+            installer.InfoLabel.Text = $"0 out of {packagesCount} packages updated";
             foreach (var program in programs)
             {
-                installer.PackagesInfoLabel.Text = $"{i++} out of {packagesCount} packages updated: updating {program.ProgramName}";
+                installer.InfoLabel.Text = $"{i++} out of {packagesCount} packages updated: updating {program.ProgramName}";
                 await installer.Choco.UpdatePackageAsync(program.ChocolateyInstallName);
 
                 if (cancellationToken?.IsCancellationRequested ?? false)
                 {
                     installer.UnLockInstallerForm();
                     installer.LockStopButton();
-                    installer.PackagesInfoLabel.Text = "Updating canceled";
+                    installer.InfoLabel.Text = "Updating canceled";
 
                     throw new System.OperationCanceledException();
                 }
             }
-            installer.PackagesInfoLabel.Text = "Updating completed";
+            installer.InfoLabel.Text = "Updating completed";
         }
 
         /// <summary>
         /// Uninstall the packages passed to the parameter as a collection<br/>
-        /// An additional "cancellationToken" parameter is required to cancel uninstall and exit the asynchronous thread
+        /// cancellationToken parameter is required to cancel uninstall and exit the asynchronous thread
         /// </summary>
         /// <param name="installer"></param>
         /// <param name="programs"></param>
         internal static async Task UninstallPackages(this Installer installer, List<EntityModels.ProgramInfo> programs,
-            CancellationTokenSource cancellationToken = null)
+            CancellationTokenSource cancellationToken)
         {
             int i = 0, packagesCount = installer.GetSelectedPackagesCount();
 
-            installer.PackagesInfoLabel.Text = $"0 out of {packagesCount} packages deleted";
+            installer.InfoLabel.Text = $"0 out of {packagesCount} packages deleted";
             foreach (var program in programs)
             {
-                installer.PackagesInfoLabel.Text = $"{i++} out of {packagesCount} packages uninstalled: uninstalling {program.ProgramName}";
+                installer.InfoLabel.Text = $"{i++} out of {packagesCount} packages uninstalled: uninstalling {program.ProgramName}";
                 await installer.Choco.UninstallPackageAsync(program.ChocolateyInstallName);
 
                 if (cancellationToken?.IsCancellationRequested ?? false)
                 {
                     installer.UnLockInstallerForm();
                     installer.LockStopButton();
-                    installer.PackagesInfoLabel.Text = "Uninstalling canceled";
+                    installer.InfoLabel.Text = "Uninstalling canceled";
 
                     throw new System.OperationCanceledException();
                 }
             }
-            installer.PackagesInfoLabel.Text = "Uninstallation completed";
+            installer.InfoLabel.Text = "Uninstallation completed";
         }
     }
 }
