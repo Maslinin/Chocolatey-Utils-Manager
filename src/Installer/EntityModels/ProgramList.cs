@@ -2,11 +2,25 @@
 
 namespace CUM.Installer.EntityModels
 {
-    sealed class ProgramList
+    /// <summary>
+    /// Contains information about Chocolatey packages in a specific category
+    /// </summary>
+    public sealed class ProgramList
     {
-        public string Category { get; set; }
-        public List<ProgramInfo> Programs { get; set; } = new List<ProgramInfo>();
+        /// <summary>
+        /// Returns the category to which the list of Programs in this instance belongs
+        /// </summary>
+        public string Category { get; }
+        /// <summary>
+        /// Returns a list of ProgramInfo instances, each containing information about a particular package
+        /// </summary>
+        public List<ProgramInfo> Programs { get; } = new List<ProgramInfo>();
 
+        /// <summary>
+        /// Initializes a new instance ProgramList
+        /// </summary>
+        /// <param name="Category"></param>
+        /// <param name="Programs"></param>
         public ProgramList(string Category, List<ProgramInfo> Programs)
         {
             this.Category = Category;

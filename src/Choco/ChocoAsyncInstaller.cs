@@ -1,18 +1,24 @@
 ﻿using System.Threading.Tasks;
 
-namespace CUM.Chocolatey
+namespace CUM.Choco
 {
-    sealed class ChocoAsyncInstaller : ChocoBaseInstaller
+    internal sealed class ChocoAsyncInstaller : ChocoBaseInstaller
     {
+        /// <summary>
+        /// Returns or sets the cancellation token for asynchronous operations
+        /// </summary>
         internal System.Threading.CancellationTokenSource CancellationToken { get; set; }
 
+        /// <summary>
+        /// Initializes an instance inherited from ChocoBaseInstaller ChocoAsyncInstaller
+        /// </summary>
         internal ChocoAsyncInstaller() : base()
         {
             CancellationToken = new System.Threading.CancellationTokenSource();
         }
 
         /// <summary>
-        /// Installs Chocolatey if it is not installed
+        /// Asynchronously installs Chocolatey if it is not installed
         /// </summary>
         /// <param name="auth"></param>
         internal async Task InstallChocoAsync()
@@ -24,7 +30,8 @@ namespace CUM.Chocolatey
         }
 
         /// <summary>
-        /// Installs the specified Chocolatey package
+        /// Asynchronously installs a package using Chocolatey<br/>
+        /// Uses the instance token to cancel the installation
         /// </summary>
         /// <param name="packageLinkName"></param>
         internal async Task InstallPackageAsync(string packageLinkName)
@@ -36,7 +43,8 @@ namespace CUM.Chocolatey
         }
 
         /// <summary>
-        /// Updates the specified Chocolatey package
+        /// Asynchronously updates the package using Chocolatey<br/>
+        /// Uses the instance token to cancel the update
         /// </summary>
         /// <param name="packageLinkName"></param>
         internal async Task UpdatePackageAsync(string packageLinkName)
@@ -48,7 +56,8 @@ namespace CUM.Chocolatey
         }
 
         /// <summary>
-        /// Deletes the specified Chocolatey package
+        /// Asynchronously deletes a package using Chocolatey<br/>
+        /// Uses the instance token to cancel the deletion
         /// </summary>
         /// <param name="packageLinkName"></param>
         internal async Task UninstallPackageAsync(string packageLinkName)

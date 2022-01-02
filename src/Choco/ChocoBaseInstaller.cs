@@ -2,11 +2,17 @@
 using System.Diagnostics;
 using System.Threading;
 
-namespace CUM.Chocolatey
+namespace CUM.Choco
 {
     internal class ChocoBaseInstaller
     {
+        /// <summary>
+        /// Returns a ProcessStartInfo instance that contains the parameters for starting the process
+        /// </summary>
         internal ProcessStartInfo ProcessStartInfo { get; }
+        /// <summary>
+        /// Returns the path to the PowerShell.exe
+        /// </summary>
         internal string PSPath { get; } = $@"{Environment.SystemDirectory}\WindowsPowerShell\v1.0\powershell.exe";
 
         internal ChocoBaseInstaller()
@@ -22,6 +28,9 @@ namespace CUM.Chocolatey
             };
         }
 
+        /// <summary>
+        /// Returns true if Chocolatey is set; otherwise false
+        /// </summary>
         internal bool ChocoExists
         {
 #pragma warning disable IDE0075 //Simplify conditional expression
@@ -29,14 +38,16 @@ namespace CUM.Chocolatey
 #pragma warning restore IDE0075 //Simplify conditional expression
         }
 
+        /// <summary>
+        /// Installs Chocolatey if it is not installed
+        /// </summary>
         internal void ChocoInstall()
         {
             string install = "Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))";
 
             var chocoInstall = new Process { StartInfo = ProcessStartInfo };
-
             if (!chocoInstall.Start())
-                throw new InvalidOperationException($"{chocoInstall.Id} - process error");
+                throw new InvalidOperationException($"process {chocoInstall.Id} is failed");
 
             chocoInstall.PriorityClass = ProcessPriorityClass.High;
             chocoInstall.PriorityBoostEnabled = true;
@@ -49,15 +60,20 @@ namespace CUM.Chocolatey
             chocoInstall.Close();
         }
 
-        internal void InstallPackage(string packageLinkName, CancellationToken ? token = null)
+        /// <summary>
+        /// Installs a package using Chocolatey<br/>
+        /// The optional "cancellationToken" parameter is needed only if this method is used in an asynchronous thread
+        /// </summary>
+        /// <param name="packageLinkName"></param>
+        /// <param name="cancellationToken"></param>
+        internal void InstallPackage(string packageLinkName, CancellationToken ? cancellationToken = null)
         {
-            if((bool)token?.IsCancellationRequested)
-                token?.ThrowIfCancellationRequested();
+            if(cancellationToken?.IsCancellationRequested ?? false)
+                cancellationToken?.ThrowIfCancellationRequested();
 
             var chocoInstall = new Process { StartInfo = ProcessStartInfo };
-
             if (!chocoInstall.Start())
-                throw new InvalidOperationException($"{chocoInstall.Id} - {packageLinkName} - process error");
+                throw new InvalidOperationException($"process {chocoInstall.Id} is failed: {packageLinkName}");
 
             chocoInstall.PriorityClass = ProcessPriorityClass.High;
             chocoInstall.PriorityBoostEnabled = true;
@@ -70,15 +86,20 @@ namespace CUM.Chocolatey
             chocoInstall.Close();
         }
 
-        internal void UpdatePackage(string packageLinkName, CancellationToken ? token = null)
+        /// <summary>
+        /// Updates the package using Chocolatey<br/>
+        /// The optional "cancellationToken" parameter is needed only if this method is used in an asynchronous thread
+        /// </summary>
+        /// <param name="packageLinkName"></param>
+        /// <param name="cancellationToken"></param>
+        internal void UpdatePackage(string packageLinkName, CancellationToken ? cancellationToken = null)
         {
-            if ((bool)token?.IsCancellationRequested)
-                token?.ThrowIfCancellationRequested();
+            if (cancellationToken?.IsCancellationRequested ?? false)
+                cancellationToken?.ThrowIfCancellationRequested();
 
             var chocoInstall = new Process { StartInfo = ProcessStartInfo };
-
             if (!chocoInstall.Start())
-                throw new InvalidOperationException($"{chocoInstall.Id} - {packageLinkName} - process error");
+                throw new InvalidOperationException($"process {chocoInstall.Id} is failed: {packageLinkName}");
 
             chocoInstall.PriorityClass = ProcessPriorityClass.High;
             chocoInstall.PriorityBoostEnabled = true;
@@ -91,15 +112,20 @@ namespace CUM.Chocolatey
             chocoInstall.Close();
         }
 
-        internal void UninstallPackage(string packageLinkName, CancellationToken ? token = null)
+        /// <summary>
+        /// Deletes a package using Chocolatey<br/>
+        /// The optional "cancellationToken" parameter is needed only if this method is used in an asynchronous thread
+        /// </summary>
+        /// <param name="packageLinkName"></param>
+        /// <param name="cancellationToken"></param>
+        internal void UninstallPackage(string packageLinkName, CancellationToken ? cancellationToken = null)
         {
-            if ((bool)token?.IsCancellationRequested)
-                token?.ThrowIfCancellationRequested();
+            if (cancellationToken?.IsCancellationRequested ?? false)
+                cancellationToken?.ThrowIfCancellationRequested();
 
             var chocoInstall = new Process { StartInfo = ProcessStartInfo };
-
             if (!chocoInstall.Start())
-                throw new InvalidOperationException($"{chocoInstall.Id} - {packageLinkName} - process error");
+                throw new InvalidOperationException($"process {chocoInstall.Id} is failed: {packageLinkName}");
 
             chocoInstall.PriorityClass = ProcessPriorityClass.High;
             chocoInstall.PriorityBoostEnabled = true;

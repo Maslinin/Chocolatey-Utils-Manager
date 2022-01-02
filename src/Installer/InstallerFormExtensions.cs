@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System.Threading;
+using System.Threading.Tasks;
+using System.Collections.Generic;
 
 namespace CUM.Installer
 {
@@ -107,7 +109,7 @@ namespace CUM.Installer
         /// Installs Chocololatey if it is not installed
         /// </summary>
         /// <param name="installer"></param>
-        internal static async System.Threading.Tasks.Task InstallChoco(this Installer installer)
+        internal static async Task InstallChoco(this Installer installer)
         {
             if (!installer.Choco.ChocoExists)
             {
@@ -121,11 +123,13 @@ namespace CUM.Installer
         }
 
         /// <summary>
-        /// Installs the packages passed to the parameter as a collection
+        /// Installs the packages passed to the parameter as a collection<br/>
+        /// An additional "cancellationToken" parameter is required to cancel install and exit the asynchronous thread
         /// </summary>
         /// <param name="installer"></param>
         /// <param name="programs"></param>
-        internal static async System.Threading.Tasks.Task InstallPackages(this Installer installer, List<EntityModels.ProgramInfo> programs)
+        internal static async Task InstallPackages(this Installer installer, List<EntityModels.ProgramInfo> programs,
+            CancellationTokenSource cancellationToken = null)
         {
             int i = 0, packagesCount = installer.GetSelectedPackagesCount();
 
@@ -135,7 +139,7 @@ namespace CUM.Installer
                 installer.PackagesInfoLabel.Text = $"{i++} out of {packagesCount} packages installed: installing {program.ProgramName}";
                 await installer.Choco.InstallPackageAsync(program.ChocolateyInstallName);
 
-                if (installer.Choco.CancellationToken.IsCancellationRequested)
+                if (cancellationToken?.IsCancellationRequested ?? false)
                 {
                     installer.UnLockInstallerForm();
                     installer.LockStopButton();
@@ -148,11 +152,13 @@ namespace CUM.Installer
         }
 
         /// <summary>
-        /// Updates the packages passed to the parameter as a collection
+        /// Updates the packages passed to the parameter as a collection<br/>
+        /// An additional "cancellationToken" parameter is required to cancel update and exit the asynchronous thread
         /// </summary>
         /// <param name="installer"></param>
         /// <param name="programs"></param>
-        internal static async System.Threading.Tasks.Task UpdatePackages(this Installer installer, List<EntityModels.ProgramInfo> programs)
+        internal static async Task UpdatePackages(this Installer installer, List<EntityModels.ProgramInfo> programs,
+            CancellationTokenSource cancellationToken = null)
         {
             int i = 0, packagesCount = installer.GetSelectedPackagesCount();
 
@@ -162,7 +168,7 @@ namespace CUM.Installer
                 installer.PackagesInfoLabel.Text = $"{i++} out of {packagesCount} packages updated: updating {program.ProgramName}";
                 await installer.Choco.UpdatePackageAsync(program.ChocolateyInstallName);
 
-                if (installer.Choco.CancellationToken.IsCancellationRequested)
+                if (cancellationToken?.IsCancellationRequested ?? false)
                 {
                     installer.UnLockInstallerForm();
                     installer.LockStopButton();
@@ -175,11 +181,13 @@ namespace CUM.Installer
         }
 
         /// <summary>
-        /// Uninstall the packages passed to the parameter as a collection
+        /// Uninstall the packages passed to the parameter as a collection<br/>
+        /// An additional "cancellationToken" parameter is required to cancel uninstall and exit the asynchronous thread
         /// </summary>
         /// <param name="installer"></param>
         /// <param name="programs"></param>
-        internal static async System.Threading.Tasks.Task UninstallPackages(this Installer installer, List<EntityModels.ProgramInfo> programs)
+        internal static async Task UninstallPackages(this Installer installer, List<EntityModels.ProgramInfo> programs,
+            CancellationTokenSource cancellationToken = null)
         {
             int i = 0, packagesCount = installer.GetSelectedPackagesCount();
 
@@ -189,7 +197,7 @@ namespace CUM.Installer
                 installer.PackagesInfoLabel.Text = $"{i++} out of {packagesCount} packages uninstalled: uninstalling {program.ProgramName}";
                 await installer.Choco.UninstallPackageAsync(program.ChocolateyInstallName);
 
-                if (installer.Choco.CancellationToken.IsCancellationRequested)
+                if (cancellationToken?.IsCancellationRequested ?? false)
                 {
                     installer.UnLockInstallerForm();
                     installer.LockStopButton();

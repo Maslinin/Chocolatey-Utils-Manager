@@ -6,7 +6,7 @@ namespace CUM.Installer
     /// <summary>
     /// Static class containing extensions to work with the Installer class
     /// </summary>
-    static class InstallerWorkExtensions
+    internal static class InstallerWorkExtensions
     {
         /// <summary>
         /// Gets the number of selected packages
@@ -23,6 +23,12 @@ namespace CUM.Installer
             return packageCount;
         }
 
+        /// <summary>
+        /// Returns the number of packets selected, given the event data ItemCheckEventArgs
+        /// </summary>
+        /// <param name="installer"></param>
+        /// <param name="e"></param>
+        /// <returns></returns>
         internal static int GetSelectedPackagesCountAfterEvent(this Installer installer, System.Windows.Forms.ItemCheckEventArgs e)
         {
             int packageCount = 0;
@@ -31,11 +37,15 @@ namespace CUM.Installer
                 packageCount += listBox.CheckedItems.Count;
             }
 
-            //crutch:
+            //Crutch:
+            //if it were not for this code,
+            //due to a flaw CheckedListBox the number of packets would be displayed one less after selecting the package,
+            //and one more after removing the package
             if (e.NewValue == System.Windows.Forms.CheckState.Checked)
                 ++packageCount;
             if (e.NewValue == System.Windows.Forms.CheckState.Unchecked)
                 --packageCount;
+
             return packageCount;
         }
 

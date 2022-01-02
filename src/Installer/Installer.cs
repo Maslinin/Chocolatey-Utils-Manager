@@ -13,18 +13,18 @@ namespace CUM.Installer
         /// </summary>
         internal List<ProgramList> Programs { get; }
         /// <summary>
-        /// 
+        /// Returns a collection of displayed CheckedListBox containing packages to install
         /// </summary>
         internal List<CheckedListBox> ProgramsCheckedListBoxCollection { get; }
         /// <summary>
         /// Returns an object for asynchronous Chocolatey operations
         /// </summary>
-        internal Chocolatey.ChocoAsyncInstaller Choco { get; }
+        internal Choco.ChocoAsyncInstaller Choco { get; }
 
         internal Installer()
         {
             InitializeComponent();
-            Choco = new Chocolatey.ChocoAsyncInstaller();
+            Choco = new Choco.ChocoAsyncInstaller();
 
             ProgramsCheckedListBoxCollection = new List<CheckedListBox>
             {
@@ -70,7 +70,7 @@ namespace CUM.Installer
             }
 
             //Get the number of listbox to process, ProgramsListBoxLabels.Count must be ProgramsListBoxCollection.Count
-            int programsListBoxCount = (ProgramsCheckedListBoxCollection.Count >= Programs.Count ? Programs.Count : ProgramsCheckedListBoxCollection.Count);
+            int programsListBoxCount = (ProgramsCheckedListBoxCollection.Count >= Programs.Count) ? Programs.Count : ProgramsCheckedListBoxCollection.Count;
 
             //Set the names of CheckedListBox labels
             for (int i = 0; i < programsListBoxCount; ++i)
@@ -78,6 +78,7 @@ namespace CUM.Installer
                 ProgramsListBoxLabels[i].Text = Programs[i].Category + ":";
             }
 
+            //Drop Packages by Category:
             CheckedListBox temp;
             for (int i = 0; i < programsListBoxCount; ++i)
             {
@@ -133,15 +134,15 @@ namespace CUM.Installer
             {
                 if (InstallRadioButton.Checked)
                 {
-                    await this.InstallPackages(this.GetSelectedPackagesListItems());
+                    await this.InstallPackages(this.GetSelectedPackagesListItems(), Choco.CancellationToken);
                 }
                 else if (UpdateRadioButton.Checked)
                 {
-                    await this.UpdatePackages(this.GetSelectedPackagesListItems());
+                    await this.UpdatePackages(this.GetSelectedPackagesListItems(), Choco.CancellationToken);
                 }
                 else if(DeleteRadioButton.Checked)
                 {
-                    await this.UninstallPackages(this.GetSelectedPackagesListItems());
+                    await this.UninstallPackages(this.GetSelectedPackagesListItems(), Choco.CancellationToken);
                 }
             }
             catch(OperationCanceledException)
