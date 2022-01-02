@@ -14,11 +14,11 @@
 		</PackageReference>
 	</ItemGroup>
 	<ItemGroup>
-		<ContentWithTargetPath Include="src\Installer\InstallerCategories.json">
+		<ContentWithTargetPath Include="src\Installer\InstallerContentModels\InstallerCategories.json">
 			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
 			<TargetPath>InstallerCategories.json</TargetPath>
 		</ContentWithTargetPath>
-		<ContentWithTargetPath Include="src\Installer\ProgramList.json">
+		<ContentWithTargetPath Include="src\Installer\InstallerContentModels\ProgramList.json">
 			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
 			<TargetPath>ProgramList.json</TargetPath>
 		</ContentWithTargetPath>

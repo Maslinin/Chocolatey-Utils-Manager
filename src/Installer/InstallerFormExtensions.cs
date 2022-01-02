@@ -134,6 +134,15 @@ namespace CUM.Installer
             {
                 installer.PackagesInfoLabel.Text = $"{i++} out of {packagesCount} packages installed: installing {program.ProgramName}";
                 await installer.Choco.InstallPackageAsync(program.ChocolateyInstallName);
+
+                if (installer.Choco.CancellationToken.IsCancellationRequested)
+                {
+                    installer.UnLockInstallerForm();
+                    installer.LockStopButton();
+                    installer.PackagesInfoLabel.Text = "Installing canceled";
+
+                    throw new System.OperationCanceledException();
+                }
             }
             installer.PackagesInfoLabel.Text = "Installing completed";
         }
@@ -152,6 +161,15 @@ namespace CUM.Installer
             {
                 installer.PackagesInfoLabel.Text = $"{i++} out of {packagesCount} packages updated: updating {program.ProgramName}";
                 await installer.Choco.UpdatePackageAsync(program.ChocolateyInstallName);
+
+                if (installer.Choco.CancellationToken.IsCancellationRequested)
+                {
+                    installer.UnLockInstallerForm();
+                    installer.LockStopButton();
+                    installer.PackagesInfoLabel.Text = "Updating canceled";
+
+                    throw new System.OperationCanceledException();
+                }
             }
             installer.PackagesInfoLabel.Text = "Updating completed";
         }
@@ -170,6 +188,15 @@ namespace CUM.Installer
             {
                 installer.PackagesInfoLabel.Text = $"{i++} out of {packagesCount} packages uninstalled: uninstalling {program.ProgramName}";
                 await installer.Choco.UninstallPackageAsync(program.ChocolateyInstallName);
+
+                if (installer.Choco.CancellationToken.IsCancellationRequested)
+                {
+                    installer.UnLockInstallerForm();
+                    installer.LockStopButton();
+                    installer.PackagesInfoLabel.Text = "Uninstalling canceled";
+
+                    throw new System.OperationCanceledException();
+                }
             }
             installer.PackagesInfoLabel.Text = "Uninstallation completed";
         }

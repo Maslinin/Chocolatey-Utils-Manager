@@ -9,10 +9,16 @@ namespace CUM.Installer
     internal partial class Installer : Form
     {
         /// <summary>
-        /// List of programs from the json file available for installation in Chocolatey
+        /// Returns a list of programs from the json file available for installation in Chocolatey
         /// </summary>
         internal List<ProgramList> Programs { get; }
+        /// <summary>
+        /// 
+        /// </summary>
         internal List<CheckedListBox> ProgramsCheckedListBoxCollection { get; }
+        /// <summary>
+        /// Returns an object for asynchronous Chocolatey operations
+        /// </summary>
         internal Chocolatey.ChocoAsyncInstaller Choco { get; }
 
         internal Installer()
@@ -158,9 +164,7 @@ namespace CUM.Installer
         {
             this.Choco.CancellationToken?.Cancel();
 
-            this.UnLockInstallerForm();
-            this.LockStopButton();
-            this.PackagesInfoLabel.Text = "Installing canceled";
+            this.PackagesInfoLabel.Text = "Installing cancelled. Installation will stop as soon as the current package is installed.";
         }
 
         private void SelectAllCheckBox_CheckedChanged(object sender, EventArgs e)
