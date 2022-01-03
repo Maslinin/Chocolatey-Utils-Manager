@@ -101,7 +101,7 @@ namespace CUM.Installer
                 listBox.IntegralHeight = false;
             }
 
-            this.LockStopButton();
+            this.LockAndHidesStopButton();
             this.UpdatePackagesInfoLabel();
         }
 
@@ -128,7 +128,7 @@ namespace CUM.Installer
             }
 
             this.LockInstallerForm();
-            this.UnLockStopButton();
+            this.UnLockAndShowStopButton();
 
             try
             {
@@ -158,7 +158,7 @@ namespace CUM.Installer
             }
 
             this.UnLockInstallerForm();
-            this.LockStopButton();
+            this.LockAndHidesStopButton();
         }
 
         private void StopButton_Click(object sender, EventArgs e)

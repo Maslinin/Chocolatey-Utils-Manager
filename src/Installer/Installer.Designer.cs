@@ -307,7 +307,7 @@
             // 
             this.ProgramsCheckedListBoxLabel1.AutoSize = true;
             this.ProgramsCheckedListBoxLabel1.Font = new System.Drawing.Font("Corbel", 13F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.ProgramsCheckedListBoxLabel1.Location = new System.Drawing.Point(4, 7);
+            this.ProgramsCheckedListBoxLabel1.Location = new System.Drawing.Point(8, 7);
             this.ProgramsCheckedListBoxLabel1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.ProgramsCheckedListBoxLabel1.Name = "ProgramsCheckedListBoxLabel1";
             this.ProgramsCheckedListBoxLabel1.Size = new System.Drawing.Size(86, 22);

@@ -23,6 +23,7 @@ namespace CUM.Choco
                 RedirectStandardOutput = true,
                 UseShellExecute = false,
                 CreateNoWindow = true,
+                LoadUserProfile = true,
                 Verb = "runAs",
                 FileName = PSPath
             };

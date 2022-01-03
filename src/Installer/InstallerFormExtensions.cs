@@ -43,7 +43,7 @@ namespace CUM.Installer
         /// Locks and hides the Stop button on the form
         /// </summary>
         /// <param name="installer"></param>
-        internal static void LockStopButton(this Installer installer)
+        internal static void LockAndHidesStopButton(this Installer installer)
         {
             installer.StopButton.Enabled = false;
             installer.StopButton.Visible = false;
@@ -54,7 +54,7 @@ namespace CUM.Installer
         /// Unlocks and displays the Stop button on the form
         /// </summary>
         /// <param name="installer"></param>
-        internal static void UnLockStopButton(this Installer installer)
+        internal static void UnLockAndShowStopButton(this Installer installer)
         {
             installer.StopButton.Enabled = true;
             installer.StopButton.Visible = true;
@@ -116,9 +116,9 @@ namespace CUM.Installer
                 installer.LockInstallerForm();
                 installer.InfoLabel.Text = "Chocolatey isn't found on your computer. Installing it...";
                 await installer.Choco.InstallChocoAsync();
-                installer.InfoLabel.Text = "Chocolatey was installed";
                 installer.UnLockInstallerForm();
-                installer.LockStopButton();
+                installer.StopButton.Enabled = false;
+                installer.InfoLabel.Text = "Chocolatey was installed";
             }
         }
 
@@ -142,7 +142,7 @@ namespace CUM.Installer
                 if (cancellationToken?.IsCancellationRequested ?? false)
                 {
                     installer.UnLockInstallerForm();
-                    installer.LockStopButton();
+                    installer.LockAndHidesStopButton();
                     installer.InfoLabel.Text = "Installing canceled";
 
                     throw new System.OperationCanceledException();
@@ -171,7 +171,7 @@ namespace CUM.Installer
                 if (cancellationToken?.IsCancellationRequested ?? false)
                 {
                     installer.UnLockInstallerForm();
-                    installer.LockStopButton();
+                    installer.LockAndHidesStopButton();
                     installer.InfoLabel.Text = "Updating canceled";
 
                     throw new System.OperationCanceledException();
@@ -200,7 +200,7 @@ namespace CUM.Installer
                 if (cancellationToken?.IsCancellationRequested ?? false)
                 {
                     installer.UnLockInstallerForm();
-                    installer.LockStopButton();
+                    installer.LockAndHidesStopButton();
                     installer.InfoLabel.Text = "Uninstalling canceled";
 
                     throw new System.OperationCanceledException();
