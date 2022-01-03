@@ -156,9 +156,11 @@ namespace CUM.Installer
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Error);
             }
-
-            this.UnLockInstallerForm();
-            this.LockAndHidesStopButton();
+            finally
+            {
+                this.UnLockInstallerForm();
+                this.LockAndHidesStopButton();
+            }
         }
 
         private void StopButton_Click(object sender, EventArgs e)
