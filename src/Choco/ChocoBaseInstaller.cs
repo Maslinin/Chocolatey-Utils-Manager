@@ -10,11 +10,10 @@ namespace CUM.Choco
         /// Returns a ProcessStartInfo instance that contains the parameters for starting the process
         /// </summary>
         internal ProcessStartInfo ProcessStartInfo { get; }
-        /// <summary>
-        /// Returns the path to the PowerShell.exe
-        /// </summary>
-        internal string PSPath { get; } = $@"{Environment.SystemDirectory}\WindowsPowerShell\v1.0\powershell.exe";
 
+        /// <summary>
+        /// Initializes a new instance ChocoBaseInstaller
+        /// </summary>
         internal ChocoBaseInstaller()
         {
             ProcessStartInfo = new ProcessStartInfo
@@ -25,7 +24,7 @@ namespace CUM.Choco
                 CreateNoWindow = true,
                 LoadUserProfile = true,
                 Verb = "runAs",
-                FileName = PSPath
+                FileName = $@"{Environment.SystemDirectory}\WindowsPowerShell\v1.0\powershell.exe"
             };
         }
 
