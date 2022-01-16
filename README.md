@@ -1,36 +1,35 @@
-# Описание
-**Chocolatey Utils Manager** - это GUI приложение, предназначенное для упрощения работы с пакетным менеджером Chocolatey.         
-С помощью Chocolatey Utils Manager вы можете как установить Chocolatey, так и установливать/обновлять/удалять пакеты Chocolatey.
+# Description
+**Chocolatey Utils Manager** - GUI Application, intended to simplify working with Chocolatey (packet manager)         
+Using Chocolatey Utils Manager you can as install Chocolatey itself, but also install/update/delete Chocolatey packets
 
-Вы можете самостоятельно добавлять в список доступных для взаимодействия пакетов другие пакеты Chocolatey, 
-а также кастомизировать категории в GUI, к которым будет относиться тот или иной пакет.
+You can expand list of available packets of Chocolatey by yourself, 
+and even customize categories in GUI, which will contain that or another packets group
 
-## Используемые технологии:    
-**Платформа:** DotNet Core 3.1      
-**Технология GUI:** WinForms    
-**Зависимости NuGet:** Newtonsoft.JSON     
+## Used technologies:    
+**Platform:** DotNet Core 3.1      
+**GUI:** WinForms    
+**NuGet Referencies:** Newtonsoft.JSON     
 
-# Структура файлов
-Весь исходной код находится в папке *src*, расположенной в корне репозитория.       
+# File structure
+Whole source code is in *src* folder, in root of repository       
 
-**Исходя из src:**     
-1. **Choco** - содержит файлы классов для взаимодействия с Chocolatey
-2. **Installer** - содержит код отрисовки GUI и его бизнес логику.     
-2.1. **EntityModels** - содержит модели сущностей для Installe.     
-2.2. **InstallerContentModels** - содержит файлы, описывающие контент/модели контента Installer,
-такие как список программ и категории в формате JSON.      
-3. **Program.cs** - точка входа в программу 
+**files in src:**     
+1. **Choco** - classes files for interacting with Chocolatey
+2. **Installer** - graphics of GUI and it's business logic     
+2.1. **EntityModels** - entity modelfs for Installer     
+2.2. **InstallerContentModels** - files with content/models for Installer content,
+such as list of programs and JSON categories      
+3. **Program.cs** - program enter point 
 
-# Я хочу добавить пакет в список пакетов, отображаемых в GUI и доступных для взаимодействия. Как мне это сделать?
-Вам нужно перейти по **src\Installer\InstallerContensModels** и открыть файл **ProgramList.json**.
+# I want to expand list of packets, displayed in GUI and available for iteraction. How do I do it?
+go to **src\Installer\InstallerContensModels** and open file **ProgramList.json**
 
-> Файлы ProgramList.json и InstallerCategories.json будут находиться в каталоге с исполняемым файлом после сборки.
+> Files ProgramList.json and InstallerCategories.json will be in catalog with .exe file after build
 
-**Всего у Вас 9 категорий** - столько же, сколько и окон для их отображения. 9 категорий = 9 окон = 9 объектов в JSON. Что это значит?        
-Каждая категория представляет объект в JSON: все, что Вам нужно - дописать в нужном Вам объекте, предстовляющему нужную Вам категорию, 
-в поле Programs дополнительный объект, который будет описывать нужный Вам пакет.
+**In general, there are 9 categories** - same as, windows for displaying them. 9 categories = 9 windows = 9 json objects. So, what does it mean?        
+Every category is represented by JSON object: all you need to do is - add object into category file object, in field "Programs", which will represent your packet
 
-Пример:
+Example:
 ```
 {
     "Category": "Browsers", - Категория, к которой относятся пакеты и указывающая, в каком окне они будут отображаться 
@@ -51,7 +50,7 @@
   }
 ```
 
-# Окей, а как мне изменить имя(тип) категории?
+# Okey, but how do I change the name(type) of a category?
 Для этого Вам все также нужен файл **ProgramList.json** и еще один файл, находящийся в этой же директории - **InstallerCategories.json**.
 
 > Файлы ProgramList.json и InstallerCategories.json будут находиться в каталоге с исполняемым файлом после сборки.
