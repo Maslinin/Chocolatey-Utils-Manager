@@ -25,6 +25,7 @@ such as list of programs and JSON categories
 go to **src\Installer\InstallerContensModels** and open file **ProgramList.json**
 
 > Files ProgramList.json and InstallerCategories.json will be in catalog with .exe file after build
+> It supposed,that you'll customize packages and categories in files itself, generated after complilation.
 
 **In general, there are 9 categories** - same as, windows for displaying them. 9 categories = 9 windows = 9 json objects. So, what does it mean?        
 Every category is represented by JSON object: all you need to do is - add object into category file object, in field "Programs", which will represent your packet
@@ -53,7 +54,8 @@ Example:
 # Okey, but how do I change the name(type) of a category?
 Для этого Вам все также нужен файл **ProgramList.json** и еще один файл, находящийся в этой же директории - **InstallerCategories.json**.
 
-> Файлы ProgramList.json и InstallerCategories.json будут находиться в каталоге с исполняемым файлом после сборки.
+> Файлы ProgramList.json и InstallerCategories.json будут находиться в каталоге с исполняемым файлом после сборки.    
+> Предполагается, что Вы будете кастомизировать пакеты и категории уже в этих файлах, сгенерированных после компиляции.
 
 Вам просто нужно указать в обоих файлах одинаковые имена категорий. НО!  
 Вы, наверное, заметили, что в *InstallerCategories.json* на одну категорию меньше!    
