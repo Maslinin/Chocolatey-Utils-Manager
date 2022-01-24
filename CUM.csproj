@@ -14,6 +14,12 @@
 		</PackageReference>
 	</ItemGroup>
 	<ItemGroup>
+		<Compile Update="src\Installer\Installer.FormWork.cs">
+		  <SubType>Form</SubType>
+		  <DependentUpon>Installer.cs</DependentUpon>
+		</Compile>
+	</ItemGroup>
+	<ItemGroup>
 		<ContentWithTargetPath Include="src\Installer\InstallerContentModels\InstallerCategories.json">
 			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
 			<TargetPath>InstallerCategories.json</TargetPath>
