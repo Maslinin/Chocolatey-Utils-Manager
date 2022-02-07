@@ -121,7 +121,7 @@ namespace CUM.Installer
 
         /// <summary>
         /// Installs the packages passed to the parameter as a collection<br/>
-        /// cancellationToken parameter is required to cancel install and exit the asynchronous thread
+        /// cancellation Token parameter is required to cancel install and exit the asynchronous thread
         /// </summary>
         /// <param name="installer"></param>
         /// <param name="programs"></param>
@@ -200,7 +200,7 @@ namespace CUM.Installer
                     throw new System.OperationCanceledException();
                 }
             }
-            this.InfoLabel.Text = "Uninstallation completed";
+            this.InfoLabel.Text = "Uninstallation complete";
         }
     }
 }

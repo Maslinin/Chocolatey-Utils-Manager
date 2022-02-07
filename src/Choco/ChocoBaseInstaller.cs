@@ -7,7 +7,7 @@ namespace CUM.Choco
     internal class ChocoBaseInstaller
     {
         /// <summary>
-        /// Returns a ProcessStartInfo instance that contains the parameters for starting the process
+        /// Returns a ProcessStartInfo instance which contains the parameters for starting the process
         /// </summary>
         internal ProcessStartInfo ProcessStartInfo { get; }
 
@@ -62,7 +62,7 @@ namespace CUM.Choco
 
         /// <summary>
         /// Installs a package using Chocolatey<br/>
-        /// The optional "cancellationToken" parameter is needed only if this method is used in an asynchronous thread
+        /// The optional "cancellationToken" parameter is needed only if current method is used in an asynchronous thread
         /// </summary>
         /// <param name="packageLinkName"></param>
         /// <param name="cancellationToken"></param>

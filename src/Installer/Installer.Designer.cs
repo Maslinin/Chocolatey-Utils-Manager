@@ -8,7 +8,7 @@
         private System.ComponentModel.IContainer components = null;
 
         /// <summary>
-        /// Free all resources in use.
+        /// Frees all resources in use.
         /// </summary>
         /// <param name="disposing">true if the managed resource is to be deleted otherwise false.</param>
         protected override void Dispose(bool disposing)

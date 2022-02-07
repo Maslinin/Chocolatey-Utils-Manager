@@ -5,7 +5,7 @@ namespace CUM.Choco
     internal sealed class ChocoAsyncInstaller : ChocoBaseInstaller
     {
         /// <summary>
-        /// Returns or sets the cancellation token for asynchronous operations
+        /// Gets or sets the cancellation token for asynchronous operations
         /// </summary>
         internal System.Threading.CancellationTokenSource CancellationToken { get; set; }
 
@@ -18,7 +18,7 @@ namespace CUM.Choco
         }
 
         /// <summary>
-        /// Asynchronously installs Chocolatey if it is not installed
+        /// Asynchronously installs Chocolatey if it is not yet installed
         /// </summary>
         /// <param name="auth"></param>
         internal async Task InstallChocoAsync()
@@ -31,7 +31,7 @@ namespace CUM.Choco
 
         /// <summary>
         /// Asynchronously installs a package using Chocolatey<br/>
-        /// Uses the instance token to cancel the installation
+        /// Uses the instance token to abort the installation
         /// </summary>
         /// <param name="packageLinkName"></param>
         internal async Task InstallPackageAsync(string packageLinkName)
@@ -44,7 +44,7 @@ namespace CUM.Choco
 
         /// <summary>
         /// Asynchronously updates the package using Chocolatey<br/>
-        /// Uses the instance token to cancel the update
+        /// Uses the instance token to abort the update
         /// </summary>
         /// <param name="packageLinkName"></param>
         internal async Task UpdatePackageAsync(string packageLinkName)
@@ -57,7 +57,7 @@ namespace CUM.Choco
 
         /// <summary>
         /// Asynchronously deletes a package using Chocolatey<br/>
-        /// Uses the instance token to cancel the deletion
+        /// Uses the instance token to abort the deletion
         /// </summary>
         /// <param name="packageLinkName"></param>
         internal async Task UninstallPackageAsync(string packageLinkName)

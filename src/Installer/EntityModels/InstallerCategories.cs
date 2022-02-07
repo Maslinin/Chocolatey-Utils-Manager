@@ -8,7 +8,7 @@ namespace CUM.Installer.EntityModels
     public sealed class InstallerCategories
     {
         /// <summary>
-        /// Returns the list of categories displayed for the CheckedListBox
+        /// Gets the list of categories displayed on CheckedListBox
         /// </summary>
         public List<string> DisplayedCategories { get; } = new List<string>();
 

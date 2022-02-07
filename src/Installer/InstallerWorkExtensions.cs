@@ -9,7 +9,7 @@ namespace CUM.Installer
     internal static class InstallerWorkExtensions
     {
         /// <summary>
-        /// Gets the number of selected packages
+        /// Returns the number of selected packages
         /// </summary>
         /// <param name="installer"></param>
         /// <returns>Packages selected count</returns>
@@ -38,9 +38,9 @@ namespace CUM.Installer
             }
 
             //Crutch:
-            //if it were not for this code,
-            //due to a flaw CheckedListBox the number of packets would be displayed one less after selecting the package,
-            //and one more after removing the package
+            //Only works with this code,
+            //due to a flaw CheckedListBox the number of packets would be displayed incorrectly, therefore if checked it increases by 1;
+            //otherwise decreases by 1
             if (e.NewValue == System.Windows.Forms.CheckState.Checked)
                 ++packageCount;
             if (e.NewValue == System.Windows.Forms.CheckState.Unchecked)
@@ -50,7 +50,7 @@ namespace CUM.Installer
         }
 
         /// <summary>
-        /// Gets all entities of the type selected for operation ProgramInfo
+        /// Returns all entities of the type selected for operation ProgramInfo
         /// </summary>
         /// <param name="installer"></param>
         /// <returns>List of marked entities ProgramInfo</returns>

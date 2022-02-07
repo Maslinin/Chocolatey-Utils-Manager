@@ -10,7 +10,7 @@
         /// </summary>
         public string ProgramName { get; }
         /// <summary>
-        /// Returns the name of the Chocolatey installation package
+        /// Gets the name of the Chocolatey installation package
         /// </summary>
         public string ChocolateyInstallName { get; }
 

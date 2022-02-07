@@ -33,11 +33,11 @@ Every category is represented by JSON object: all you need to do is - add object
 Example:
 ```
 {
-    "Category": "Browsers", - Категория, к которой относятся пакеты и указывающая, в каком окне они будут отображаться 
-    "Programs": [ - лист сущностей, представляюший отображаемые пакеты
+    "Category": "Browsers", - Category, which packets are related and pointing on the window they will be displayed 
+    "Programs": [ - list of entities, representing displayed packets
       {
-        "ProgramName": "Chrome", - отображаемое имя программы в окне
-        "ChocolateyInstallName": "googlechrome" - имя пакета в chocolatey
+        "ProgramName": "Chrome", - diaplayed name of a program
+        "ChocolateyInstallName": "googlechrome" - name of packet in chocolatey
       },
       {
         "ProgramName": "Opera",
@@ -52,15 +52,15 @@ Example:
 ```
 
 # Okey, but how do I change the name(type) of a category?
-Для этого Вам все также нужен файл **ProgramList.json** и еще один файл, находящийся в этой же директории - **InstallerCategories.json**.
+For that you need file **ProgramList.json** as well and another one, located in the same directory **InstallerCategories.json**
 
-> Файлы ProgramList.json и InstallerCategories.json будут находиться в каталоге с исполняемым файлом после сборки.    
-> Предполагается, что Вы будете кастомизировать пакеты и категории уже в этих файлах, сгенерированных после компиляции.
+> Files ProgramList.json and InstallerCategories.json will be located in catalog with executive file after build    
+> It's supposed, that you will customize packetsа and categories in these files, generated after compilation
 
-Вам просто нужно указать в обоих файлах одинаковые имена категорий. НО!  
-Вы, наверное, заметили, что в *InstallerCategories.json* на одну категорию меньше!    
-На самом деле, последняя категория всегда будет *Other*: 
-если в одном из файлов Вы неправильно укажете имя категории, ошибки не будет: пакеты из неправильно указанной категории будут просто переброшены в *Other*.
+You just simply need to specify the same categories names in both files. BUT!  
+You, probably, noticed, that there are one category less in *InstallerCategories.json* file   
+In fact, last category always will be called *Other*: 
+if name category incorrectly in one of files, it won't be a mistake: packets from wrong-specified category will be transfered to *Other*
 
-> Вам не обязательно беспокоиться о пробелах и регистре при кастомизации категорий - из имен категорий из двух файлов убираются все пробелы, 
-а затем они приводятся к одному регистру
+> It's unneccesary to worry about registers during categories customisation - all problems will be removed from categoies names in both files, 
+then they will be transfered to one same register

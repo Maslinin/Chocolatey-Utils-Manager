@@ -8,11 +8,11 @@ namespace CUM.Installer.EntityModels
     public sealed class ProgramList
     {
         /// <summary>
-        /// Returns the category to which the list of Programs in this instance belongs
+        /// Gets the category which the list of Programs in this instance belongs to
         /// </summary>
         public string Category { get; }
         /// <summary>
-        /// Returns a list of ProgramInfo instances, each containing information about a particular package
+        /// Gets a list of ProgramInfo instances, where each contains information about a particular package
         /// </summary>
         public List<ProgramInfo> Programs { get; } = new List<ProgramInfo>();
 
