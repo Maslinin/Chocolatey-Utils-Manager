@@ -2,6 +2,7 @@
 	<PropertyGroup>
 		<OutputType>WinExe</OutputType>
 		<TargetFramework>netcoreapp3.1</TargetFramework>
+    <Version>1.1.0</Version>
 		<UseWindowsForms>true</UseWindowsForms>
 		<GenerateAssemblyInfo>true</GenerateAssemblyInfo>
 		<ApplicationManifest>Properties\app.manifest</ApplicationManifest>
@@ -12,8 +13,14 @@
 		<PackageReference Include="Newtonsoft.Json">
 			<Version>13.0.1</Version>
 		</PackageReference>
+		<PackageReference Include="NLog" Version="4.7.13" />
 	</ItemGroup>
 	<ItemGroup>
+		<Compile Update="Properties\Settings.Designer.cs">
+		  <DesignTimeSharedInput>True</DesignTimeSharedInput>
+		  <AutoGen>True</AutoGen>
+		  <DependentUpon>Settings.settings</DependentUpon>
+		</Compile>
 		<Compile Update="src\Installer\Installer.FormWork.cs">
 		  <SubType>Form</SubType>
 		  <DependentUpon>Installer.cs</DependentUpon>
@@ -28,5 +35,11 @@
 			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
 			<TargetPath>ProgramList.json</TargetPath>
 		</ContentWithTargetPath>
+	</ItemGroup>
+	<ItemGroup>
+	  <None Update="Properties\Settings.settings">
+	    <Generator>SettingsSingleFileGenerator</Generator>
+	    <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+	  </None>
 	</ItemGroup>
 </Project>
