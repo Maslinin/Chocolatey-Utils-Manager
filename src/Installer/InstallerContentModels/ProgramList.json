@@ -92,7 +92,11 @@
       {
         "ProgramName": "LazyGit",
         "ChocolateyInstallName": "lazygit"
-      }
+      },
+	    {
+		    "ProgramName": "Postman",
+        "ChocolateyInstallName": "postman"
+	    }
     ]
   },
   {
