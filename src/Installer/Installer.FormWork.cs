@@ -133,7 +133,8 @@ namespace CUM.Installer
             foreach (var program in programs)
             {
                 this.InfoLabel.Text = $"{i++} out of {packagesCount} packages installed: installing {program.ProgramName}";
-                await this.Choco.InstallPackageAsync(program.ChocolateyInstallName);
+                string psMesagge = await this.Choco.InstallPackageAsync(program.ChocolateyInstallName, cancellationToken.Token);
+                Logger.NLogger.Log(psMesagge);
 
                 if (cancellationToken?.IsCancellationRequested ?? false)
                 {
@@ -161,7 +162,8 @@ namespace CUM.Installer
             foreach (var program in programs)
             {
                 this.InfoLabel.Text = $"{i++} out of {packagesCount} packages updated: updating {program.ProgramName}";
-                await this.Choco.UpdatePackageAsync(program.ChocolateyInstallName);
+                string psMesagge = await this.Choco.UpdatePackageAsync(program.ChocolateyInstallName, cancellationToken.Token);
+                Logger.NLogger.Log(psMesagge);
 
                 if (cancellationToken?.IsCancellationRequested ?? false)
                 {
@@ -189,7 +191,8 @@ namespace CUM.Installer
             foreach (var program in programs)
             {
                 this.InfoLabel.Text = $"{i++} out of {packagesCount} packages uninstalled: uninstalling {program.ProgramName}";
-                await this.Choco.UninstallPackageAsync(program.ChocolateyInstallName);
+                string psMesagge = await this.Choco.UninstallPackageAsync(program.ChocolateyInstallName, cancellationToken.Token);
+                Logger.NLogger.Log(psMesagge);
 
                 if (cancellationToken?.IsCancellationRequested ?? false)
                 {

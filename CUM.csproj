@@ -22,7 +22,6 @@
 		  <DependentUpon>Settings.settings</DependentUpon>
 		</Compile>
 		<Compile Update="src\Installer\Installer.FormWork.cs">
-		  <SubType>Form</SubType>
 		  <DependentUpon>Installer.cs</DependentUpon>
 		</Compile>
 	</ItemGroup>

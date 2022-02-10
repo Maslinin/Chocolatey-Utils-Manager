@@ -21,11 +21,16 @@ namespace CUM.Logger
         static NLogger()
         {
             LogDirPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Logs");
-            string logFilePath = Path.Combine(LogDirPath, $"{DateTime.Now:MM/dd/yyyy}.txt");
+            if(!Directory.Exists(LogDirPath))
+            {
+                Directory.CreateDirectory(LogDirPath);
+            }
+            string logFilePath = Path.Combine(LogDirPath, $"{DateTime.Now:MM.dd.yyyy}.txt");
 
             var fileTarget = new NLog.Targets.FileTarget("CUM")
             {
                 FileName = logFilePath,
+                DeleteOldFileOnStartup = true,
                 Layout = "${message}"
             };
 

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using System.Threading;
 using System.Collections.Generic;
 using System.Windows.Forms;
 using CUM.Installer.EntityModels;
@@ -9,22 +10,27 @@ namespace CUM.Installer
     internal partial class Installer : Form
     {
         /// <summary>
-        /// Returns an object for asynchronous Chocolatey operations
+        /// Gets an object for asynchronous Chocolatey operations
         /// </summary>
-        internal Choco.ChocoAsyncInstaller Choco { get; }
+        internal Choco.ChocoInstallerAsync Choco { get; private set; }
         /// <summary>
-        /// Returns a list of programs from the json file available for installation in Chocolatey
+        /// Gets the asynchronous operation cancellation token
         /// </summary>
-        internal List<ProgramList> Programs { get; }
+        internal CancellationTokenSource CancellationToken { get; private set; }
         /// <summary>
-        /// Returns a collection of displayed CheckedListBox containing packages to install
+        /// Gets a list of programs from the json file available for installation in Chocolatey
         /// </summary>
-        internal List<CheckedListBox> ProgramsCheckedListBoxCollection { get; }
+        internal List<ProgramList> Programs { get; private set; }
+        /// <summary>
+        /// Gets a collection of displayed CheckedListBox containing packages to install
+        /// </summary>
+        internal List<CheckedListBox> ProgramsCheckedListBoxCollection { get; private set; }
 
         internal Installer()
         {
             InitializeComponent();
-            Choco = new Choco.ChocoAsyncInstaller();
+            Choco = new Choco.ChocoInstallerAsync();
+            CancellationToken = new CancellationTokenSource();
 
             ProgramsCheckedListBoxCollection = new List<CheckedListBox>
             {
@@ -122,9 +128,9 @@ namespace CUM.Installer
                 return;
             }
 
-            if (!this.Choco.CancellationToken.IsCancellationRequested)
+            if (!this.CancellationToken.IsCancellationRequested)
             {
-                this.Choco.CancellationToken = new System.Threading.CancellationTokenSource();
+                this.CancellationToken = new CancellationTokenSource();
             }
 
             this.LockInstallerForm();
@@ -134,20 +140,20 @@ namespace CUM.Installer
             {
                 if (InstallRadioButton.Checked)
                 {
-                    await this.InstallPackages(this.GetSelectedPackagesItems(), Choco.CancellationToken);
+                    await this.InstallPackages(this.GetSelectedPackagesItems(), this.CancellationToken);
                 }
                 else if (UpdateRadioButton.Checked)
                 {
-                    await this.UpdatePackages(this.GetSelectedPackagesItems(), Choco.CancellationToken);
+                    await this.UpdatePackages(this.GetSelectedPackagesItems(), this.CancellationToken);
                 }
                 else if(DeleteRadioButton.Checked)
                 {
-                    await this.UninstallPackages(this.GetSelectedPackagesItems(), Choco.CancellationToken);
+                    await this.UninstallPackages(this.GetSelectedPackagesItems(), this.CancellationToken);
                 }
             }
             catch(OperationCanceledException)
             {
-                Choco.CancellationToken.Dispose();
+                this.CancellationToken.Dispose();
             }
             catch(Exception ex)
             {
@@ -165,9 +171,11 @@ namespace CUM.Installer
 
         private void StopButton_Click(object sender, EventArgs e)
         {
-            this.Choco.CancellationToken?.Cancel();
-
-            this.InfoLabel.Text = "Installing cancelled... The action will be completed after the current package is completed.";
+            if(!(this.CancellationToken is null))
+            {
+                this.CancellationToken.Cancel();
+                this.InfoLabel.Text = "Installing cancelled... The action will be completed after the current package is completed.";
+            }
         }
 
         private void SelectAllCheckBox_CheckedChanged(object sender, EventArgs e)
