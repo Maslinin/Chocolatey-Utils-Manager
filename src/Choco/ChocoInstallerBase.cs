@@ -6,7 +6,7 @@ namespace CUM.Choco
     internal class ChocoInstallerBase
     {
         /// <summary>
-        /// Returns a ProcessStartInfo instance which contains the parameters for starting the process
+        /// Gets a ProcessStartInfo instance which contains the parameters for starting the process
         /// </summary>
         internal ProcessStartInfo ProcessStartInfo { get; }
 

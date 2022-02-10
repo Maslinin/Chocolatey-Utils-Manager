@@ -25,6 +25,7 @@ namespace CUM.Logger
             {
                 Directory.CreateDirectory(LogDirPath);
             }
+
             string logFilePath = Path.Combine(LogDirPath, $"{DateTime.Now:MM.dd.yyyy}.txt");
 
             var fileTarget = new NLog.Targets.FileTarget("CUM")
