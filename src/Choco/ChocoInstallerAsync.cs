@@ -14,7 +14,7 @@ namespace CUM.Choco
         /// Asynchronously installs Chocolatey if it is not yet installed
         /// </summary>
         /// <param name="auth"></param>
-        /// <returns> Message written by process to stdout </returns>
+        /// <returns> Stdout process message if chocolatey is not installed; otherwise null</returns>
         internal async Task<string> InstallChocoAsync()
         {
             if (!base.ChocoExists)
@@ -30,14 +30,14 @@ namespace CUM.Choco
         /// Uses the instance token to abort the installation
         /// </summary>
         /// <param name="packageLinkName"></param>
-        /// <returns> Message written by process to stdout </returns>
+        /// <returns> Stdout process message if chocolatey is installed; otherwise null </returns>
         internal async Task<string> InstallPackageAsync(string packageLinkName, CancellationToken? cancellationToken = null)
         {
-            if (cancellationToken?.IsCancellationRequested ?? false)
-                cancellationToken?.ThrowIfCancellationRequested();
-
             if (base.ChocoExists)
             {
+                if (cancellationToken?.IsCancellationRequested ?? false)
+                    cancellationToken?.ThrowIfCancellationRequested();
+
                 return await Task.Run(() => base.InstallPackage(packageLinkName), cancellationToken.Value);
             }
 
@@ -49,14 +49,14 @@ namespace CUM.Choco
         /// Uses the instance token to abort the update
         /// </summary>
         /// <param name="packageLinkName"></param>
-        /// <returns> Message written by process to stdout </returns>
+        /// <returns> Stdout process message if chocolatey is installed; otherwise null </returns>
         internal async Task<string> UpdatePackageAsync(string packageLinkName, CancellationToken? cancellationToken = null)
         {
-            if (cancellationToken?.IsCancellationRequested ?? false)
-                cancellationToken?.ThrowIfCancellationRequested();
-
             if (base.ChocoExists)
             {
+                if (cancellationToken?.IsCancellationRequested ?? false)
+                    cancellationToken?.ThrowIfCancellationRequested();
+
                 return await Task.Run(() => base.UpdatePackage(packageLinkName), cancellationToken.Value);
             }
 
@@ -68,14 +68,14 @@ namespace CUM.Choco
         /// Uses the instance token to abort the deletion
         /// </summary>
         /// <param name="packageLinkName"></param>
-        /// <returns> Message written by process to stdout </returns>
+        /// <returns> Stdout process message if chocolatey is installed; otherwise null </returns>
         internal async Task<string> UninstallPackageAsync(string packageLinkName, CancellationToken? cancellationToken = null)
         {
-            if (cancellationToken?.IsCancellationRequested ?? false)
-                cancellationToken?.ThrowIfCancellationRequested();
-
             if (base.ChocoExists)
             {
+                if (cancellationToken?.IsCancellationRequested ?? false)
+                    cancellationToken?.ThrowIfCancellationRequested();
+
                 return await Task.Run(() => base.UninstallPackage(packageLinkName), cancellationToken.Value);
             }
 

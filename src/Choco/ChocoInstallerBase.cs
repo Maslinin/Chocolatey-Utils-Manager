@@ -45,21 +45,26 @@ namespace CUM.Choco
         {
             string install = "Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))";
 
-            var chocoInstall = new Process { StartInfo = ProcessStartInfo };
-            if (!chocoInstall.Start())
-                throw new InvalidOperationException($"process {chocoInstall.Id} is failed");
+            string stdoutMessage = string.Empty;
+            using (var chocoInstall = new Process { StartInfo = ProcessStartInfo })
+            {
+                if (!chocoInstall.Start())
+                    throw new InvalidOperationException($"process {chocoInstall.Id} is failed");
 
-            chocoInstall.PriorityClass = ProcessPriorityClass.High;
-            chocoInstall.PriorityBoostEnabled = true;
+                chocoInstall.PriorityClass = ProcessPriorityClass.High;
+                chocoInstall.PriorityBoostEnabled = true;
 
-            chocoInstall.StandardInput.WriteLine(install);
-            chocoInstall.StandardInput.Flush();
-            chocoInstall.StandardInput.Close();
+                chocoInstall.StandardInput.WriteLine(install);
+                chocoInstall.StandardInput.Flush();
+                chocoInstall.StandardInput.Close();
 
-            chocoInstall.WaitForExit();
-            chocoInstall.Close();
+                chocoInstall.WaitForExit();
 
-            return chocoInstall.StandardOutput.ReadToEnd();
+                stdoutMessage = chocoInstall.StandardOutput.ReadToEnd();
+                chocoInstall.Close();
+            }
+
+            return stdoutMessage;
         }
 
         /// <summary>
@@ -96,7 +101,7 @@ namespace CUM.Choco
         /// Updates the package using Chocolatey
         /// </summary>
         /// <param name="packageLinkName"></param>
-        /// <param name="cancellationToken"></param>\
+        /// <param name="cancellationToken"></param>
         /// <returns> Message written by process from stdout </returns>
         internal string UpdatePackage(string packageLinkName)
         {

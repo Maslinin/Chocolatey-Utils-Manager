@@ -1,6 +1,8 @@
-﻿using System.Threading;
+﻿using System;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Collections.Generic;
+using CUM.Logger;
 
 namespace CUM.Installer
 {
@@ -112,10 +114,12 @@ namespace CUM.Installer
             {
                 this.LockInstallerForm();
                 this.InfoLabel.Text = "Chocolatey isn't found on your computer. Installing it...";
-                await this.Choco.InstallChocoAsync();
+                string stdoutMessage = await this.Choco.InstallChocoAsync();
                 this.UnLockInstallerForm();
                 this.StopButton.Enabled = false;
                 this.InfoLabel.Text = "Chocolatey was installed";
+
+                NLogger.Log(stdoutMessage);
             }
         }
 
@@ -134,7 +138,7 @@ namespace CUM.Installer
             {
                 this.InfoLabel.Text = $"{i++} out of {packagesCount} packages installed: installing {program.ProgramName}";
                 string psMesagge = await this.Choco.InstallPackageAsync(program.ChocolateyInstallName, cancellationToken.Token);
-                Logger.NLogger.Log(psMesagge);
+                NLogger.Log(psMesagge);
 
                 if (cancellationToken?.IsCancellationRequested ?? false)
                 {
@@ -142,7 +146,7 @@ namespace CUM.Installer
                     this.LockAndHidesStopButton();
                     this.InfoLabel.Text = "Installing canceled";
 
-                    throw new System.OperationCanceledException();
+                    throw new OperationCanceledException();
                 }
             }
             this.InfoLabel.Text = "Installing completed";
@@ -163,7 +167,7 @@ namespace CUM.Installer
             {
                 this.InfoLabel.Text = $"{i++} out of {packagesCount} packages updated: updating {program.ProgramName}";
                 string psMesagge = await this.Choco.UpdatePackageAsync(program.ChocolateyInstallName, cancellationToken.Token);
-                Logger.NLogger.Log(psMesagge);
+                NLogger.Log(psMesagge);
 
                 if (cancellationToken?.IsCancellationRequested ?? false)
                 {
@@ -171,7 +175,7 @@ namespace CUM.Installer
                     this.LockAndHidesStopButton();
                     this.InfoLabel.Text = "Updating canceled";
 
-                    throw new System.OperationCanceledException();
+                    throw new OperationCanceledException();
                 }
             }
             this.InfoLabel.Text = "Updating completed";
@@ -192,7 +196,7 @@ namespace CUM.Installer
             {
                 this.InfoLabel.Text = $"{i++} out of {packagesCount} packages uninstalled: uninstalling {program.ProgramName}";
                 string psMesagge = await this.Choco.UninstallPackageAsync(program.ChocolateyInstallName, cancellationToken.Token);
-                Logger.NLogger.Log(psMesagge);
+                NLogger.Log(psMesagge);
 
                 if (cancellationToken?.IsCancellationRequested ?? false)
                 {
@@ -200,7 +204,7 @@ namespace CUM.Installer
                     this.LockAndHidesStopButton();
                     this.InfoLabel.Text = "Uninstalling canceled";
 
-                    throw new System.OperationCanceledException();
+                    throw new OperationCanceledException();
                 }
             }
             this.InfoLabel.Text = "Uninstallation complete";

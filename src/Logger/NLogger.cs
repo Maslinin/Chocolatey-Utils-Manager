@@ -30,7 +30,7 @@ namespace CUM.Logger
             var fileTarget = new NLog.Targets.FileTarget("CUM")
             {
                 FileName = logFilePath,
-                DeleteOldFileOnStartup = true,
+                DeleteOldFileOnStartup = false,
                 Layout = "${message}"
             };
 

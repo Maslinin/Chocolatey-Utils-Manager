@@ -157,7 +157,7 @@ namespace CUM.Installer
             }
             catch(Exception ex)
             {
-                MessageBox.Show(ex.ToString(),
+                MessageBox.Show($"{ex.Message}. \nCheck out the full version of the log on the path {Logger.NLogger.LogDirPath}",
                     ex.GetType().Name,
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Error);
