@@ -121,10 +121,7 @@ namespace CUM.Installer
         {
             if (this.GetSelectedPackagesCount() == 0)
             {
-                MessageBox.Show("No packages selected for operation",
-                    "No packages selected",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Error);
+                InfoLabel.Text = "No packages selected for operation";
                 return;
             }
 
