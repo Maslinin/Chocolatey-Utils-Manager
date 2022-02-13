@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Diagnostics;
 
 namespace CUM.Choco
@@ -37,8 +37,8 @@ namespace CUM.Choco
         public string InstallChoco()
         {
             string install = "Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))";
-
             string stdoutMessage = string.Empty;
+            
             using (var chocoInstall = new Process { StartInfo = ProcessStartInfo })
             {
                 if (!chocoInstall.Start())
@@ -63,6 +63,7 @@ namespace CUM.Choco
         public string InstallPackage(string packageLinkName)
         {
             string stdoutMessage = string.Empty;
+            
             using (var chocoInstall = new Process { StartInfo = ProcessStartInfo })
             {
                 if (!chocoInstall.Start())
@@ -87,6 +88,7 @@ namespace CUM.Choco
         public string UpdatePackage(string packageLinkName)
         {
             string stdoutMessage = string.Empty;
+            
             using (var chocoInstall = new Process { StartInfo = ProcessStartInfo })
             {
                 if (!chocoInstall.Start())
@@ -111,6 +113,7 @@ namespace CUM.Choco
         public string UninstallPackage(string packageLinkName)
         {
             string stdoutMessage = string.Empty;
+            
             using (var chocoInstall = new Process { StartInfo = ProcessStartInfo } )
             {
                 if (!chocoInstall.Start())
