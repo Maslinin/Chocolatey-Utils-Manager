@@ -3,19 +3,19 @@ using System.Threading.Tasks;
 
 namespace CUM.Choco
 {
-    internal sealed class ChocoInstallerAsync : ChocoInstallerBase
+    public sealed class ChocoInstallerAsync : ChocoInstallerBase
     {
         /// <summary>
         /// Initializes an instance inherited from ChocoBaseInstaller
         /// </summary>
-        internal ChocoInstallerAsync() : base() { }
+        public ChocoInstallerAsync() : base() { }
 
         /// <summary>
         /// Asynchronously installs Chocolatey if it is not yet installed
         /// </summary>
         /// <param name="auth"></param>
         /// <returns> Stdout process message if chocolatey is not installed; otherwise null</returns>
-        internal async Task<string> InstallChocoAsync()
+        public async Task<string> InstallChocoAsync()
         {
             if (!base.ChocoExists)
             {
@@ -31,7 +31,7 @@ namespace CUM.Choco
         /// </summary>
         /// <param name="packageLinkName"></param>
         /// <returns> Stdout process message if chocolatey is installed; otherwise null </returns>
-        internal async Task<string> InstallPackageAsync(string packageLinkName, CancellationToken? cancellationToken = null)
+        public async Task<string> InstallPackageAsync(string packageLinkName, CancellationToken? cancellationToken = null)
         {
             if (base.ChocoExists)
             {
@@ -50,7 +50,7 @@ namespace CUM.Choco
         /// </summary>
         /// <param name="packageLinkName"></param>
         /// <returns> Stdout process message if chocolatey is installed; otherwise null </returns>
-        internal async Task<string> UpdatePackageAsync(string packageLinkName, CancellationToken? cancellationToken = null)
+        public async Task<string> UpdatePackageAsync(string packageLinkName, CancellationToken? cancellationToken = null)
         {
             if (base.ChocoExists)
             {
@@ -69,7 +69,7 @@ namespace CUM.Choco
         /// </summary>
         /// <param name="packageLinkName"></param>
         /// <returns> Stdout process message if chocolatey is installed; otherwise null </returns>
-        internal async Task<string> UninstallPackageAsync(string packageLinkName, CancellationToken? cancellationToken = null)
+        public async Task<string> UninstallPackageAsync(string packageLinkName, CancellationToken? cancellationToken = null)
         {
             if (base.ChocoExists)
             {

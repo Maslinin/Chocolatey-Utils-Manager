@@ -3,17 +3,17 @@ using System.Diagnostics;
 
 namespace CUM.Choco
 {
-    internal class ChocoInstallerBase
+    public class ChocoInstallerBase : IChoco
     {
         /// <summary>
         /// Gets a ProcessStartInfo instance which contains the parameters for starting the process
         /// </summary>
-        internal ProcessStartInfo ProcessStartInfo { get; }
+        public ProcessStartInfo ProcessStartInfo { get; }
 
         /// <summary>
-        /// Initializes a new instance ChocoBaseInstaller
+        /// Initializes a new instance ChocoInstallerBase
         /// </summary>
-        internal ChocoInstallerBase()
+        public ChocoInstallerBase()
         {
             ProcessStartInfo = new ProcessStartInfo
             {
@@ -27,21 +27,14 @@ namespace CUM.Choco
             };
         }
 
-        /// <summary>
-        /// Returns true if Chocolatey is set; otherwise false
-        /// </summary>
-        internal bool ChocoExists
+        public bool ChocoExists
         {
 #pragma warning disable IDE0075 //Simplify conditional expression
             get => Environment.GetEnvironmentVariable("ChocolateyInstall") is null ? false : true;
 #pragma warning restore IDE0075 //Simplify conditional expression
         }
 
-        /// <summary>
-        /// Installs Chocolatey if it is not installed
-        /// </summary>
-        /// <returns> Message written by process from stdout </returns>
-        internal string InstallChoco()
+        public string InstallChoco()
         {
             string install = "Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))";
 
@@ -67,13 +60,7 @@ namespace CUM.Choco
             return stdoutMessage;
         }
 
-        /// <summary>
-        /// Installs a package using Chocolatey
-        /// </summary>
-        /// <param name="packageLinkName"></param>
-        /// <param name="cancellationToken"></param>
-        /// <returns> Message written by process from stdout </returns>
-        internal string InstallPackage(string packageLinkName)
+        public string InstallPackage(string packageLinkName)
         {
             string stdoutMessage = string.Empty;
             using (var chocoInstall = new Process { StartInfo = ProcessStartInfo })
@@ -97,13 +84,7 @@ namespace CUM.Choco
             return stdoutMessage;
         }
 
-        /// <summary>
-        /// Updates the package using Chocolatey
-        /// </summary>
-        /// <param name="packageLinkName"></param>
-        /// <param name="cancellationToken"></param>
-        /// <returns> Message written by process from stdout </returns>
-        internal string UpdatePackage(string packageLinkName)
+        public string UpdatePackage(string packageLinkName)
         {
             string stdoutMessage = string.Empty;
             using (var chocoInstall = new Process { StartInfo = ProcessStartInfo })
@@ -127,14 +108,7 @@ namespace CUM.Choco
             return stdoutMessage;
         }
 
-        /// <summary>
-        /// Deletes a package using Chocolatey<br/>
-        /// The optional "cancellationToken" parameter is needed only if this method is used in an asynchronous thread
-        /// </summary>
-        /// <param name="packageLinkName"></param>
-        /// <param name="cancellationToken"></param>
-        /// <returns> Message written by process from stdout </returns>
-        internal string UninstallPackage(string packageLinkName)
+        public string UninstallPackage(string packageLinkName)
         {
             string stdoutMessage = string.Empty;
             using (var chocoInstall = new Process { StartInfo = ProcessStartInfo } )
