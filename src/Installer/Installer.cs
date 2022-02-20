@@ -107,6 +107,8 @@ namespace CUM.Installer
                 listBox.IntegralHeight = false;
             }
 
+            this.InfoLabel.ForeColor = System.Drawing.Color.LightYellow;
+
             this.LockAndHidesStopButton();
             this.UpdatePackagesInfoLabel();
         }
@@ -121,6 +123,7 @@ namespace CUM.Installer
         {
             if (this.GetSelectedPackagesCount() == 0)
             {
+                this.InfoLabel.ForeColor = System.Drawing.Color.DarkRed;
                 InfoLabel.Text = "No packages selected for operation";
                 return;
             }
@@ -171,6 +174,7 @@ namespace CUM.Installer
             if(!(this.CancellationToken is null))
             {
                 this.CancellationToken.Cancel();
+                this.InfoLabel.ForeColor = System.Drawing.Color.DarkRed;
                 this.InfoLabel.Text = "Installing cancelled... The action will be completed after the current package is completed.";
             }
         }
