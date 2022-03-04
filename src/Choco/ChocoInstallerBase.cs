@@ -21,7 +21,6 @@ namespace CUM.Choco
                 RedirectStandardOutput = true,
                 UseShellExecute = false,
                 CreateNoWindow = true,
-                LoadUserProfile = true,
                 Verb = "runAs",
                 FileName = $@"{Environment.SystemDirectory}\WindowsPowerShell\v1.0\powershell.exe"
             };
@@ -72,7 +71,7 @@ namespace CUM.Choco
                 chocoInstall.PriorityClass = ProcessPriorityClass.High;
                 chocoInstall.PriorityBoostEnabled = true;
 
-                chocoInstall.StandardInput.WriteLine($"choco install {packageLinkName} -y");
+                chocoInstall.StandardInput.WriteLine($"choco install {packageLinkName} -y -f");
                 chocoInstall.StandardInput.Flush();
                 chocoInstall.StandardInput.Close();
 
@@ -97,7 +96,7 @@ namespace CUM.Choco
                 chocoInstall.PriorityClass = ProcessPriorityClass.High;
                 chocoInstall.PriorityBoostEnabled = true;
 
-                chocoInstall.StandardInput.WriteLine($"choco upgrade {packageLinkName} -y");
+                chocoInstall.StandardInput.WriteLine($"choco upgrade {packageLinkName} -y -f");
                 chocoInstall.StandardInput.Flush();
                 chocoInstall.StandardInput.Close();
 
@@ -122,7 +121,7 @@ namespace CUM.Choco
                 chocoInstall.PriorityClass = ProcessPriorityClass.High;
                 chocoInstall.PriorityBoostEnabled = true;
 
-                chocoInstall.StandardInput.WriteLine($"choco uninstall {packageLinkName} -y");
+                chocoInstall.StandardInput.WriteLine($"choco uninstall {packageLinkName} -y -f");
                 chocoInstall.StandardInput.Flush();
                 chocoInstall.StandardInput.Close();
 

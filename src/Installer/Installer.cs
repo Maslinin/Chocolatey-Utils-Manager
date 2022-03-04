@@ -146,7 +146,7 @@ namespace CUM.Installer
                 {
                     await this.UpdatePackages(this.GetSelectedPackagesItems(), this.CancellationToken);
                 }
-                else if(DeleteRadioButton.Checked)
+                else if (DeleteRadioButton.Checked)
                 {
                     await this.UninstallPackages(this.GetSelectedPackagesItems(), this.CancellationToken);
                 }
