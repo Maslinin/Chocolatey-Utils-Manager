@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
 	<PropertyGroup>
 		<OutputType>WinExe</OutputType>
-		<TargetFramework>netcoreapp3.1</TargetFramework>
+		<TargetFramework>net6.0-windows</TargetFramework>
     <Version>1.1.1</Version>
 		<UseWindowsForms>true</UseWindowsForms>
 		<GenerateAssemblyInfo>true</GenerateAssemblyInfo>
@@ -10,10 +10,12 @@
 		<StartupObject>CUM.Program</StartupObject>
 	</PropertyGroup>
 	<ItemGroup>
+		<PackageReference Include="Microsoft.PowerShell.SDK" Version="7.2.1" />
 		<PackageReference Include="Newtonsoft.Json">
 			<Version>13.0.1</Version>
 		</PackageReference>
-		<PackageReference Include="NLog" Version="4.7.13" />
+		<PackageReference Include="NLog" Version="4.7.14" />
+		<PackageReference Include="System.Management.Automation" Version="7.2.1" />
 	</ItemGroup>
 	<ItemGroup>
 		<Compile Update="Properties\Settings.Designer.cs">

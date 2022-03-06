@@ -1,31 +1,16 @@
 ﻿using System;
-using System.Diagnostics;
+using System.Text;
+using System.Management.Automation;
+using System.Management.Automation.Runspaces;
 
 namespace CUM.Choco
 {
     internal class ChocoInstallerBase
     {
         /// <summary>
-        /// Gets a ProcessStartInfo instance which contains the parameters for starting the process
-        /// </summary>
-        internal ProcessStartInfo ProcessStartInfo { get; }
-
-        /// <summary>
         /// Initializes a new instance ChocoBaseInstaller
         /// </summary>
-        internal ChocoInstallerBase()
-        {
-            ProcessStartInfo = new ProcessStartInfo
-            {
-                RedirectStandardInput = true,
-                RedirectStandardOutput = true,
-                UseShellExecute = false,
-                CreateNoWindow = true,
-                LoadUserProfile = true,
-                Verb = "runAs",
-                FileName = $@"{Environment.SystemDirectory}\WindowsPowerShell\v1.0\powershell.exe"
-            };
-        }
+        internal ChocoInstallerBase() { }
 
         /// <summary>
         /// Returns true if Chocolatey is set; otherwise false
@@ -41,31 +26,32 @@ namespace CUM.Choco
         /// Installs Chocolatey if it is not installed
         /// </summary>
         /// <returns> Message written by process from stdout </returns>
+        ///
         internal string InstallChoco()
         {
             string install = "Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))";
 
-            string stdoutMessage = string.Empty;
-            using (var chocoInstall = new Process { StartInfo = ProcessStartInfo })
+            var runspace = RunspaceFactory.CreateRunspace();
+            runspace.Open();
+
+            var pipeline = runspace.CreatePipeline();
+            pipeline.Commands.AddScript(install);
+
+            pipeline.Commands.Add("Out-String");
+
+            var results = pipeline.Invoke();
+
+            runspace.Close();
+
+            StringBuilder stringBuilder = new StringBuilder();
+            foreach (PSObject obj in results)
             {
-                if (!chocoInstall.Start())
-                    throw new InvalidOperationException($"process {chocoInstall.Id} is failed");
-
-                chocoInstall.PriorityClass = ProcessPriorityClass.High;
-                chocoInstall.PriorityBoostEnabled = true;
-
-                chocoInstall.StandardInput.WriteLine(install);
-                chocoInstall.StandardInput.Flush();
-                chocoInstall.StandardInput.Close();
-
-                chocoInstall.WaitForExit();
-
-                stdoutMessage = chocoInstall.StandardOutput.ReadToEnd();
-                chocoInstall.Close();
+                stringBuilder.AppendLine(obj.ToString());
             }
 
-            return stdoutMessage;
+            return stringBuilder.ToString();
         }
+
 
         /// <summary>
         /// Installs a package using Chocolatey
@@ -75,26 +61,25 @@ namespace CUM.Choco
         /// <returns> Message written by process from stdout </returns>
         internal string InstallPackage(string packageLinkName)
         {
-            string stdoutMessage = string.Empty;
-            using (var chocoInstall = new Process { StartInfo = ProcessStartInfo })
+            string install = $"choco install {packageLinkName} -y -f";
+
+            var runspace = RunspaceFactory.CreateRunspace();
+            runspace.Open();
+
+            var pipeline = runspace.CreatePipeline();
+            pipeline.Commands.AddScript(install);
+            pipeline.Commands.Add("Out-String");
+
+            var results = pipeline.Invoke();
+            runspace.Close();
+
+            var stringBuilder = new StringBuilder();
+            foreach (PSObject obj in results)
             {
-                if (!chocoInstall.Start())
-                    throw new InvalidOperationException($"process {chocoInstall.Id} is failed: {packageLinkName}");
-
-                chocoInstall.PriorityClass = ProcessPriorityClass.High;
-                chocoInstall.PriorityBoostEnabled = true;
-
-                chocoInstall.StandardInput.WriteLine($"choco install {packageLinkName} -y");
-                chocoInstall.StandardInput.Flush();
-                chocoInstall.StandardInput.Close();
-
-                chocoInstall.WaitForExit();
-
-                stdoutMessage = chocoInstall.StandardOutput.ReadToEnd();
-                chocoInstall.Close();
+                stringBuilder.AppendLine(obj.ToString());
             }
 
-            return stdoutMessage;
+            return stringBuilder.ToString();
         }
 
         /// <summary>
@@ -105,26 +90,25 @@ namespace CUM.Choco
         /// <returns> Message written by process from stdout </returns>
         internal string UpdatePackage(string packageLinkName)
         {
-            string stdoutMessage = string.Empty;
-            using (var chocoInstall = new Process { StartInfo = ProcessStartInfo })
+            string install = $"choco upgrade {packageLinkName} -y -f";
+
+            var runspace = RunspaceFactory.CreateRunspace();
+            runspace.Open();
+
+            var pipeline = runspace.CreatePipeline();
+            pipeline.Commands.AddScript(install);
+            pipeline.Commands.Add("Out-String");
+
+            var results = pipeline.Invoke();
+            runspace.Close();
+
+            var stringBuilder = new StringBuilder();
+            foreach (PSObject obj in results)
             {
-                if (!chocoInstall.Start())
-                    throw new InvalidOperationException($"process {chocoInstall.Id} is failed: {packageLinkName}");
-
-                chocoInstall.PriorityClass = ProcessPriorityClass.High;
-                chocoInstall.PriorityBoostEnabled = true;
-
-                chocoInstall.StandardInput.WriteLine($"choco upgrade {packageLinkName} -y");
-                chocoInstall.StandardInput.Flush();
-                chocoInstall.StandardInput.Close();
-
-                chocoInstall.WaitForExit();
-
-                stdoutMessage = chocoInstall.StandardOutput.ReadToEnd();
-                chocoInstall.Close();
+                stringBuilder.AppendLine(obj.ToString());
             }
 
-            return stdoutMessage;
+            return stringBuilder.ToString();
         }
 
         /// <summary>
@@ -136,26 +120,25 @@ namespace CUM.Choco
         /// <returns> Message written by process from stdout </returns>
         internal string UninstallPackage(string packageLinkName)
         {
-            string stdoutMessage = string.Empty;
-            using (var chocoInstall = new Process { StartInfo = ProcessStartInfo } )
+            string install = $"choco uninstall {packageLinkName} -y -f";
+
+            var runspace = RunspaceFactory.CreateRunspace();
+            runspace.Open();
+
+            var pipeline = runspace.CreatePipeline();
+            pipeline.Commands.AddScript(install);
+            pipeline.Commands.Add("Out-String");
+
+            var results = pipeline.Invoke();
+            runspace.Close();
+
+            var stringBuilder = new StringBuilder();
+            foreach (PSObject obj in results)
             {
-                if (!chocoInstall.Start())
-                    throw new InvalidOperationException($"process {chocoInstall.Id} is failed: {packageLinkName}");
-
-                chocoInstall.PriorityClass = ProcessPriorityClass.High;
-                chocoInstall.PriorityBoostEnabled = true;
-
-                chocoInstall.StandardInput.WriteLine($"choco uninstall {packageLinkName} -y");
-                chocoInstall.StandardInput.Flush();
-                chocoInstall.StandardInput.Close();
-
-                chocoInstall.WaitForExit();
-
-                stdoutMessage = chocoInstall.StandardOutput.ReadToEnd();
-                chocoInstall.Close();
+                stringBuilder.AppendLine(obj.ToString());
             }
 
-            return stdoutMessage;
+            return stringBuilder.ToString();
         }
     }
 }
