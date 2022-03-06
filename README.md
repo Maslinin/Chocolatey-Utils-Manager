@@ -8,7 +8,7 @@ and even customize categories in GUI, which will contain that or another packets
 ## Used technologies:    
 **Platform:** DotNet Core 3.1      
 **GUI:** WinForms    
-**NuGet Referencies:** Newtonsoft.JSON (v. 13.0.1), NLog (v. 4.7.13)   
+**NuGet Referencies:** Newtonsoft.JSON (v. 13.0.1), NLog (v. 4.7.14), System.Management.Automation (v. 7.2.1), Microsoft.PowerShell.SDK (v. 7.2.1)     
 
 # File structure
 Whole source code is in *src* folder, in root of repository       
