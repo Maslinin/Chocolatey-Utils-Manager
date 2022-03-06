@@ -1,27 +1,24 @@
-﻿using System;
+using System;
 using System.Text;
 using System.Management.Automation;
 using System.Management.Automation.Runspaces;
 
 namespace CUM.Choco
 {
-    internal class ChocoInstallerBase
+    public class ChocoInstallerBase : IChoco
     {
         /// <summary>
         /// Initializes a new instance ChocoBaseInstaller
         /// </summary>
         internal ChocoInstallerBase() { }
 
-        /// <summary>
-        /// Returns true if Chocolatey is set; otherwise false
-        /// </summary>
-        internal bool ChocoExists
+        public bool ChocoExists
         {
 #pragma warning disable IDE0075 //Simplify conditional expression
             get => Environment.GetEnvironmentVariable("ChocolateyInstall") is null ? false : true;
 #pragma warning restore IDE0075 //Simplify conditional expression
         }
-
+        
         /// <summary>
         /// Installs Chocolatey if it is not installed
         /// </summary>
@@ -36,14 +33,12 @@ namespace CUM.Choco
 
             var pipeline = runspace.CreatePipeline();
             pipeline.Commands.AddScript(install);
-
             pipeline.Commands.Add("Out-String");
 
             var results = pipeline.Invoke();
-
             runspace.Close();
 
-            StringBuilder stringBuilder = new StringBuilder();
+            var stringBuilder = new StringBuilder();
             foreach (PSObject obj in results)
             {
                 stringBuilder.AppendLine(obj.ToString());
@@ -51,7 +46,6 @@ namespace CUM.Choco
 
             return stringBuilder.ToString();
         }
-
 
         /// <summary>
         /// Installs a package using Chocolatey
@@ -82,13 +76,7 @@ namespace CUM.Choco
             return stringBuilder.ToString();
         }
 
-        /// <summary>
-        /// Updates the package using Chocolatey
-        /// </summary>
-        /// <param name="packageLinkName"></param>
-        /// <param name="cancellationToken"></param>
-        /// <returns> Message written by process from stdout </returns>
-        internal string UpdatePackage(string packageLinkName)
+        public string UpdatePackage(string packageLinkName)
         {
             string install = $"choco upgrade {packageLinkName} -y -f";
 
@@ -111,14 +99,7 @@ namespace CUM.Choco
             return stringBuilder.ToString();
         }
 
-        /// <summary>
-        /// Deletes a package using Chocolatey<br/>
-        /// The optional "cancellationToken" parameter is needed only if this method is used in an asynchronous thread
-        /// </summary>
-        /// <param name="packageLinkName"></param>
-        /// <param name="cancellationToken"></param>
-        /// <returns> Message written by process from stdout </returns>
-        internal string UninstallPackage(string packageLinkName)
+        public string UninstallPackage(string packageLinkName)
         {
             string install = $"choco uninstall {packageLinkName} -y -f";
 
