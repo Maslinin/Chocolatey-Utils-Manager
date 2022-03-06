@@ -12,7 +12,7 @@ namespace CUM.Logger
         /// <summary>
         /// Gets an instance inherited from ILogger
         /// </summary>
-        public static ILogger Logger { get; }
+        private readonly static ILogger Logger;
         /// <summary>
         /// Gets the path to the logging folder
         /// </summary>

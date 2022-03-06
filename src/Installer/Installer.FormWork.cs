@@ -142,8 +142,6 @@ namespace CUM.Installer
 
                 if (cancellationToken?.IsCancellationRequested ?? false)
                 {
-                    this.UnLockInstallerForm();
-                    this.LockAndHidesStopButton();
                     this.InfoLabel.Text = "Installing canceled";
 
                     throw new OperationCanceledException();
@@ -171,8 +169,6 @@ namespace CUM.Installer
 
                 if (cancellationToken?.IsCancellationRequested ?? false)
                 {
-                    this.UnLockInstallerForm();
-                    this.LockAndHidesStopButton();
                     this.InfoLabel.Text = "Updating canceled";
 
                     throw new OperationCanceledException();
@@ -200,8 +196,6 @@ namespace CUM.Installer
 
                 if (cancellationToken?.IsCancellationRequested ?? false)
                 {
-                    this.UnLockInstallerForm();
-                    this.LockAndHidesStopButton();
                     this.InfoLabel.Text = "Uninstalling canceled";
 
                     throw new OperationCanceledException();

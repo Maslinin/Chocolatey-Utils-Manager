@@ -1,8 +1,8 @@
 ﻿using System;
 using System.IO;
 using System.Threading;
-using System.Collections.Generic;
 using System.Windows.Forms;
+using System.Collections.Generic;
 using CUM.Installer.EntityModels;
 
 namespace CUM.Installer
@@ -12,11 +12,11 @@ namespace CUM.Installer
         /// <summary>
         /// Gets an object for asynchronous Chocolatey operations
         /// </summary>
-        internal Choco.ChocoInstallerAsync Choco { get; private set; }
+        private readonly Choco.ChocoInstallerAsync Choco;
         /// <summary>
-        /// Gets the asynchronous operation cancellation token
+        /// Gets the choco asynchronous operation cancellation token
         /// </summary>
-        internal CancellationTokenSource CancellationToken { get; private set; }
+        private CancellationTokenSource CancellationToken;
         /// <summary>
         /// Gets a list of programs from the json file available for installation in Chocolatey
         /// </summary>
@@ -123,7 +123,6 @@ namespace CUM.Installer
         {
             if (this.GetSelectedPackagesCount() == 0)
             {
-                this.InfoLabel.ForeColor = System.Drawing.Color.DarkRed;
                 InfoLabel.Text = "No packages selected for operation";
                 return;
             }
@@ -158,7 +157,7 @@ namespace CUM.Installer
             catch(Exception ex)
             {
                 Logger.NLogger.Log(ex.ToString());
-                MessageBox.Show($"{ex.Message}. \nCheck out the full version of the log on the path {Logger.NLogger.LogDirPath}",
+                MessageBox.Show($"{ex.Message}.\nCheck out the full version of the log on the path {Logger.NLogger.LogDirPath}",
                     ex.GetType().Name,
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Error);
@@ -172,11 +171,11 @@ namespace CUM.Installer
 
         private void StopButton_Click(object sender, EventArgs e)
         {
-            if(!(this.CancellationToken is null))
+            if(this.CancellationToken is not null)
             {
                 this.CancellationToken.Cancel();
-                this.InfoLabel.ForeColor = System.Drawing.Color.DarkRed;
-                this.InfoLabel.Text = "Installing cancelled... The action will be completed after the current package is completed.";
+                this.InfoLabel.Text = $"{(InstallRadioButton.Checked ? "Canceling the installation..." : (UpdateRadioButton.Checked ? "Canceling the update..." : "Canceling the uninstallation..."))} " +
+                    $"The process will be terminated after the current package is installed.";
             }
         }
 

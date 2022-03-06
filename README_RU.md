@@ -6,7 +6,7 @@
 а также кастомизировать категории в GUI, к которым будет относиться тот или иной пакет.
 
 ## Используемые технологии:    
-**Платформа:** DotNet Core 3.1      
+**Платформа:** DotNet 6.0
 **Технология GUI:** WinForms    
 **NuGet Зависимости:** Newtonsoft.JSON (v. 13.0.1), NLog (v. 4.7.14), System.Management.Automation (v. 7.2.1), Microsoft.PowerShell.SDK (v. 7.2.1)        
 

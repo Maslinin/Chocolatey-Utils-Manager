@@ -1,13 +1,15 @@
-<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 	<PropertyGroup>
 		<OutputType>WinExe</OutputType>
 		<TargetFramework>net6.0-windows</TargetFramework>
-    <Version>1.2.0</Version>
+		<Version>1.2.1</Version>
+		<Copyright>Copyright 2022 Danil Rudin, Aleksandr Chernov</Copyright>
 		<UseWindowsForms>true</UseWindowsForms>
 		<GenerateAssemblyInfo>true</GenerateAssemblyInfo>
 		<ApplicationManifest>Properties\app.manifest</ApplicationManifest>
 		<ApplicationIcon>choco.ico</ApplicationIcon>
 		<StartupObject>CUM.Program</StartupObject>
+		<NeutralLanguage>en-US</NeutralLanguage>
 	</PropertyGroup>
 	<ItemGroup>
 		<PackageReference Include="Microsoft.PowerShell.SDK" Version="7.2.1" />
@@ -32,11 +34,11 @@
 	    <Generator>SettingsSingleFileGenerator</Generator>
 	    <LastGenOutput>Settings.Designer.cs</LastGenOutput>
 	  </None>
-    <ContentWithTargetPath Include="src\Installer\InstallerContentModels\InstallerCategories.json">
+    <ContentWithTargetPath Include="src\Installer\InstallerContent\InstallerCategories.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <TargetPath>InstallerCategories.json</TargetPath>
     </ContentWithTargetPath>
-    <ContentWithTargetPath Include="src\Installer\InstallerContentModels\ProgramList.json">
+    <ContentWithTargetPath Include="src\Installer\InstallerContent\ProgramList.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <TargetPath>ProgramList.json</TargetPath>
     </ContentWithTargetPath>

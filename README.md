@@ -6,7 +6,7 @@ You can expand list of available packets of Chocolatey by yourself,
 and even customize categories in GUI, which will contain that or another packets group
 
 ## Used technologies:    
-**Platform:** DotNet Core 3.1      
+**Platform:** DotNet 6.0   
 **GUI:** WinForms    
 **NuGet Referencies:** Newtonsoft.JSON (v. 13.0.1), NLog (v. 4.7.14), System.Management.Automation (v. 7.2.1), Microsoft.PowerShell.SDK (v. 7.2.1)     
 

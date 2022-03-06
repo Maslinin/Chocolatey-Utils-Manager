@@ -10,7 +10,7 @@ namespace CUM.Installer.EntityModels
         /// <summary>
         /// Gets the list of categories displayed on CheckedListBox
         /// </summary>
-        public List<string> DisplayedCategories { get; } = new List<string>();
+        public List<string> DisplayedCategories { get; set; } = new List<string>();
 
         public InstallerCategories() { }
     }
