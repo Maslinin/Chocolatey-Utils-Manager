@@ -1,8 +1,8 @@
-﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
 	<PropertyGroup>
 		<OutputType>WinExe</OutputType>
 		<TargetFramework>net6.0-windows</TargetFramework>
-    <Version>1.1.1</Version>
+    <Version>1.2.0</Version>
 		<UseWindowsForms>true</UseWindowsForms>
 		<GenerateAssemblyInfo>true</GenerateAssemblyInfo>
 		<ApplicationManifest>Properties\app.manifest</ApplicationManifest>
