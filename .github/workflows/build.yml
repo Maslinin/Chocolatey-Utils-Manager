@@ -46,7 +46,7 @@ jobs:
         run: dotnet build --configuration Release
       - name: Test
         run: dotnet test --no-build --verbosity normal
-      - name: End Alanyze
+      - name: End Analyze
         env:
             GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
             SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
