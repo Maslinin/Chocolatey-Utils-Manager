@@ -14,7 +14,7 @@ namespace CUM.Installer.EntityModels
         /// <summary>
         /// Gets a list of ProgramInfo instances, where each contains information about a particular package
         /// </summary>
-        public List<ProgramInfo> Programs { get; private set; } = new List<ProgramInfo>();
+        public List<ProgramInfo> Programs { get; private set; }
 
         /// <summary>
         /// Initializes a new instance ProgramList

@@ -1,7 +1,7 @@
 using System;
 using System.Text;
-using System.Management.Automation;
 using System.Management.Automation.Runspaces;
+using System.Management.Automation;
 
 namespace CUM.Choco
 {
@@ -14,101 +14,57 @@ namespace CUM.Choco
 
         public bool ChocoExists
         {
-#pragma warning disable IDE0075 //Simplify conditional expression
-            get => Environment.GetEnvironmentVariable("ChocolateyInstall") is null ? false : true;
-#pragma warning restore IDE0075 //Simplify conditional expression
+            get => Environment.GetEnvironmentVariable("ChocolateyInstall") is not null;
         }
-        
+
         public string InstallChoco()
         {
             string script = "Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))";
-            var stdoutMessage = new StringBuilder();
 
-            using (var runspace = RunspaceFactory.CreateRunspace())
-            {
-                runspace.Open();
-                var pipeline = runspace.CreatePipeline();
-                pipeline.Commands.AddScript(script);
-                pipeline.Commands.Add("Out-String");
-
-                var results = pipeline.Invoke();
-                runspace.Close();
-
-                foreach (PSObject obj in results)
-                {
-                    stdoutMessage.AppendLine(obj.ToString());
-                }
-            }
-
-            return stdoutMessage.ToString();
+            return ChocoInstallerBase.RunScript(script);
         }
 
         public string InstallPackage(string packageLinkName)
         {
             string script = $"choco install {packageLinkName} -y -f";
-            var stdoutMessage = new StringBuilder();
 
-            using (var runspace = RunspaceFactory.CreateRunspace())
-            {
-                runspace.Open();
-                var pipeline = runspace.CreatePipeline();
-                pipeline.Commands.AddScript(script);
-                pipeline.Commands.Add("Out-String");
-
-                var results = pipeline.Invoke();
-                runspace.Close();
-
-                foreach (PSObject obj in results)
-                {
-                    stdoutMessage.AppendLine(obj.ToString());
-                }
-            }
-
-            return stdoutMessage.ToString();
+            return ChocoInstallerBase.RunScript(script);
         }
 
         public string UpdatePackage(string packageLinkName)
         {
             string script = $"choco upgrade {packageLinkName} -y -f";
-            var stdoutMessage = new StringBuilder();
 
-            using (var runspace = RunspaceFactory.CreateRunspace())
-            {
-                runspace.Open();
-                var pipeline = runspace.CreatePipeline();
-                pipeline.Commands.AddScript(script);
-                pipeline.Commands.Add("Out-String");
-
-                var results = pipeline.Invoke();
-                runspace.Close();
-
-                foreach (PSObject obj in results)
-                {
-                    stdoutMessage.AppendLine(obj.ToString());
-                }
-            }
-
-            return stdoutMessage.ToString();
+            return ChocoInstallerBase.RunScript(script);
         }
 
         public string UninstallPackage(string packageLinkName)
         {
             string script = $"choco uninstall {packageLinkName} -y -f";
+
+            return ChocoInstallerBase.RunScript(script);
+        }
+
+        private static string RunScript(string script)
+        {
             var stdoutMessage = new StringBuilder();
 
             using (var runspace = RunspaceFactory.CreateRunspace())
             {
                 runspace.Open();
-                var pipeline = runspace.CreatePipeline();
-                pipeline.Commands.AddScript(script);
-                pipeline.Commands.Add("Out-String");
 
-                var results = pipeline.Invoke();
-                runspace.Close();
-
-                foreach (PSObject obj in results)
+                using (var pipeline = runspace.CreatePipeline())
                 {
-                    stdoutMessage.AppendLine(obj.ToString());
+                    pipeline.Commands.AddScript(script);
+                    pipeline.Commands.Add("Out-String");
+
+                    var results = pipeline.Invoke();
+                    runspace.Close();
+
+                    foreach (var obj in results)
+                    {
+                        stdoutMessage.AppendLine(obj.ToString());
+                    }
                 }
             }
 

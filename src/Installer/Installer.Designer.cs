@@ -389,6 +389,7 @@
             this.DeleteRadioButton.TabIndex = 2;
             this.DeleteRadioButton.Text = "Uninstall";
             this.DeleteRadioButton.UseVisualStyleBackColor = true;
+            this.DeleteRadioButton.CheckedChanged += new System.EventHandler(this.DeleteRadioButton_CheckedChanged);
             // 
             // InstallRadioButton
             // 
@@ -404,6 +405,7 @@
             this.InstallRadioButton.TabStop = true;
             this.InstallRadioButton.Text = "Install";
             this.InstallRadioButton.UseVisualStyleBackColor = true;
+            this.InstallRadioButton.CheckedChanged += new System.EventHandler(this.InstallRadioButton_CheckedChanged);
             // 
             // UpdateRadioButton
             // 
@@ -417,6 +419,7 @@
             this.UpdateRadioButton.TabIndex = 1;
             this.UpdateRadioButton.Text = "Update";
             this.UpdateRadioButton.UseVisualStyleBackColor = true;
+            this.UpdateRadioButton.CheckedChanged += new System.EventHandler(this.UpdateRadioButton_CheckedChanged);
             // 
             // pictureBox1
             // 

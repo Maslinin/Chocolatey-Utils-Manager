@@ -3,6 +3,7 @@ using System.IO;
 using System.Threading;
 using System.Windows.Forms;
 using System.Collections.Generic;
+using Newtonsoft.Json;
 using CUM.Installer.EntityModels;
 
 namespace CUM.Installer
@@ -10,27 +11,28 @@ namespace CUM.Installer
     internal partial class Installer : Form
     {
         /// <summary>
-        /// Gets an object for asynchronous Chocolatey operations
-        /// </summary>
-        private readonly Choco.ChocoInstallerAsync Choco;
-        /// <summary>
-        /// Gets the choco asynchronous operation cancellation token
-        /// </summary>
-        private CancellationTokenSource CancellationToken;
-        /// <summary>
-        /// Gets a list of programs from the json file available for installation in Chocolatey
-        /// </summary>
-        internal List<ProgramList> Programs { get; private set; }
-        /// <summary>
         /// Gets a collection of displayed CheckedListBox containing packages to install
         /// </summary>
         internal List<CheckedListBox> ProgramsCheckedListBoxCollection { get; private set; }
 
+        /// <summary>
+        /// Gets an object for asynchronous Chocolatey operations
+        /// </summary>
+        private readonly Choco.ChocoInstallerAsync _сhoco;
+        /// <summary>
+        /// Gets the choco asynchronous operation cancellation token
+        /// </summary>
+        private CancellationTokenSource _сancellationToken;
+        /// <summary>
+        /// Gets a list of programs from the json file available for installation in Chocolatey
+        /// </summary>
+        private readonly List<ProgramList> _programs;
+
         internal Installer()
         {
             InitializeComponent();
-            Choco = new Choco.ChocoInstallerAsync();
-            CancellationToken = new CancellationTokenSource();
+            _сhoco = new Choco.ChocoInstallerAsync();
+            _сancellationToken = new CancellationTokenSource();
 
             ProgramsCheckedListBoxCollection = new List<CheckedListBox>
             {
@@ -46,8 +48,7 @@ namespace CUM.Installer
             };
 
             //Deserialization of json files into objects
-            Programs = Newtonsoft.Json.JsonConvert.DeserializeObject<List<ProgramList>>(
-                File.ReadAllText(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "ProgramList.json")));
+            _programs = JsonConvert.DeserializeObject<List<ProgramList>>(File.ReadAllText(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "ProgramList.json")));
         }
 
         private void Installer_Load(object sender, EventArgs e)
@@ -66,8 +67,7 @@ namespace CUM.Installer
                 this.OtherProgramsLabel
             };
 
-            var categories = Newtonsoft.Json.JsonConvert.DeserializeObject<InstallerCategories>(
-                File.ReadAllText(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "InstallerCategories.json")));
+            var categories = JsonConvert.DeserializeObject<InstallerCategories>(File.ReadAllText(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "InstallerCategories.json")));
 
             //To create register and space independence
             for (int i = 0; i < categories.DisplayedCategories.Count; ++i)
@@ -76,24 +76,24 @@ namespace CUM.Installer
             }
 
             //Get the number of listbox to process, ProgramsListBoxLabels.Count must be ProgramsListBoxCollection.Count
-            int programsListBoxCount = (ProgramsCheckedListBoxCollection.Count >= Programs.Count) ? Programs.Count : ProgramsCheckedListBoxCollection.Count;
+            int programsListBoxCount = (ProgramsCheckedListBoxCollection.Count >= _programs.Count) ? _programs.Count : ProgramsCheckedListBoxCollection.Count;
 
             //Set the names of CheckedListBox labels
             for (int i = 0; i < programsListBoxCount; ++i)
             {
-                ProgramsListBoxLabels[i].Text = Programs[i].Category + ":";
+                ProgramsListBoxLabels[i].Text = _programs[i].Category + ":";
             }
 
             //Drop Packages by Category:
             CheckedListBox temp;
             for (int i = 0; i < programsListBoxCount; ++i)
             {
-                var categoryFromFile = Programs[i].Category.Replace(" ", "").ToLower(); //To create register and space independence
+                var categoryFromFile = _programs[i].Category.Replace(" ", "").ToLower(); //To create register and space independence
                 var categoryPredicate = categories.DisplayedCategories.Find(c => c == categoryFromFile);
 
                 //Get the listbox to which the program will be added
                 temp = (categoryFromFile == categoryPredicate) ? ProgramsCheckedListBoxCollection[i] : OtherProgramsListBox;
-                foreach (var program in Programs[i].Programs)
+                foreach (var program in _programs[i].Programs)
                     temp.Items.Add(program, CheckState.Unchecked);
             } 
             this.SelectAllCheckBox.Checked = false;
@@ -127,9 +127,9 @@ namespace CUM.Installer
                 return;
             }
 
-            if (!this.CancellationToken.IsCancellationRequested)
+            if (!this._сancellationToken.IsCancellationRequested)
             {
-                this.CancellationToken = new CancellationTokenSource();
+                this._сancellationToken = new CancellationTokenSource();
             }
 
             this.LockInstallerForm();
@@ -139,20 +139,20 @@ namespace CUM.Installer
             {
                 if (InstallRadioButton.Checked)
                 {
-                    await this.InstallPackages(this.GetSelectedPackagesItems(), this.CancellationToken);
+                    await this.InstallPackages(this.GetSelectedPackagesItems(), this._сancellationToken);
                 }
                 else if (UpdateRadioButton.Checked)
                 {
-                    await this.UpdatePackages(this.GetSelectedPackagesItems(), this.CancellationToken);
+                    await this.UpdatePackages(this.GetSelectedPackagesItems(), this._сancellationToken);
                 }
                 else if (DeleteRadioButton.Checked)
                 {
-                    await this.UninstallPackages(this.GetSelectedPackagesItems(), this.CancellationToken);
+                    await this.UninstallPackages(this.GetSelectedPackagesItems(), this._сancellationToken);
                 }
             }
             catch(OperationCanceledException)
             {
-                this.CancellationToken.Dispose();
+                this._сancellationToken.Dispose();
             }
             catch(Exception ex)
             {
@@ -171,11 +171,22 @@ namespace CUM.Installer
 
         private void StopButton_Click(object sender, EventArgs e)
         {
-            if(this.CancellationToken is not null)
+            if(this._сancellationToken is not null)
             {
-                this.CancellationToken.Cancel();
-                this.InfoLabel.Text = $"{(InstallRadioButton.Checked ? "Canceling the installation..." : (UpdateRadioButton.Checked ? "Canceling the update..." : "Canceling the uninstallation..."))} " +
-                    $"The process will be terminated after the current package is installed.";
+                this._сancellationToken.Cancel();
+
+                if (InstallRadioButton.Checked)
+                {
+                    this.InfoLabel.Text = $"Canceling the installation... The process will be terminated after the current package is installed.";
+                }
+                else if (UpdateRadioButton.Checked)
+                {
+                    this.InfoLabel.Text = $"Canceling update... The process will be completed after the current package is updated.";
+                }
+                else if (DeleteRadioButton.Checked)
+                {
+                    this.InfoLabel.Text = $"Canceling the uninstallation... The process will be completed after uninstallation the current package.";
+                }
             }
         }
 
@@ -201,11 +212,27 @@ namespace CUM.Installer
             }
         }
 
+        private void InstallRadioButton_CheckedChanged(object sender, EventArgs e)
+        {
+            this.UnselectAllPackages();
+        }
+
+        private void UpdateRadioButton_CheckedChanged(object sender, EventArgs e)
+        {
+            this.UnselectAllPackages();
+        }
+
+        private void DeleteRadioButton_CheckedChanged(object sender, EventArgs e)
+        {
+            this.UnselectAllPackages();
+        }
+
         private void CheckedListBoxEvent_ItemCheck(object sender, ItemCheckEventArgs e)
         {
             this.UpdatePackagesInfoLabel(e);
         }
 
         private void InstallerClosed(object sender, FormClosedEventArgs e) => Application.Exit();
+
     }
 }

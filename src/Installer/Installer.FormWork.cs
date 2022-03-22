@@ -110,11 +110,11 @@ namespace CUM.Installer
         /// <param name="installer"></param>
         private async Task InstallChoco()
         {
-            if (!this.Choco.ChocoExists)
+            if (!this._сhoco.ChocoExists)
             {
                 this.LockInstallerForm();
                 this.InfoLabel.Text = "Chocolatey isn't found on your computer. Installing it...";
-                string stdoutMessage = await this.Choco.InstallChocoAsync();
+                string stdoutMessage = await this._сhoco.InstallChocoAsync();
                 this.UnLockInstallerForm();
                 this.StopButton.Enabled = false;
                 this.InfoLabel.Text = "Chocolatey was installed";
@@ -137,7 +137,7 @@ namespace CUM.Installer
             foreach (var program in programs)
             {
                 this.InfoLabel.Text = $"{i++} out of {packagesCount} packages installed: installing {program.ProgramName}";
-                string psMesagge = await this.Choco.InstallPackageAsync(program.ChocolateyInstallName, cancellationToken.Token);
+                string psMesagge = await this._сhoco.InstallPackageAsync(program.ChocolateyInstallName, cancellationToken.Token);
                 NLogger.Log(psMesagge);
 
                 if (cancellationToken?.IsCancellationRequested ?? false)
@@ -164,7 +164,7 @@ namespace CUM.Installer
             foreach (var program in programs)
             {
                 this.InfoLabel.Text = $"{i++} out of {packagesCount} packages updated: updating {program.ProgramName}";
-                string psMesagge = await this.Choco.UpdatePackageAsync(program.ChocolateyInstallName, cancellationToken.Token);
+                string psMesagge = await this._сhoco.UpdatePackageAsync(program.ChocolateyInstallName, cancellationToken.Token);
                 NLogger.Log(psMesagge);
 
                 if (cancellationToken?.IsCancellationRequested ?? false)
@@ -191,7 +191,7 @@ namespace CUM.Installer
             foreach (var program in programs)
             {
                 this.InfoLabel.Text = $"{i++} out of {packagesCount} packages uninstalled: uninstalling {program.ProgramName}";
-                string psMesagge = await this.Choco.UninstallPackageAsync(program.ChocolateyInstallName, cancellationToken.Token);
+                string psMesagge = await this._сhoco.UninstallPackageAsync(program.ChocolateyInstallName, cancellationToken.Token);
                 NLogger.Log(psMesagge);
 
                 if (cancellationToken?.IsCancellationRequested ?? false)
