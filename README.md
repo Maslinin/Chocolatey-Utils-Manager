@@ -1,3 +1,5 @@
+[![Build Status](https://github.com/Maslinin/Chocolatey-Utils-Manager/workflows/Build/badge.svg)](https://github.com/Maslinin/Chocolatey-Utils-Manager/actions/workflows/build.yml) [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=Maslinin_Chocolatey-Utils-Manager&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=Maslinin_Chocolatey-Utils-Manager) [![GitHub license](https://badgen.net/github/license/Maslinin/Chocolatey-Utils-Manager)](https://github.com/Maslinin/Chocolatey-Utils-Manager/blob/master/LICENSE)
+
 # Description
 **Chocolatey Utils Manager** - GUI Application, intended to simplify working with Chocolatey (packet manager)         
 Using Chocolatey Utils Manager you can as install Chocolatey itself, but also install/update/delete Chocolatey packets
