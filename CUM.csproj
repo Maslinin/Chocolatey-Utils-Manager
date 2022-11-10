@@ -11,29 +11,21 @@
 		<StartupObject>CUM.Program</StartupObject>
 		<NeutralLanguage>en-US</NeutralLanguage>
 	</PropertyGroup>
+	
 	<ItemGroup>
 		<PackageReference Include="Microsoft.PowerShell.SDK" Version="7.2.1" />
-		<PackageReference Include="Newtonsoft.Json">
-			<Version>13.0.1</Version>
-		</PackageReference>
-		<PackageReference Include="NLog" Version="4.7.14" />
 		<PackageReference Include="System.Management.Automation" Version="7.2.1" />
+		<PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+		<PackageReference Include="NLog" Version="4.7.14" />
 	</ItemGroup>
+	
 	<ItemGroup>
-		<Compile Update="Properties\Settings.Designer.cs">
-		  <DesignTimeSharedInput>True</DesignTimeSharedInput>
-		  <AutoGen>True</AutoGen>
-		  <DependentUpon>Settings.settings</DependentUpon>
-		</Compile>
 		<Compile Update="src\Installer\Installer.FormWork.cs">
 		  <DependentUpon>Installer.cs</DependentUpon>
 		</Compile>
 	</ItemGroup>
+	
 	<ItemGroup>
-	  <None Update="Properties\Settings.settings">
-	    <Generator>SettingsSingleFileGenerator</Generator>
-	    <LastGenOutput>Settings.Designer.cs</LastGenOutput>
-	  </None>
     <ContentWithTargetPath Include="src\Installer\InstallerContent\InstallerCategories.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <TargetPath>InstallerCategories.json</TargetPath>
@@ -43,4 +35,9 @@
       <TargetPath>ProgramList.json</TargetPath>
     </ContentWithTargetPath>
 	</ItemGroup>
+	
+	<ItemGroup>
+	  <Folder Include="Properties\" />
+	</ItemGroup>
+	
 </Project>
