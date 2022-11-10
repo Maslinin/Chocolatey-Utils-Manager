@@ -7,22 +7,6 @@ Using Chocolatey Utils Manager you can as install Chocolatey itself, but also in
 You can expand list of available packets of Chocolatey by yourself, 
 and even customize categories in GUI, which will contain that or another packets group
 
-## Used technologies:    
-**Platform:** .NET 6.0   
-**GUI:** WinForms    
-**NuGet Referencies:** Newtonsoft.JSON (v. 13.0.1), NLog (v. 4.7.14), System.Management.Automation (v. 7.2.1), Microsoft.PowerShell.SDK (v. 7.2.1)     
-
-# File structure
-Whole source code is in *src* folder, in root of repository       
-
-**files in src:**     
-1. **Choco** - classes files for interacting with Chocolatey
-2. **Installer** - graphics of GUI and it's business logic     
-2.1. **EntityModels** - entity modelfs for Installer     
-2.2. **InstallerContentModels** - files with content/models for Installer content,
-such as list of programs and JSON categories      
-3. **Program.cs** - program enter point 
-
 # I want to expand list of packets, displayed in GUI and available for iteraction. How do I do it?
 go to **src\Installer\InstallerContensModels** and open file **ProgramList.json**
 
