@@ -6,7 +6,7 @@
 		<Copyright>Copyright 2022 Danil Rudin, Aleksandr Chernov</Copyright>
 		<UseWindowsForms>true</UseWindowsForms>
 		<GenerateAssemblyInfo>true</GenerateAssemblyInfo>
-		<ApplicationManifest>Properties\app.manifest</ApplicationManifest>
+		<ApplicationManifest>app.manifest</ApplicationManifest>
 		<ApplicationIcon>choco.ico</ApplicationIcon>
 		<StartupObject>CUM.Program</StartupObject>
 		<NeutralLanguage>en-US</NeutralLanguage>
@@ -34,10 +34,6 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <TargetPath>ProgramList.json</TargetPath>
     </ContentWithTargetPath>
-	</ItemGroup>
-	
-	<ItemGroup>
-	  <Folder Include="Properties\" />
 	</ItemGroup>
 	
 </Project>
