@@ -4,7 +4,7 @@
 **Chocolatey Utils Manager** - is a GUI application, designed to ease work with Chocolatey package manager.
 With Chocolatey-Utils-Manager you can install/update/remove Chocolatey packages from your computer.
 
-![Screenshot of ChocolateyUtilsManager](./screenshot.PNG.PNG "Screenshot of Chocolatey Utils Manager")
+![Screenshot of ChocolateyUtilsManager](https://github.com/Maslinin/Chocolatey-Utils-Manager/raw/master/screenshot.PNG "Screenshot of Chocolatey Utils Manager")
 
 You can extend list of available Chocolatey packages by yourself, and customize the categories, that the packages will belong to.
 
