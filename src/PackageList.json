@@ -1,0 +1,207 @@
+[
+  {
+    "Category": "Browsers",
+    "Packages": [
+      {
+        "PackageName": "Chrome",
+        "PackageRefName": "googlechrome"
+      },
+      {
+        "PackageName": "Opera",
+        "PackageRefName": "opera"
+      },
+      {
+        "PackageName": "Firefox",
+        "PackageRefName": "firefox"
+      }
+    ]
+  },
+  {
+    "Category": "Working with files",
+    "Packages": [
+      {
+        "PackageName": "KDiFF3",
+        "PackageRefName": "kdiff3"
+      },
+      {
+        "PackageName": "7ZIP",
+        "PackageRefName": "7zip"
+      },
+      {
+        "PackageName": "AdobeReader",
+        "PackageRefName": "adobereader"
+      },
+      {
+        "PackageName": "Foxit Reader",
+        "PackageRefName": "foxitreader"
+      },
+      {
+        "PackageName": "K-lite Codec Pack Full",
+        "PackageRefName": "k-litecodecpackfull"
+      }
+    ]
+  },
+  {
+    "Category": "DotNet",
+    "Packages": [
+      {
+        "PackageName": ".NET Framework",
+        "PackageRefName": "dotnetfx"
+      },
+      {
+        "PackageName": ".NET Core",
+        "PackageRefName": "dotnetcore"
+      },
+      {
+        "PackageName": ".NET Core Runtime",
+        "PackageRefName": "dotnetcore-runtime"
+      },
+      {
+        "PackageName": ".NET Core SDK",
+        "PackageRefName": "dotnetcore-sdk"
+      },
+      {
+        "PackageName": "ILSpy",
+        "PackageRefName": "ilspy"
+      }
+    ]
+  },
+  {
+    "Category": "Programming",
+    "Packages": [
+      {
+        "PackageName": "Visual Studio 2019 Community",
+        "PackageRefName": "visualstudio2019community"
+      },
+      {
+        "PackageName": "Visual Studio 2019 Enterprise",
+        "PackageRefName": "visualstudio2019enterprise"
+      },
+      {
+        "PackageName": "Visual Studio 2019 TestAgent",
+        "PackageRefName": "visualstudio2019testagent"
+      },
+      {
+        "PackageName": "Notepad++",
+        "PackageRefName": "notepadplusplus"
+      },
+      {
+        "PackageName": "Clink",
+        "PackageRefName": "clink"
+      },
+      {
+        "PackageName": "LazyGit",
+        "PackageRefName": "lazygit"
+      },
+	    {
+		    "PackageName": "Postman",
+        "PackageRefName": "postman"
+	    }
+    ]
+  },
+  {
+    "Category": "Databases",
+    "Packages": [
+      {
+        "PackageName": "PostgreSQL",
+        "PackageRefName": "postgresql"
+      },
+      {
+        "PackageName": "PgAdmin4",
+        "PackageRefName": "pgadmin4"
+      },
+      {
+        "PackageName": "Sql Server Management Studio",
+        "PackageRefName": "sql-server-management-studio"
+      },
+      {
+        "PackageName": "DBeaver Community Edition",
+        "PackageRefName": "dbeaver"
+      }
+    ]
+  },
+  {
+    "Category": "Antiviruses",
+    "Packages": [
+      {
+        "PackageName": "Avira Free Antivirus",
+        "PackageRefName": "avirafreeantivirus"
+      },
+      {
+        "PackageName": "Kaspersky Antivirus",
+        "PackageRefName": "kav"
+      },
+      {
+        "PackageName": "Avast Free Antivirus",
+        "PackageRefName": "avastfreeantivirus"
+      },
+      {
+        "PackageName": "AVG Antivirus Free",
+        "PackageRefName": "avgantivirusfree"
+      },
+      {
+        "PackageName": "Microsoft Security Essentials",
+        "PackageRefName": "microsoftsecurityessentials"
+      }
+    ]
+  },
+  {
+    "Category": "Messengers",
+    "Packages": [
+      {
+        "PackageName": "Telegram",
+        "PackageRefName": "telegram"
+      },
+      {
+        "PackageName": "Team Viewer",
+        "PackageRefName": "teamviewer"
+      },
+      {
+        "PackageName": "Skype",
+        "PackageRefName": "skype"
+      },
+      {
+        "PackageName": "Zoom",
+        "PackageRefName": "zoom"
+      }
+    ]
+  },
+  {
+    "Category": "Graphic",
+    "Packages": [
+      {
+        "PackageName": "GIMP",
+        "PackageRefName": "gimp"
+      },
+      {
+        "PackageName": "JPEGView",
+        "PackageRefName": "jpegview"
+      }
+    ]
+  },
+  {
+    "Category": "Other",
+    "Packages": [
+      {
+        "PackageName": "Dropbox",
+        "PackageRefName": "dropbox"
+      },
+      {
+        "PackageName": "CCleaner",
+        "PackageRefName": "ccleaner"
+      },
+      {
+        "PackageName": "Process Explorer",
+        "PackageRefName": "procexp"
+      },
+      {
+        "PackageName": "KeePass",
+        "PackageRefName": "keepass"
+      },
+      {
+        "PackageName": "OpenVPN",
+        "PackageRefName": "OpenVPN"
+      }
+    ]
+  }
+]
