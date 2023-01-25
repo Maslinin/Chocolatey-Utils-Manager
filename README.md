@@ -1,8 +1,8 @@
 [![Build Status](https://github.com/Maslinin/Chocolatey-Utils-Manager/workflows/Build/badge.svg)](https://github.com/Maslinin/Chocolatey-Utils-Manager/actions/workflows/build.yml) [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=Maslinin_Chocolatey-Utils-Manager&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=Maslinin_Chocolatey-Utils-Manager) [![GitHub license](https://badgen.net/github/license/Maslinin/Chocolatey-Utils-Manager)](https://github.com/Maslinin/Chocolatey-Utils-Manager/blob/master/LICENSE)
 
 # Description
-**Chocolatey Utils Manager** - is a GUI application, designed to ease work with Chocolatey package manager.
-With Chocolatey-Utils-Manager you can install/update/remove Chocolatey packages from your computer.
+**Chocolatey Utils Manager** - is a GUI application, designed to ease work with ***Chocolatey Package Manager***.
+With Chocolatey-Utils-Manager you can *install/update/remove* Chocolatey packages from your computer.
 
 ![Screenshot of ChocolateyUtilsManager](https://github.com/Maslinin/Chocolatey-Utils-Manager/raw/master/screenshot.PNG "Screenshot of Chocolatey Utils Manager")
 
