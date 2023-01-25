@@ -11,11 +11,12 @@ You can extend list of available Chocolatey packages by yourself, and customize 
 # How do I extend list of available packets, displayed in GUI?
 You need to open file **ProgramList.json**
 
-> ProgramList.json file will be stored in ther directory with the executable after the project is built
+> ProgramList.json file will be stored in ther directory with the executable after the project is built.
 
 Each object in this *.json* file represents a different category of packages, displayed in the GUI.
 All you need is simply write information about the new package into existing object or make a new object, as shown below.
-Exaple of *.json* object:
+
+Example of *.json* object:
 
 ```
 {
