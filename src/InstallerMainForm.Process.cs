@@ -54,7 +54,7 @@ namespace CUM
             }
             else
             {
-                this.PackageInfoLabel.Text = $"Select(ed) {packagesCount} package(s)";
+                this.PackageInfoLabel.Text = $"Selected {packagesCount} package(s)";
             }
         }
 
