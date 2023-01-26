@@ -16,7 +16,7 @@ You need to open file **ProgramList.json**
 Each object in this *.json* file represents a different category of packages, displayed in the GUI.
 All you need is simply write information about the new package into existing object or make a new object, as shown below.
 
-Example of *.json* object:
+Example of *json* object:
 
 ```
 {
