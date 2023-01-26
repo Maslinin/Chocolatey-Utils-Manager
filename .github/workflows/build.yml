@@ -51,9 +51,9 @@ jobs:
         shell: powershell
         run: .\.sonar\scanner\dotnet-sonarscanner end /d:sonar.login="${{ secrets.SONAR_TOKEN }}"
       - name: Publish
-        run: dotnet publish
+        run: dotnet publish -c Release
       - name: Upload Artifact
         uses: actions/upload-artifact@v3
         with:
           name: ChocolateyUtilsManager
-          path: bin\Release
+          path: src\bin\Release
