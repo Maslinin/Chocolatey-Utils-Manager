@@ -34,7 +34,6 @@ namespace CUM
         {
             this.SelectAllPackagesCheckBox.Checked = false;
             this.SelectAllCategoriesCheckBox.Checked = true;
-            this.PackageInfoLabel.ForeColor = System.Drawing.Color.LightYellow;
 
             this.LockAndHideStopButton();
             this.GetSelectedPackagesCount();

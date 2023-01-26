@@ -8,7 +8,7 @@ With Chocolatey-Utils-Manager you can *install/update/remove* Chocolatey package
 
 You can extend list of available Chocolatey packages by yourself, and customize the categories, that the packages will belong to.
 
-# How do I extend list of available packets, displayed in GUI?
+# How do I extend list of available packages, displayed in GUI?
 You need to open file **ProgramList.json**
 
 > ProgramList.json file will be stored in ther directory with the executable after the project is built.

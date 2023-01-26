@@ -253,6 +253,7 @@
             // 
             PackageInfoLabel.AutoSize = true;
             PackageInfoLabel.Font = new System.Drawing.Font("Trebuchet MS", 12.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            PackageInfoLabel.ForeColor = System.Drawing.Color.LightYellow;
             PackageInfoLabel.Location = new System.Drawing.Point(12, 440);
             PackageInfoLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             PackageInfoLabel.Name = "PackageInfoLabel";
