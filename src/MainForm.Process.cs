@@ -6,7 +6,7 @@ using CUM.Models;
 
 namespace CUM
 {
-    internal partial class InstallerMainForm
+    internal partial class MainForm
     {
         public async Task InstallChoco()
         {
@@ -19,30 +19,26 @@ namespace CUM
                 await this._сhoco.InstallChoco();
 
                 this.UnlockInstallerForm();
-                this.PackageInfoLabel.Text = "Chocolatey was installed";
+                this.PackageInfoLabel.Text = "Chocolatey has been successfully installed";
             }
         }
 
-        public async Task Process(IEnumerable<PackageInfo> packages, CancellationToken cancellationToken)
+        public async Task CreateProcess(IEnumerable<PackageInfo> packages, CancellationToken cancellationToken)
         {
+            string action = this.GetCurrentAction();
             int counter = 0, packagesCount = this.GetSelectedPackagesCount();
 
-            this.PackageInfoLabel.Text = $"{counter} out of {packagesCount} packages installed";
             foreach (var package in packages)
             {
-                this.PackageInfoLabel.Text = $"{counter++} out of {packagesCount} packages installed: installing {package.PackageName}";
+                this.PackageInfoLabel.Text = $"{counter++} out of {packagesCount} packages {action}ed: {action}ing {package.PackageName}";
 
-                if (this.InstallRadioButton.Checked) 
-                    await this._сhoco.InstallPackage(package.PackageRefName);
-                else if (this.UpgradeRadioButton.Checked) 
-                    await this._сhoco.UpgradePackage(package.PackageRefName);
-                else if (this.UninstallRadioButton.Checked) 
-                    await this._сhoco.UninstallPackage(package.PackageRefName);
+                await this.GetCurrentChocoMethod()
+                    .Invoke(package.PackageRefName);
 
                 cancellationToken.ThrowIfCancellationRequested();
             }
 
-            this.PackageInfoLabel.Text = "Action completed";
+            this.PackageInfoLabel.Text = $"Action completed";
         }
 
         private void UpdatePackageInfoLabel(ItemCheckEventArgs @event = null)
@@ -50,11 +46,11 @@ namespace CUM
             var packagesCount = @event is null ? this.GetSelectedPackagesCount() : this.GetSelectedPackagesCountAfterItemCheckEvent(@event);
             if (packagesCount == 0)
             {
-                this.PackageInfoLabel.Text = "No package(s) selected";
+                this.PackageInfoLabel.Text = "No packages selected";
             }
             else
             {
-                this.PackageInfoLabel.Text = $"Selected {packagesCount} package(s)";
+                this.PackageInfoLabel.Text = $"{packagesCount} package(s) selected";
             }
         }
 

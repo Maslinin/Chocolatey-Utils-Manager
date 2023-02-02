@@ -2,7 +2,7 @@
 
 namespace CUM
 {
-    internal partial class InstallerMainForm
+    internal partial class MainForm
     {
         public void LockInstallerForm()
         {

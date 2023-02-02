@@ -9,7 +9,7 @@ namespace CUM
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new InstallerMainForm());
+            Application.Run(new MainForm());
         }
     }
 }

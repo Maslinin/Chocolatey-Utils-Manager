@@ -1,6 +1,6 @@
 ﻿namespace CUM
 {
-    internal partial class InstallerMainForm
+    internal partial class MainForm
     {
         /// <summary>
         /// Mandatory constructor variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(InstallerMainForm));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             InstallerSplitContainer = new System.Windows.Forms.SplitContainer();
             PackageSplitContainer = new System.Windows.Forms.SplitContainer();
             PackagesCheckedListBox = new System.Windows.Forms.CheckedListBox();

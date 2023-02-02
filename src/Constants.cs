@@ -5,9 +5,12 @@ namespace CUM
 {
     internal static class Constants
     {
-        public static string PackageListPath => Path.Combine(AppFolder, PackageListFileName);
-        public static string AppFolder => AppDomain.CurrentDomain.BaseDirectory;
-        public static string PackageListFileName => "PackageList.json";
+        public static class IO
+        {
+            public static string PackageListPath => Path.Combine(AppFolder, PackageListFileName);
+            public static string AppFolder => AppDomain.CurrentDomain.BaseDirectory;
+            public static string PackageListFileName => "PackageList.json";
+        }
 
         public static class Choco
         {
@@ -21,9 +24,11 @@ namespace CUM
             public static string ChocoInstall => "Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))";
         }
 
-        public static class States
+        public static class Action
         {
-
+            public static string Install => "Install";
+            public static string Upgrade => "Upgrad"; //No last letter, since the word ending will change depending on the state of the process (time)
+            public static string Uninstall => "Uninstall";
         }
     }
 }

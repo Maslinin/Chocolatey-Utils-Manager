@@ -1,21 +1,24 @@
 ﻿using System;
 using System.IO;
 using System.Threading;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Collections.Generic;
 using Newtonsoft.Json;
 using CUM.Choco;
 using CUM.Models;
+using static CUM.Constants;
 
 namespace CUM
 {
-    internal partial class InstallerMainForm : Form
+    internal partial class MainForm : Form
     {
+        private delegate Task ChocoProcess(string packageRefName);
         private readonly IChoco _сhoco;
         private readonly IEnumerable<PackageList> _packageList;
         private CancellationTokenSource _cancellationToken;
 
-        internal InstallerMainForm()
+        internal MainForm()
         {
             InitializeComponent();
             this._сhoco = new ChocoManager();
@@ -27,7 +30,7 @@ namespace CUM
             this.PackageCategoriesCheckedListBox.ItemCheck += this.PackageCategoriesCheckedListBox_ItemCheck;
 
             this._packageList = JsonConvert.DeserializeObject<IEnumerable<PackageList>>(
-                File.ReadAllText(Constants.PackageListPath));
+                File.ReadAllText(IO.PackageListPath));
         }
 
         private void Installer_Load(object sender, EventArgs e)
@@ -54,7 +57,7 @@ namespace CUM
         {
             if (this.GetSelectedPackagesCount() == 0)
             {
-                PackageInfoLabel.Text = "No packages selected for operation";
+                PackageInfoLabel.Text = "No packages selected for operation.";
                 return;
             }
 
@@ -68,11 +71,11 @@ namespace CUM
 
             try
             {
-                await this.Process(this.GetSelectedPackagesItems(), this._cancellationToken.Token);
+                await this.CreateProcess(this.GetSelectedPackagesItems(), this._cancellationToken.Token);
             }
             catch (OperationCanceledException)
             {
-                this.PackageInfoLabel.Text = "Uninstalling canceled";
+                this.PackageInfoLabel.Text = "Action canceled.";
                 this._cancellationToken.Dispose();
             }
             catch (Exception ex)
@@ -88,11 +91,10 @@ namespace CUM
 
         private void StopButton_Click(object sender, EventArgs e)
         {
-            if (this._cancellationToken is not null)
-            {
-                this._cancellationToken.Cancel();
-                this.PackageInfoLabel.Text = $"Canceling of the action. The process will end when the action on the current package ends";
-            }
+            string action = this.GetCurrentAction();
+
+            this._cancellationToken.Cancel();
+            this.PackageInfoLabel.Text = $"Canceling action... The process will be completed after the current package is {action}ed.";
         }
 
         private void SelectAllPackagesCheckBox_CheckedChanged(object sender, EventArgs e)
