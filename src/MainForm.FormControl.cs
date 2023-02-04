@@ -80,7 +80,7 @@ namespace CUM
         {
             var packagesCount = this.GetSelectedPackagesCount();
 
-            if (@event is null)
+            if (@event is not null)
             {
                 //Crutch:
                 //Only works with this code,
