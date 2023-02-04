@@ -2,8 +2,6 @@
 	<PropertyGroup>
 		<OutputType>WinExe</OutputType>
 		<TargetFramework>net6.0-windows</TargetFramework>
-		<Version>1.0.0</Version>
-		<Copyright>Copyright 2022 Danil Rudin, Aleksandr Chernov</Copyright>
 		<UseWindowsForms>true</UseWindowsForms>
 		<GenerateAssemblyInfo>true</GenerateAssemblyInfo>
 		<ApplicationManifest>app.manifest</ApplicationManifest>

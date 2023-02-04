@@ -14,14 +14,15 @@ namespace CUM
     internal partial class MainForm : Form
     {
         private delegate Task ChocoProcess(string packageRefName);
-        private readonly IChocoManager _сhoco;
+
+        private readonly IChocoManager _choco;
         private readonly IEnumerable<PackageList> _packageList;
         private CancellationTokenSource _cancellationToken;
 
         internal MainForm()
         {
             InitializeComponent();
-            this._сhoco = new ChocoManager();
+            this._choco = new ChocoManager();
             this._cancellationToken = new CancellationTokenSource();
 
             this.InstallerSplitContainer.IsSplitterFixed = true;
@@ -50,13 +51,12 @@ namespace CUM
         //Immediately after opening the window, it is checked whether the chocolate package manager is installed on the computer
         private async void Installer_Shown(object sender, EventArgs e)
         {
-            if (!this._сhoco.ChocoExists)
+            if (!this._choco.ChocoExists)
             {
                 this.LockInstallerForm();
-                this.StopButton.Enabled = false;
                 this.PackageInfoLabel.Text = "Chocolatey isn't found on your computer. Installing it...";
 
-                await this._сhoco.InstallChoco();
+                await this._choco.InstallChoco();
 
                 this.UnlockInstallerForm();
                 this.PackageInfoLabel.Text = "Chocolatey has been successfully installed";
@@ -67,7 +67,7 @@ namespace CUM
         {
             if (this.GetSelectedPackagesCount() == 0)
             {
-                PackageInfoLabel.Text = "No packages selected for operation.";
+                PackageInfoLabel.Text = "No packages selected for operation";
                 return;
             }
 
@@ -82,14 +82,14 @@ namespace CUM
             try
             {
                 var packages = this.GetSelectedPackages();
-                string action = this.GetCurrentSelectedAction();
+                string option = this.GetCurrentSelectedOption();
                 int counter = 0, packagesCount = this.GetSelectedPackagesCount();
 
                 foreach (var package in packages)
                 {
-                    this.PackageInfoLabel.Text = $"{counter++} out of {packagesCount} packages {action}ed: {action}ing {package.PackageName}";
+                    this.PackageInfoLabel.Text = $"{counter++} out of {packagesCount} packages {option}ed: {option}ing {package.PackageName}";
 
-                    await this.GetChocoMethodForCurrentAction()
+                    await this.GetChocoMethodForCurrentOption()
                         .Invoke(package.PackageRefName);
 
                     this._cancellationToken.Token.ThrowIfCancellationRequested();
@@ -99,12 +99,8 @@ namespace CUM
             }
             catch (OperationCanceledException)
             {
-                this.PackageInfoLabel.Text = "Action canceled.";
+                this.PackageInfoLabel.Text = "Action canceled";
                 this._cancellationToken.Dispose();
-            }
-            catch (Exception ex)
-            {
-                PackageInfoLabel.Text = ex.Message;
             }
             finally
             {
@@ -115,10 +111,10 @@ namespace CUM
 
         private void StopButton_Click(object sender, EventArgs e)
         {
-            string action = this.GetCurrentSelectedAction();
-
             this._cancellationToken.Cancel();
-            this.PackageInfoLabel.Text = $"Canceling action... The process will be completed after the current package is {action}ed.";
+
+            string option = this.GetCurrentSelectedOption();
+            this.PackageInfoLabel.Text = $"Canceling action... The process will be completed after the current package is {option}ed";
         }
 
         private void SelectAllPackagesCheckBox_CheckedChanged(object sender, EventArgs e)

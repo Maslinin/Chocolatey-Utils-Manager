@@ -30,14 +30,14 @@ namespace CUM
         {
             this.StopButton.Enabled = false;
             this.StopButton.Visible = false;
-            this.ActionSelectionGroupBox.Height -= this.StopButton.Height;
+            this.OptionSelectionGroupBox.Height -= this.StopButton.Height;
         }
 
         private void UnlockAndShowStopButton()
         {
             this.StopButton.Enabled = true;
             this.StopButton.Visible = true;
-            this.ActionSelectionGroupBox.Height += this.StopButton.Height;
+            this.OptionSelectionGroupBox.Height += this.StopButton.Height;
         }
 
         private void SelectAllPackages()
@@ -78,15 +78,21 @@ namespace CUM
 
         private void UpdatePackageInfoLabel(ItemCheckEventArgs @event = null)
         {
-            var packagesCount = @event is null ? this.GetSelectedPackagesCount() : this.GetSelectedPackagesCountAfterItemCheckEvent(@event);
-            if (packagesCount == 0)
+            var packagesCount = this.GetSelectedPackagesCount();
+
+            if (@event is null)
             {
-                this.PackageInfoLabel.Text = "No packages selected";
+                //Crutch:
+                //Only works with this code,
+                //due to a flaw CheckedListBox the number of packets would be displayed incorrectly, therefore if checked it increases by 1;
+                //otherwise decreases by 1
+                if (@event.NewValue == CheckState.Checked)
+                    ++packagesCount;
+                else if (@event.NewValue == CheckState.Unchecked)
+                    --packagesCount;
             }
-            else
-            {
-                this.PackageInfoLabel.Text = $"{packagesCount} package(s) selected";
-            }
+
+            this.PackageInfoLabel.Text = packagesCount == 0 ? "No packages selected" : $"{packagesCount} package(s) selected";
         }
 
     }

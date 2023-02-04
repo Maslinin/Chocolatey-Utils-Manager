@@ -35,7 +35,7 @@
             PackageCategoriesCheckedListBox = new System.Windows.Forms.CheckedListBox();
             SelectAllCategoriesCheckBox = new System.Windows.Forms.CheckBox();
             SelectAllPackagesCheckBox = new System.Windows.Forms.CheckBox();
-            ActionSelectionGroupBox = new System.Windows.Forms.GroupBox();
+            OptionSelectionGroupBox = new System.Windows.Forms.GroupBox();
             StartButton = new System.Windows.Forms.Button();
             StopButton = new System.Windows.Forms.Button();
             UninstallRadioButton = new System.Windows.Forms.RadioButton();
@@ -51,7 +51,7 @@
             PackageSplitContainer.Panel1.SuspendLayout();
             PackageSplitContainer.Panel2.SuspendLayout();
             PackageSplitContainer.SuspendLayout();
-            ActionSelectionGroupBox.SuspendLayout();
+            OptionSelectionGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
@@ -72,7 +72,7 @@
             // 
             InstallerSplitContainer.Panel2.Controls.Add(SelectAllCategoriesCheckBox);
             InstallerSplitContainer.Panel2.Controls.Add(SelectAllPackagesCheckBox);
-            InstallerSplitContainer.Panel2.Controls.Add(ActionSelectionGroupBox);
+            InstallerSplitContainer.Panel2.Controls.Add(OptionSelectionGroupBox);
             InstallerSplitContainer.Panel2.Controls.Add(pictureBox1);
             InstallerSplitContainer.Panel2.Cursor = System.Windows.Forms.Cursors.Arrow;
             InstallerSplitContainer.Size = new System.Drawing.Size(775, 425);
@@ -150,23 +150,23 @@
             SelectAllPackagesCheckBox.UseVisualStyleBackColor = true;
             SelectAllPackagesCheckBox.CheckedChanged += SelectAllPackagesCheckBox_CheckedChanged;
             // 
-            // ActionSelectionGroupBox
+            // OptionSelectionGroupBox
             // 
-            ActionSelectionGroupBox.BackColor = System.Drawing.Color.PeachPuff;
-            ActionSelectionGroupBox.Controls.Add(StartButton);
-            ActionSelectionGroupBox.Controls.Add(StopButton);
-            ActionSelectionGroupBox.Controls.Add(UninstallRadioButton);
-            ActionSelectionGroupBox.Controls.Add(InstallRadioButton);
-            ActionSelectionGroupBox.Controls.Add(UpgradeRadioButton);
-            ActionSelectionGroupBox.Font = new System.Drawing.Font("Verdana", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            ActionSelectionGroupBox.Location = new System.Drawing.Point(4, 76);
-            ActionSelectionGroupBox.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            ActionSelectionGroupBox.Name = "ActionSelectionGroupBox";
-            ActionSelectionGroupBox.Padding = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            ActionSelectionGroupBox.Size = new System.Drawing.Size(173, 202);
-            ActionSelectionGroupBox.TabIndex = 0;
-            ActionSelectionGroupBox.TabStop = false;
-            ActionSelectionGroupBox.Text = "Action";
+            OptionSelectionGroupBox.BackColor = System.Drawing.Color.PeachPuff;
+            OptionSelectionGroupBox.Controls.Add(StartButton);
+            OptionSelectionGroupBox.Controls.Add(StopButton);
+            OptionSelectionGroupBox.Controls.Add(UninstallRadioButton);
+            OptionSelectionGroupBox.Controls.Add(InstallRadioButton);
+            OptionSelectionGroupBox.Controls.Add(UpgradeRadioButton);
+            OptionSelectionGroupBox.Font = new System.Drawing.Font("Verdana", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            OptionSelectionGroupBox.Location = new System.Drawing.Point(4, 76);
+            OptionSelectionGroupBox.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            OptionSelectionGroupBox.Name = "OptionSelectionGroupBox";
+            OptionSelectionGroupBox.Padding = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            OptionSelectionGroupBox.Size = new System.Drawing.Size(173, 202);
+            OptionSelectionGroupBox.TabIndex = 0;
+            OptionSelectionGroupBox.TabStop = false;
+            OptionSelectionGroupBox.Text = "Option";
             // 
             // StartButton
             // 
@@ -261,7 +261,7 @@
             PackageInfoLabel.TabIndex = 2;
             PackageInfoLabel.Text = "No package(s) selected";
             // 
-            // InstallerMainForm
+            // MainForm
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -273,7 +273,7 @@
             Icon = (System.Drawing.Icon)resources.GetObject("$this.Icon");
             Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             MaximizeBox = false;
-            Name = "InstallerMainForm";
+            Name = "MainForm";
             StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             Text = "Chocolatey Utils Manager";
             FormClosed += InstallerClose;
@@ -288,8 +288,8 @@
             PackageSplitContainer.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)PackageSplitContainer).EndInit();
             PackageSplitContainer.ResumeLayout(false);
-            ActionSelectionGroupBox.ResumeLayout(false);
-            ActionSelectionGroupBox.PerformLayout();
+            OptionSelectionGroupBox.ResumeLayout(false);
+            OptionSelectionGroupBox.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
             PerformLayout();
@@ -299,7 +299,7 @@
         internal System.Windows.Forms.RadioButton InstallRadioButton;
         internal System.Windows.Forms.RadioButton UninstallRadioButton;
         internal System.Windows.Forms.RadioButton UpgradeRadioButton;
-        internal System.Windows.Forms.GroupBox ActionSelectionGroupBox;
+        internal System.Windows.Forms.GroupBox OptionSelectionGroupBox;
         internal System.Windows.Forms.Button StartButton;
         internal System.Windows.Forms.CheckBox SelectAllPackagesCheckBox;
         internal System.Windows.Forms.PictureBox pictureBox1;

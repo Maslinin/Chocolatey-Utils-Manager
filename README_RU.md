@@ -1,5 +1,5 @@
 ﻿# Описание
-**Chocolatey Utils Manager** - это GUI приложение, предназначенное для упрощения работы с пакетным менеджером Chocolatey.         
+**Chocolatey Utils Manager** - это GUI оболочка, предназначенное для упрощения работы с пакетным менеджером Chocolatey.         
 С помощью Chocolatey Utils Manager вы можете *установливать/обновлять/удалять пакеты* Chocolatey со своего компьютера.
 
 ![Screenshot of ChocolateyUtilsManager](https://github.com/Maslinin/Chocolatey-Utils-Manager/raw/master/screenshot.png "Screenshot of Chocolatey Utils Manager")

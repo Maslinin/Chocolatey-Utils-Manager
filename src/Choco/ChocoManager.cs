@@ -13,7 +13,7 @@ namespace CUM.Choco
             this._runspace = RunspaceFactory.CreateRunspace();
             this._runspace.Open();
         }
-        
+
         public bool ChocoExists
         {
             get => Environment.GetEnvironmentVariable(Constants.Choco.EnvVarName) is not null;
@@ -21,7 +21,7 @@ namespace CUM.Choco
 
         public async Task InstallChoco()
         {
-            if (!this.ChocoExists) 
+            if (!this.ChocoExists)
             {
                 string script = Constants.Choco.ChocoInstall;
                 await RunScript(script);
