@@ -5,7 +5,9 @@ namespace CUM.Choco
 {
     internal class ChocoCommandBuilder
     {
-        private readonly StringBuilder _command = new StringBuilder().Append(CommandName).Append(' ');
+        private readonly StringBuilder _command = new StringBuilder()
+            .Append(CommandName)
+            .Append(' ');
 
         public string Get => this._command.ToString();
         

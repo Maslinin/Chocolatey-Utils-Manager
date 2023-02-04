@@ -4,7 +4,7 @@ using System.Management.Automation.Runspaces;
 
 namespace CUM.Choco
 {
-    public sealed class ChocoManager : IChoco
+    public sealed class ChocoManager : IChocoManager
     {
         private readonly Runspace _runspace;
 

@@ -8,14 +8,9 @@ namespace CUM
 {
     internal partial class MainForm
     {
-        private int GetSelectedPackagesCount()
-        {
-            return this.PackagesCheckedListBox.CheckedItems.Count;
-        }
-
         private int GetSelectedPackagesCountAfterItemCheckEvent(ItemCheckEventArgs e)
         {
-            int packageCount = this.PackagesCheckedListBox.CheckedItems.Count;
+            int packageCount = this.GetSelectedPackagesCount();
 
             //Crutch:
             //Only works with this code,
@@ -29,12 +24,18 @@ namespace CUM
             return packageCount;
         }
 
-        private IEnumerable<PackageInfo> GetSelectedPackagesItems()
+        private int GetSelectedPackagesCount()
         {
-            return new List<PackageInfo>(this.PackagesCheckedListBox.CheckedItems.Cast<PackageInfo>());
+            return this.PackagesCheckedListBox.CheckedItems.Count;
         }
 
-        private string GetCurrentAction()
+        private IEnumerable<PackageInfo> GetSelectedPackages()
+        {
+            var packagesInfo = this.PackagesCheckedListBox.CheckedItems.Cast<PackageInfo>();
+            return new List<PackageInfo>(packagesInfo);
+        }
+
+        private string GetCurrentSelectedAction()
         {
             if (this.InstallRadioButton.Checked)
                 return Action.Install;
@@ -44,7 +45,7 @@ namespace CUM
                 return Action.Uninstall;
         }
 
-        private ChocoProcess GetCurrentChocoMethod()
+        private ChocoProcess GetChocoMethodForCurrentAction()
         {
             if (this.InstallRadioButton.Checked)
                 return this._сhoco.InstallPackage;

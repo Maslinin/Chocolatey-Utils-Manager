@@ -14,7 +14,7 @@ namespace CUM
     internal partial class MainForm : Form
     {
         private delegate Task ChocoProcess(string packageRefName);
-        private readonly IChoco _сhoco;
+        private readonly IChocoManager _сhoco;
         private readonly IEnumerable<PackageList> _packageList;
         private CancellationTokenSource _cancellationToken;
 
@@ -50,7 +50,17 @@ namespace CUM
         //Immediately after opening the window, it is checked whether the chocolate package manager is installed on the computer
         private async void Installer_Shown(object sender, EventArgs e)
         {
-            await this.InstallChoco();
+            if (!this._сhoco.ChocoExists)
+            {
+                this.LockInstallerForm();
+                this.StopButton.Enabled = false;
+                this.PackageInfoLabel.Text = "Chocolatey isn't found on your computer. Installing it...";
+
+                await this._сhoco.InstallChoco();
+
+                this.UnlockInstallerForm();
+                this.PackageInfoLabel.Text = "Chocolatey has been successfully installed";
+            }
         }
 
         private async void StartButton_Click(object sender, EventArgs e)
@@ -71,7 +81,21 @@ namespace CUM
 
             try
             {
-                await this.CreateProcess(this.GetSelectedPackagesItems(), this._cancellationToken.Token);
+                var packages = this.GetSelectedPackages();
+                string action = this.GetCurrentSelectedAction();
+                int counter = 0, packagesCount = this.GetSelectedPackagesCount();
+
+                foreach (var package in packages)
+                {
+                    this.PackageInfoLabel.Text = $"{counter++} out of {packagesCount} packages {action}ed: {action}ing {package.PackageName}";
+
+                    await this.GetChocoMethodForCurrentAction()
+                        .Invoke(package.PackageRefName);
+
+                    this._cancellationToken.Token.ThrowIfCancellationRequested();
+                }
+
+                this.PackageInfoLabel.Text = $"Action completed";
             }
             catch (OperationCanceledException)
             {
@@ -91,7 +115,7 @@ namespace CUM
 
         private void StopButton_Click(object sender, EventArgs e)
         {
-            string action = this.GetCurrentAction();
+            string action = this.GetCurrentSelectedAction();
 
             this._cancellationToken.Cancel();
             this.PackageInfoLabel.Text = $"Canceling action... The process will be completed after the current package is {action}ed.";

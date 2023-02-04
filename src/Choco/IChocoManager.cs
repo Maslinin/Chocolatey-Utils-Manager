@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 
 namespace CUM.Choco
 {
-    public interface IChoco : IDisposable
+    public interface IChocoManager : IDisposable
     {
         bool ChocoExists { get; }
         Task InstallChoco();
