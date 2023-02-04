@@ -13,7 +13,7 @@ namespace ChocolateyUtilsManager
 {
     internal partial class MainForm : Form
     {
-        private delegate Task ChocoProcess(string packageRefName);
+        private delegate Task ChocoOption(string packageRefName);
 
         private readonly IChocoManager _choco;
         private readonly IEnumerable<PackageList> _packageList;
@@ -89,7 +89,7 @@ namespace ChocolateyUtilsManager
                 {
                     this.PackageInfoLabel.Text = $"{counter++} out of {packagesCount} packages {option}ed: {option}ing {package.PackageName}";
 
-                    await this.GetChocoMethodForCurrentOption()
+                    await this.GetChocoOptionMethodByCurrentSelectedOption()
                         .Invoke(package.PackageRefName);
 
                     this._cancellationToken.Token.ThrowIfCancellationRequested();

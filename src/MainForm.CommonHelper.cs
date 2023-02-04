@@ -35,7 +35,7 @@ namespace ChocolateyUtilsManager
                 return Option.Uninstall;
         }
 
-        private ChocoProcess GetChocoMethodForCurrentOption()
+        private ChocoOption GetChocoOptionMethodByCurrentSelectedOption()
         {
             if (this.InstallRadioButton.Checked)
                 return this._choco.InstallPackage;
