@@ -24,7 +24,7 @@ namespace ChocolateyUtilsManager.Choco
             if (!this.ChocoExists)
             {
                 string script = Constants.Choco.ChocoInstall;
-                await RunScript(script);
+                await this.RunScript(script);
             }
         }
 
@@ -32,8 +32,9 @@ namespace ChocolateyUtilsManager.Choco
         {
             if (this.ChocoExists)
             {
-                string script = new ChocoCommandBuilder().AddInstallCommand().AddPackageRefName(packageRefName).AddConfirmFlag().AddForceFlag().Get;
-                await RunScript(script);
+                string script = new ChocoCommandBuilder().AddInstallCommand()
+                    .AddPackageRefName(packageRefName).AddConfirmFlag().AddForceFlag().Get;
+                await this.RunScript(script);
             }
         }
 
@@ -41,8 +42,9 @@ namespace ChocolateyUtilsManager.Choco
         {
             if (this.ChocoExists)
             {
-                string script = new ChocoCommandBuilder().AddUpgradeCommand().AddPackageRefName(packageRefName).AddConfirmFlag().AddForceFlag().Get;
-                await RunScript(script);
+                string script = new ChocoCommandBuilder().AddUpgradeCommand()
+                    .AddPackageRefName(packageRefName).AddConfirmFlag().AddForceFlag().Get;
+                await this.RunScript(script);
             }
         }
 
@@ -50,8 +52,9 @@ namespace ChocolateyUtilsManager.Choco
         {
             if (this.ChocoExists)
             {
-                string script = new ChocoCommandBuilder().AddUninstallCommand().AddPackageRefName(packageRefName).AddConfirmFlag().AddForceFlag().Get;
-                await RunScript(script);
+                string script = new ChocoCommandBuilder().AddUninstallCommand()
+                    .AddPackageRefName(packageRefName).AddConfirmFlag().AddForceFlag().Get;
+                await this.RunScript(script);
             }
         }
 
