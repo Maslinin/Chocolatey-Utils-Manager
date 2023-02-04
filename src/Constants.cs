@@ -26,9 +26,9 @@ namespace ChocolateyUtilsManager
 
         public static class Option
         {
-            public static string Install => "Install";
-            public static string Upgrade => "Upgrad"; //No last letter, since the word ending will change depending on the state of the process (time)
-            public static string Uninstall => "Uninstall";
+            public static string Install => "install";
+            public static string Upgrade => "upgrad"; //No last letter, since the word ending will change depending on the state of the process (time)
+            public static string Uninstall => "uninstall";
         }
     }
 }

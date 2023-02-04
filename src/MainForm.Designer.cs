@@ -41,7 +41,7 @@
             UninstallRadioButton = new System.Windows.Forms.RadioButton();
             InstallRadioButton = new System.Windows.Forms.RadioButton();
             UpgradeRadioButton = new System.Windows.Forms.RadioButton();
-            pictureBox1 = new System.Windows.Forms.PictureBox();
+            ChocoLogoPictureBox = new System.Windows.Forms.PictureBox();
             PackageInfoLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)InstallerSplitContainer).BeginInit();
             InstallerSplitContainer.Panel1.SuspendLayout();
@@ -52,7 +52,7 @@
             PackageSplitContainer.Panel2.SuspendLayout();
             PackageSplitContainer.SuspendLayout();
             OptionSelectionGroupBox.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)ChocoLogoPictureBox).BeginInit();
             SuspendLayout();
             // 
             // InstallerSplitContainer
@@ -73,7 +73,7 @@
             InstallerSplitContainer.Panel2.Controls.Add(SelectAllCategoriesCheckBox);
             InstallerSplitContainer.Panel2.Controls.Add(SelectAllPackagesCheckBox);
             InstallerSplitContainer.Panel2.Controls.Add(OptionSelectionGroupBox);
-            InstallerSplitContainer.Panel2.Controls.Add(pictureBox1);
+            InstallerSplitContainer.Panel2.Controls.Add(ChocoLogoPictureBox);
             InstallerSplitContainer.Panel2.Cursor = System.Windows.Forms.Cursors.Arrow;
             InstallerSplitContainer.Size = new System.Drawing.Size(775, 425);
             InstallerSplitContainer.SplitterDistance = 587;
@@ -239,15 +239,15 @@
             UpgradeRadioButton.Text = "Upgrade";
             UpgradeRadioButton.UseVisualStyleBackColor = true;
             // 
-            // pictureBox1
+            // ChocoLogoPictureBox
             // 
-            pictureBox1.Image = (System.Drawing.Image)resources.GetObject("pictureBox1.Image");
-            pictureBox1.Location = new System.Drawing.Point(4, 3);
-            pictureBox1.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new System.Drawing.Size(175, 73);
-            pictureBox1.TabIndex = 2;
-            pictureBox1.TabStop = false;
+            ChocoLogoPictureBox.Image = (System.Drawing.Image)resources.GetObject("ChocoLogoPictureBox.Image");
+            ChocoLogoPictureBox.Location = new System.Drawing.Point(4, 3);
+            ChocoLogoPictureBox.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            ChocoLogoPictureBox.Name = "ChocoLogoPictureBox";
+            ChocoLogoPictureBox.Size = new System.Drawing.Size(175, 73);
+            ChocoLogoPictureBox.TabIndex = 2;
+            ChocoLogoPictureBox.TabStop = false;
             // 
             // PackageInfoLabel
             // 
@@ -290,7 +290,7 @@
             PackageSplitContainer.ResumeLayout(false);
             OptionSelectionGroupBox.ResumeLayout(false);
             OptionSelectionGroupBox.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)ChocoLogoPictureBox).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -302,7 +302,7 @@
         internal System.Windows.Forms.GroupBox OptionSelectionGroupBox;
         internal System.Windows.Forms.Button StartButton;
         internal System.Windows.Forms.CheckBox SelectAllPackagesCheckBox;
-        internal System.Windows.Forms.PictureBox pictureBox1;
+        internal System.Windows.Forms.PictureBox ChocoLogoPictureBox;
         internal System.Windows.Forms.Label PackageInfoLabel;
         internal System.Windows.Forms.Button StopButton;
         internal System.Windows.Forms.SplitContainer InstallerSplitContainer;
