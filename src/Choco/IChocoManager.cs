@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
 
-namespace CUM.Choco
+namespace ChocolateyUtilsManager.Choco
 {
     public interface IChocoManager : IDisposable
     {

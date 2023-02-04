@@ -5,11 +5,11 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Collections.Generic;
 using Newtonsoft.Json;
-using CUM.Choco;
-using CUM.Models;
-using static CUM.Constants;
+using ChocolateyUtilsManager.Choco;
+using ChocolateyUtilsManager.Models;
+using static ChocolateyUtilsManager.Constants;
 
-namespace CUM
+namespace ChocolateyUtilsManager
 {
     internal partial class MainForm : Form
     {
@@ -114,7 +114,7 @@ namespace CUM
             this._cancellationToken.Cancel();
 
             string option = this.GetCurrentSelectedOption();
-            this.PackageInfoLabel.Text = $"Canceling action... The process will be completed after the current package is {option}ed";
+            this.PackageInfoLabel.Text = $"Cancelling action... The process will be completed after the current package is {option}ed";
         }
 
         private void SelectAllPackagesCheckBox_CheckedChanged(object sender, EventArgs e)

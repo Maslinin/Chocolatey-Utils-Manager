@@ -1,4 +1,4 @@
-﻿namespace CUM
+﻿namespace ChocolateyUtilsManager
 {
     internal partial class MainForm
     {

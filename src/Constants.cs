@@ -1,7 +1,7 @@
 ﻿using System;
 using System.IO;
 
-namespace CUM
+namespace ChocolateyUtilsManager
 {
     internal static class Constants
     {

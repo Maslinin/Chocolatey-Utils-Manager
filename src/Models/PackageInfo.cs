@@ -1,4 +1,4 @@
-﻿namespace CUM.Models
+﻿namespace ChocolateyUtilsManager.Models
 {
     internal sealed class PackageInfo
     {

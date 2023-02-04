@@ -1,9 +1,9 @@
 ﻿using System.Linq;
 using System.Collections.Generic;
-using CUM.Models;
-using static CUM.Constants;
+using ChocolateyUtilsManager.Models;
+using static ChocolateyUtilsManager.Constants;
 
-namespace CUM
+namespace ChocolateyUtilsManager
 {
     internal partial class MainForm
     {

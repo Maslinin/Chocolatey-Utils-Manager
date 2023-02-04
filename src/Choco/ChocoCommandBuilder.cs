@@ -1,7 +1,7 @@
 ﻿using System.Text;
-using static CUM.Constants.Choco;
+using static ChocolateyUtilsManager.Constants.Choco;
 
-namespace CUM.Choco
+namespace ChocolateyUtilsManager.Choco
 {
     internal class ChocoCommandBuilder
     {

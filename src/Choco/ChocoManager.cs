@@ -2,7 +2,7 @@ using System;
 using System.Threading.Tasks;
 using System.Management.Automation.Runspaces;
 
-namespace CUM.Choco
+namespace ChocolateyUtilsManager.Choco
 {
     public sealed class ChocoManager : IChocoManager
     {

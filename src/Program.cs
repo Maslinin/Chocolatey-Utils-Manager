@@ -1,6 +1,6 @@
 ﻿using System.Windows.Forms;
 
-namespace CUM
+namespace ChocolateyUtilsManager
 {
     internal static class Program
     {

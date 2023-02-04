@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace CUM.Models
+namespace ChocolateyUtilsManager.Models
 {
     internal sealed class PackageList
     {
